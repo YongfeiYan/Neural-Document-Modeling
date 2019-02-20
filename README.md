@@ -1,10 +1,17 @@
 # Neural-Document-Modeling
 
-PyTorch implementation of models
-- NVDM in __Neural Variational Inference for Text Processing__
-- GSM in __Discovering Discrete Latent Topics with Neural Variational Inference__
-- NTM in __Coherence-Aware Neural Topic Modeling__
-- NTMR in __Coherence-Aware Neural Topic Modeling__
+Simple PyTorch implementation of models
+- NVDM in [Neural Variational Inference for Text Processing][1]. Yishu Miao, Lei Yu, Phil Blunsom. ICML 2016.
+- GSM in [Discovering Discrete Latent Topics with Neural Variational Inference][2]. Yishu Miao, Edward Grefenstette, Phil Blunsom
+- NTM and NTMR in [Coherence-Aware Neural Topic Modeling][3] Ran Ding, Ramesh Nallapati, Bing Xiang. EMNLP 2018
+
+
+
+References to other related implementations:
+
+- [Pytorch AVITM](https://github.com/hyqneuron/pytorch-avitm)
+- [autoencoding_vi_for_topic_models](https://github.com/akashgit/autoencoding_vi_for_topic_models)  data/20news-clean was obtained there.
+- [nvdm](https://github.com/ysmiao/nvdm)
 
 
 
@@ -45,8 +52,6 @@ python experiments/ntm.py -F data/exp/ntm with config_file=data/config/nvdm.yaml
 
 
 
-
-
 ## Results
 
 The test perplexity and topic coherence on best evaluation checkpoint when topic number is 50.
@@ -58,7 +63,7 @@ The test perplexity and topic coherence on best evaluation checkpoint when topic
 | NTM   | 883.71     | 0.281           |
 | NVDM  | __769.50__ | 0.158           |
 
-
+Please let me known if better results are obtained or any advice on model and implementation details.
 
 
 
@@ -68,9 +73,8 @@ The test perplexity and topic coherence on best evaluation checkpoint when topic
 
 
 
-## Reference
-Todo add link and autor
-
-- AUTOENCODING VARIATIONAL INFERENCE FOR TOPIC MODELS
 
 
+[1]: https://arxiv.org/abs/1511.06038
+[2]:  https://arxiv.org/abs/1706.00359
+[3]: https://arxiv.org/abs/1809.02687
