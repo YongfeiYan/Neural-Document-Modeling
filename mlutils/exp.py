@@ -5,6 +5,7 @@
 import sys
 from contextlib import contextmanager
 from traceback import print_tb
+import yaml
 
 
 @contextmanager
@@ -23,3 +24,13 @@ def capture_all_exception(_run):
     finally:
         sys.stdout.flush()
         sys.stderr.flush()
+
+
+def yaml_load(data_path):
+    with open(data_path) as f:
+        return yaml.load(f)
+
+
+def yaml_dump(data, data_path):
+    with open(data_path, 'w') as f:
+        yaml.dump(data, f)

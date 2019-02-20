@@ -14,6 +14,8 @@ import copy
 from tensorboardX import SummaryWriter
 from sklearn.metrics import classification_report
 
+from ..callbacks import CallbackList
+
 
 def get_logger(log_file):
     logger = logging.getLogger(log_file)
@@ -180,19 +182,37 @@ def extend_config_reference(config):
     {'a': {}(which is denoted by 'b'),
     'b': {}}
     """
+    def _parse_reference(keys, r):
+        if hasattr(r, '__getitem__'):
+            try:
+                v = r.__getitem__(keys)
+                return v
+            except (KeyError, TypeError, IndexError):
+                pass
+        if isinstance(keys, tuple):
+            v = _parse_reference(keys[0], r)
+            if v is not None:
+                if len(keys) == 1:
+                    return v
+                return _parse_reference(keys[1:], v)
+        return None
 
     def _sub_reference(cf, ori):
-        for k in cf.keys():
+        it = cf.keys() if isinstance(cf, dict) else range(len(cf))
+        for k in it:
             v = cf[k]
-            if isinstance(v, dict):
+            if isinstance(v, (dict, list)):
                 v = _sub_reference(v, ori)
-            elif isinstance(v, str) and v in ori:
-                v = ori[v]
+            else:
+                r = _parse_reference(v, ori)
+                if r is not None:
+                    v = r
             cf[k] = v
         return cf
 
     replace = copy.deepcopy(config)
     return _sub_reference(replace, replace)
+
 
 
 class TrainerBatch:
@@ -300,6 +320,7 @@ class Trainer:
                  save_checkpoint_interval=None,
                  num_checkpoints_keep=10,
                  print_statistics_interval=None,
+                 callbacks=None,
                  logger=None):
         os.makedirs(base_dir, exist_ok=True)
         self.base_dir = base_dir
@@ -324,6 +345,12 @@ class Trainer:
         self.num_checkpoints_keep = num_checkpoints_keep
         self.checkpoints = []
         self.summary_writer = SummaryWriter(path.join(base_dir, 'summary'))
+
+        callbacks = callbacks or []
+        if not isinstance(callbacks, list):
+            callbacks = [callbacks]
+        self.callbacks = CallbackList(callbacks)
+        self.callbacks.set_trainer(self)
 
     def _write_summary(self, stat, step, prefix='train'):
         stat = stat.get_dict()
@@ -398,16 +425,19 @@ class Trainer:
                     self.best_eval = self._evaluate_epoch()
                     self.logger.info('checkpoint performance: {}'.format(self.best_eval.description('eval_')))
 
+        self.callbacks.on_train_begin()
         total_batch_no = len(self.train_iterator) * self.num_epochs + batch_no
         statistics = self.statistics()
         for e in range(1, 1 + self.num_epochs):
-            for batch in self.train_iterator:
+            self.callbacks.on_epoch_begin(e)
+            for b, batch in enumerate(self.train_iterator):
                 # train batch
+                self.callbacks.on_batch_begin(b)
                 res = self.trainer_batch.train_batch(batch)
                 statistics.add(res)
                 batch_no += 1
 
-                # save check point
+                # save checkpoint
                 if batch_no % self.save_checkpoint_interval == 0 or batch_no == total_batch_no:
                     self.logger.info('saving checkpoint')
                     # save checkpoint
@@ -452,7 +482,13 @@ class Trainer:
                                 self.logger.info('early stop toggled and finished training')
                                 self._save_best_statistics()
                                 self.test_performance()
+                                self.callbacks.on_batch_end(b)
+                                self.callbacks.on_epoch_end(e)
+                                self.callbacks.on_train_end()
                                 return
+                self.callbacks.on_batch_end(b)
+            self.callbacks.on_epoch_end(e)
+        self.callbacks.on_train_end()
 
     def predict(self, test_iterator, prob):
         out = []

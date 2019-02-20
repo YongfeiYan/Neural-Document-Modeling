@@ -99,7 +99,6 @@ class Callback(object):
     """
 
     def __init__(self):
-        self.validation_data = None
         self.trainer = None
 
     def set_trainer(self, trainer):
