@@ -1,0 +1,109 @@
+INFO - exp - Running command 'main'
+INFO - exp - Started run with ID "1"
+{'callback': 'callback_npmi', 'callback_npmi': {'embedding_path': '', 'every': 100, 'metric': 'npmi', 'topk': 100}, 'callback_wetc': {'embedding_path': '', 'every': 100, 'metric': 'wetc', 'topk': 10}, 'comment': '', 'dataset': {'batch_size': 256, 'data_dir': 'data/20news-clean/', 'dev_ratio': 0.1, 'device': 'device'}, 'device': 'cuda', 'hidden': {'activate': 'Sigmoid', 'features': [0, 150, 100], 'type': 'models.utils.get_mlp'}, 'normal': {'in_features': ('hidden', 'features', -1), 'out_features': 50, 'type': 'models.utils.NormalParameter'}, 'ntm': {'h_to_z': {'type': 'torch.nn.ReLU'}, 'hidden': 'hidden', 'normal': 'normal', 'topics': 'topic', 'type': 'models.NTM.NTM'}, 'topic': {'k': 50, 'type': 'models.utils.Topics', 'vocab_size': ('hidden', 'features', 0)}, 'trainer': {'early_stop': 10, 'eval_metric': {'key': 'ppx_doc', 'type': 'mlutils.pt.training.eval_metric_cmp_key'}, 'evaluate_interval': 10, 'num_checkpoints_keep': 1, 'num_epochs': 64000, 'statistics': {'dotted_path': 'experiments.utils.PerplexStatistics', 'type': 'mlutils.pt.training.parse_class'}, 'trainer_batch': 'trainer_batch', 'type': 'mlutils.pt.training.Trainer'}, 'trainer_batch': {'device': 'device', 'loss': 'mean', 'model': 'ntm', 'optimizer': {'lr': 0.01, 'type': 'torch.optim.Adadelta'}, 'test_sample': 100, 'type': 'experiments.utils.BatchOperation'}}
+data/exp/ntm/1
+reading data/20news-clean/train.feat
+reading data/20news-clean/test.feat
+creating dictionary
+splitting train, dev datasets
+train, dev, test 10132 1126 7487
+{'callback': {'embedding_path': '', 'every': 100, 'metric': 'npmi', 'topk': 100}, 'callback_npmi': {'embedding_path': '', 'every': 100, 'metric': 'npmi', 'topk': 100}, 'callback_wetc': {'embedding_path': '', 'every': 100, 'metric': 'wetc', 'topk': 10}, 'comment': '', 'dataset': {'batch_size': 256, 'data_dir': 'data/20news-clean/', 'dev_ratio': 0.1, 'device': 'cuda'}, 'device': 'cuda', 'hidden': {'activate': 'Sigmoid', 'features': [1994, 150, 100], 'type': 'models.utils.get_mlp'}, 'normal': {'in_features': 100, 'out_features': 50, 'type': 'models.utils.NormalParameter'}, 'ntm': {'h_to_z': {'type': 'torch.nn.ReLU'}, 'hidden': {'activate': 'Sigmoid', 'features': [1994, 150, 100], 'type': 'models.utils.get_mlp'}, 'normal': {'in_features': 100, 'out_features': 50, 'type': 'models.utils.NormalParameter'}, 'topics': {'k': 50, 'type': 'models.utils.Topics', 'vocab_size': 1994}, 'type': 'models.NTM.NTM'}, 'topic': {'k': 50, 'type': 'models.utils.Topics', 'vocab_size': 1994}, 'trainer': {'early_stop': 10, 'eval_metric': {'key': 'ppx_doc', 'type': 'mlutils.pt.training.eval_metric_cmp_key'}, 'evaluate_interval': 400, 'num_checkpoints_keep': 1, 'num_epochs': 64000, 'statistics': {'dotted_path': 'experiments.utils.PerplexStatistics', 'type': 'mlutils.pt.training.parse_class'}, 'trainer_batch': {'device': 'cuda', 'loss': 'mean', 'model': {'h_to_z': {'type': 'torch.nn.ReLU'}, 'hidden': {'activate': 'Sigmoid', 'features': [1994, 150, 100], 'type': 'models.utils.get_mlp'}, 'normal': {'in_features': 100, 'out_features': 50, 'type': 'models.utils.NormalParameter'}, 'topics': {'k': 50, 'type': 'models.utils.Topics', 'vocab_size': 1994}, 'type': 'models.NTM.NTM'}, 'optimizer': {'lr': 0.01, 'type': 'torch.optim.Adadelta'}, 'test_sample': 1, 'type': 'experiments.utils.BatchOperation'}, 'type': 'mlutils.pt.training.Trainer', 'save_checkpoint_interval': 400, 'base_dir': 'data/exp/ntm/1', 'train_iterator': <torch.utils.data.dataloader.DataLoader object at 0x7fa76778b7b8>, 'dev_iterator': <torch.utils.data.dataloader.DataLoader object at 0x7fa6fbbb3da0>, 'test_iterator': None, 'callbacks': <experiments.utils.EvaluationCallback object at 0x7fa6fbbb3fd0>, 'logger': <Logger main (INFO)>}, 'trainer_batch': {'device': 'cuda', 'loss': 'mean', 'model': {'h_to_z': {'type': 'torch.nn.ReLU'}, 'hidden': {'activate': 'Sigmoid', 'features': [1994, 150, 100], 'type': 'models.utils.get_mlp'}, 'normal': {'in_features': 100, 'out_features': 50, 'type': 'models.utils.NormalParameter'}, 'topics': {'k': 50, 'type': 'models.utils.Topics', 'vocab_size': 1994}, 'type': 'models.NTM.NTM'}, 'optimizer': {'lr': 0.01, 'type': 'torch.optim.Adadelta'}, 'test_sample': 1, 'type': 'experiments.utils.BatchOperation'}}
+INFO - main - model architecture
+NTM(
+  (hidden): Sequential(
+    (0): Linear(in_features=1994, out_features=150, bias=True)
+    (1): Sigmoid()
+    (2): Linear(in_features=150, out_features=100, bias=True)
+    (3): Sigmoid()
+  )
+  (normal): NormalParameter(
+    (mu): Linear(in_features=100, out_features=50, bias=True)
+    (log_sigma): Linear(in_features=100, out_features=50, bias=True)
+  )
+  (h_to_z): ReLU()
+  (topics): Topics(
+    (topic): Linear(in_features=50, out_features=1994, bias=True)
+  )
+)
+WARNING - main - use latest model to restore, but not found any. Try to use best evaluation modle
+WARNING - main - best model data/exp/ntm/1/model_best.pt does not exist
+WARNING - main - No checkpoint found and start training from fresh model
+INFO - main - train 106520/2560000(epoch 2663/64000, 0.04), train_ppx 769.99371 | train_ppx_doc 852.14154 | train_loss 583.94879 | train_loss_rec 574.76691 | train_kld 9.18202
+INFO - main - train 106560/2560000(epoch 2664/64000, 0.04), train_ppx 769.67548 | train_ppx_doc 851.73657 | train_loss 583.91248 | train_loss_rec 574.69269 | train_kld 9.21977
+INFO - main - train 106600/2560000(epoch 2665/64000, 0.04), train_ppx 770.29919 | train_ppx_doc 854.02820 | train_loss 583.98370 | train_loss_rec 574.76654 | train_kld 9.21722
+INFO - main - train 106640/2560000(epoch 2666/64000, 0.04), train_ppx 769.52832 | train_ppx_doc 850.37341 | train_loss 583.89569 | train_loss_rec 574.68390 | train_kld 9.21184
+INFO - main - train 106680/2560000(epoch 2667/64000, 0.04), train_ppx 769.93164 | train_ppx_doc 851.01953 | train_loss 583.94177 | train_loss_rec 574.72772 | train_kld 9.21394
+INFO - main - train 106720/2560000(epoch 2668/64000, 0.04), train_ppx 769.78809 | train_ppx_doc 850.93561 | train_loss 583.92535 | train_loss_rec 574.74182 | train_kld 9.18359
+INFO - main - train 106760/2560000(epoch 2669/64000, 0.04), train_ppx 769.81494 | train_ppx_doc 851.16449 | train_loss 583.92841 | train_loss_rec 574.73615 | train_kld 9.19239
+INFO - main - saving checkpoint
+INFO - main - save checkpoint to data/exp/ntm/1/model_106800.pt
+INFO - main - train 106800/2560000(epoch 2670/64000, 0.04), train_ppx 769.69305 | train_ppx_doc 851.29840 | train_loss 583.91449 | train_loss_rec 574.69794 | train_kld 9.21669
+INFO - main - evaluating model performance
+INFO - main - evaluate 106800/2560000(epoch 2670/64000, 0.04), eval_ppx 819.68182 | eval_ppx_doc 880.81580 | eval_loss 603.55817 | eval_loss_rec 594.60156 | eval_kld 8.95663
+INFO - main - train 106840/2560000(epoch 2671/64000, 0.04), train_ppx 769.10754 | train_ppx_doc 850.66376 | train_loss 583.84766 | train_loss_rec 574.63477 | train_kld 9.21302
+INFO - main - train 106880/2560000(epoch 2672/64000, 0.04), train_ppx 769.69635 | train_ppx_doc 850.94409 | train_loss 583.91492 | train_loss_rec 574.70679 | train_kld 9.20816
+INFO - main - train 106920/2560000(epoch 2673/64000, 0.04), train_ppx 768.74341 | train_ppx_doc 850.36041 | train_loss 583.80603 | train_loss_rec 574.63855 | train_kld 9.16746
+INFO - main - train 106960/2560000(epoch 2674/64000, 0.04), train_ppx 769.17535 | train_ppx_doc 852.41260 | train_loss 583.85541 | train_loss_rec 574.66754 | train_kld 9.18793
+INFO - main - train 107000/2560000(epoch 2675/64000, 0.04), train_ppx 769.83990 | train_ppx_doc 852.41827 | train_loss 583.93127 | train_loss_rec 574.70026 | train_kld 9.23095
+INFO - main - train 107040/2560000(epoch 2676/64000, 0.04), train_ppx 770.16376 | train_ppx_doc 851.69391 | train_loss 583.96820 | train_loss_rec 574.72992 | train_kld 9.23825
+INFO - main - train 107080/2560000(epoch 2677/64000, 0.04), train_ppx 769.78302 | train_ppx_doc 851.52173 | train_loss 583.92474 | train_loss_rec 574.69830 | train_kld 9.22646
+INFO - main - train 107120/2560000(epoch 2678/64000, 0.04), train_ppx 769.02576 | train_ppx_doc 851.63544 | train_loss 583.83832 | train_loss_rec 574.61273 | train_kld 9.22558
+INFO - main - train 107160/2560000(epoch 2679/64000, 0.04), train_ppx 769.43732 | train_ppx_doc 851.42914 | train_loss 583.88531 | train_loss_rec 574.65881 | train_kld 9.22649
+INFO - main - saving checkpoint
+INFO - main - save checkpoint to data/exp/ntm/1/model_107200.pt
+INFO - main - train 107200/2560000(epoch 2680/64000, 0.04), train_ppx 768.69177 | train_ppx_doc 851.64111 | train_loss 583.80011 | train_loss_rec 574.59589 | train_kld 9.20425
+INFO - main - evaluating model performance
+INFO - main - evaluate 107200/2560000(epoch 2680/64000, 0.04), eval_ppx 818.50226 | eval_ppx_doc 877.44244 | eval_loss 603.42865 | eval_loss_rec 594.48560 | eval_kld 8.94311
+INFO - main - train 107240/2560000(epoch 2681/64000, 0.04), train_ppx 770.11414 | train_ppx_doc 852.11676 | train_loss 583.96259 | train_loss_rec 574.73041 | train_kld 9.23201
+INFO - main - train 107280/2560000(epoch 2682/64000, 0.04), train_ppx 769.25275 | train_ppx_doc 851.72308 | train_loss 583.86420 | train_loss_rec 574.64679 | train_kld 9.21726
+INFO - main - train 107320/2560000(epoch 2683/64000, 0.04), train_ppx 769.19812 | train_ppx_doc 851.80151 | train_loss 583.85803 | train_loss_rec 574.64026 | train_kld 9.21792
+INFO - main - train 107360/2560000(epoch 2684/64000, 0.04), train_ppx 768.27509 | train_ppx_doc 850.51691 | train_loss 583.75250 | train_loss_rec 574.53357 | train_kld 9.21898
+INFO - main - train 107400/2560000(epoch 2685/64000, 0.04), train_ppx 768.32898 | train_ppx_doc 850.02600 | train_loss 583.75867 | train_loss_rec 574.56439 | train_kld 9.19421
+INFO - main - train 107440/2560000(epoch 2686/64000, 0.04), train_ppx 767.94550 | train_ppx_doc 850.91406 | train_loss 583.71478 | train_loss_rec 574.52191 | train_kld 9.19272
+INFO - main - train 107480/2560000(epoch 2687/64000, 0.04), train_ppx 768.17181 | train_ppx_doc 851.12189 | train_loss 583.74072 | train_loss_rec 574.54504 | train_kld 9.19557
+INFO - main - train 107520/2560000(epoch 2688/64000, 0.04), train_ppx 768.99310 | train_ppx_doc 851.83112 | train_loss 583.83453 | train_loss_rec 574.62036 | train_kld 9.21437
+INFO - main - train 107560/2560000(epoch 2689/64000, 0.04), train_ppx 768.64923 | train_ppx_doc 850.96973 | train_loss 583.79529 | train_loss_rec 574.58069 | train_kld 9.21454
+INFO - main - saving checkpoint
+INFO - main - save checkpoint to data/exp/ntm/1/model_107600.pt
+INFO - main - train 107600/2560000(epoch 2690/64000, 0.04), train_ppx 768.33374 | train_ppx_doc 850.20227 | train_loss 583.75922 | train_loss_rec 574.57373 | train_kld 9.18553
+INFO - main - evaluating model performance
+INFO - main - evaluate 107600/2560000(epoch 2690/64000, 0.04), eval_ppx 813.07697 | eval_ppx_doc 875.30414 | eval_loss 602.83032 | eval_loss_rec 593.90887 | eval_kld 8.92147
+INFO - main - train 107640/2560000(epoch 2691/64000, 0.04), train_ppx 768.99127 | train_ppx_doc 850.12970 | train_loss 583.83435 | train_loss_rec 574.62061 | train_kld 9.21377
+INFO - main - train 107680/2560000(epoch 2692/64000, 0.04), train_ppx 769.16583 | train_ppx_doc 851.22693 | train_loss 583.85431 | train_loss_rec 574.63519 | train_kld 9.21916
+INFO - main - train 107720/2560000(epoch 2693/64000, 0.04), train_ppx 769.30481 | train_ppx_doc 853.02454 | train_loss 583.87018 | train_loss_rec 574.64172 | train_kld 9.22852
+INFO - main - train 107760/2560000(epoch 2694/64000, 0.04), train_ppx 768.54407 | train_ppx_doc 852.25977 | train_loss 583.78326 | train_loss_rec 574.53973 | train_kld 9.24343
+INFO - main - train 107800/2560000(epoch 2695/64000, 0.04), train_ppx 768.79736 | train_ppx_doc 853.23444 | train_loss 583.81219 | train_loss_rec 574.57690 | train_kld 9.23530
+INFO - main - train 107840/2560000(epoch 2696/64000, 0.04), train_ppx 768.41907 | train_ppx_doc 851.73041 | train_loss 583.76898 | train_loss_rec 574.52838 | train_kld 9.24068
+INFO - main - train 107880/2560000(epoch 2697/64000, 0.04), train_ppx 768.17291 | train_ppx_doc 851.73895 | train_loss 583.74078 | train_loss_rec 574.49634 | train_kld 9.24458
+INFO - main - train 107920/2560000(epoch 2698/64000, 0.04), train_ppx 767.15271 | train_ppx_doc 850.03241 | train_loss 583.62402 | train_loss_rec 574.38373 | train_kld 9.24026
+INFO - main - train 107960/2560000(epoch 2699/64000, 0.04), train_ppx 768.93298 | train_ppx_doc 851.44171 | train_loss 583.82770 | train_loss_rec 574.57825 | train_kld 9.24940
+INFO - main - saving checkpoint
+INFO - main - save checkpoint to data/exp/ntm/1/model_108000.pt
+INFO - main - train 108000/2560000(epoch 2700/64000, 0.04), train_ppx 767.94476 | train_ppx_doc 850.78058 | train_loss 583.71472 | train_loss_rec 574.47375 | train_kld 9.24098
+INFO - main - evaluating model performance
+INFO - main - evaluate 108000/2560000(epoch 2700/64000, 0.04), eval_ppx 813.55353 | eval_ppx_doc 869.55945 | eval_loss 602.88306 | eval_loss_rec 593.92999 | eval_kld 8.95304
+INFO - main - saving topics to data/exp/ntm/1/topic-2700
+INFO - main - topic coherence 0.275
+INFO - main - train 108040/2560000(epoch 2701/64000, 0.04), train_ppx 768.15967 | train_ppx_doc 849.80951 | train_loss 583.73932 | train_loss_rec 574.49939 | train_kld 9.24006
+INFO - main - train 108080/2560000(epoch 2702/64000, 0.04), train_ppx 767.99493 | train_ppx_doc 851.83435 | train_loss 583.72046 | train_loss_rec 574.47876 | train_kld 9.24172
+INFO - main - train 108120/2560000(epoch 2703/64000, 0.04), train_ppx 767.33203 | train_ppx_doc 851.97290 | train_loss 583.64459 | train_loss_rec 574.39966 | train_kld 9.24485
+INFO - main - train 108160/2560000(epoch 2704/64000, 0.04), train_ppx 767.20026 | train_ppx_doc 848.49036 | train_loss 583.62952 | train_loss_rec 574.38879 | train_kld 9.24068
+INFO - main - train 108200/2560000(epoch 2705/64000, 0.04), train_ppx 767.46777 | train_ppx_doc 849.77191 | train_loss 583.66010 | train_loss_rec 574.42999 | train_kld 9.22998
+INFO - main - train 108240/2560000(epoch 2706/64000, 0.04), train_ppx 767.31000 | train_ppx_doc 849.37164 | train_loss 583.64203 | train_loss_rec 574.39911 | train_kld 9.24296
+INFO - main - train 108280/2560000(epoch 2707/64000, 0.04), train_ppx 767.96564 | train_ppx_doc 850.52026 | train_loss 583.71710 | train_loss_rec 574.50665 | train_kld 9.21054
+INFO - main - train 108320/2560000(epoch 2708/64000, 0.04), train_ppx 767.71851 | train_ppx_doc 851.81409 | train_loss 583.68884 | train_loss_rec 574.48816 | train_kld 9.20063
+INFO - main - train 108360/2560000(epoch 2709/64000, 0.04), train_ppx 768.26672 | train_ppx_doc 850.76312 | train_loss 583.75159 | train_loss_rec 574.49756 | train_kld 9.25388
+INFO - main - saving checkpoint
+INFO - main - save checkpoint to data/exp/ntm/1/model_108400.pt
+INFO - main - train 108400/2560000(epoch 2710/64000, 0.04), train_ppx 767.65881 | train_ppx_doc 850.89417 | train_loss 583.68201 | train_loss_rec 574.42297 | train_kld 9.25898
+INFO - main - evaluating model performance
+INFO - main - evaluate 108400/2560000(epoch 2710/64000, 0.04), eval_ppx 814.91791 | eval_ppx_doc 873.96161 | eval_loss 603.03381 | eval_loss_rec 594.06476 | eval_kld 8.96919
+INFO - main - early stop toggled and finished training
+INFO - main - save best evaluation statistics to data/exp/ntm/1/best_eval.json
+INFO - main - saving topics to data/exp/ntm/1/topic-2710
+INFO - main - topic coherence 0.276
+INFO - main - load checkpoint from data/exp/ntm/1/model_best.pt
+INFO - main - saving topics to data/exp/ntm/1/topic-2710
+INFO - main - topic coherence 0.281
+INFO - main - test result of best evaluation {'ppx': 840.71435546875, 'ppx_doc': 883.7105712890625, 'loss': 566.04052734375, 'loss_rec': 557.78173828125, 'kld': 8.258835792541504, 'max_topic_coherence': 0.283, 'last_topic_coherence': 0.281}
+INFO - exp - Completed after 1:48:49

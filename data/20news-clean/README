@@ -1,0 +1,3 @@
+
+Data converted from https://github.com/akashgit/autoencoding_vi_for_topic_models/tree/master/data/20news_clean. The train.txt and test.txt files were creted by convert corresponding .npy files through vocab file.
+

@@ -1,0 +1,203 @@
+INFO - exp - Running command 'main'
+INFO - exp - Started run with ID "1"
+{'callback': 'callback_npmi', 'callback_npmi': {'embedding_path': '', 'every': 100, 'metric': 'npmi', 'topk': 100}, 'callback_wetc': {'embedding_path': '', 'every': 100, 'metric': 'wetc', 'topk': 10}, 'comment': '', 'dataset': {'batch_size': 64, 'data_dir': 'data/20news-clean/', 'dev_ratio': 0.1, 'device': 'device'}, 'device': 'cuda', 'hidden': {'activate': 'Tanh', 'features': [0, 500], 'type': 'models.utils.get_mlp'}, 'normal': {'in_features': ('hidden', 'features', -1), 'out_features': 50, 'type': 'models.utils.NormalParameter'}, 'nvdm': {'h_to_z': {'type': 'models.utils.Identity'}, 'hidden': 'hidden', 'normal': 'normal', 'topics': 'topic', 'type': 'models.NTM.NTM'}, 'topic': {'k': 50, 'type': 'models.utils.Topics', 'vocab_size': ('hidden', 'features', 0)}, 'trainer': {'early_stop': 10, 'eval_metric': {'key': 'ppx_doc', 'type': 'mlutils.pt.training.eval_metric_cmp_key'}, 'evaluate_interval': 10, 'num_checkpoints_keep': 1, 'num_epochs': 64000, 'statistics': {'dotted_path': 'experiments.utils.PerplexStatistics', 'type': 'mlutils.pt.training.parse_class'}, 'trainer_batch': 'trainer_batch', 'type': 'mlutils.pt.training.Trainer'}, 'trainer_batch': {'device': 'device', 'loss': 'sum', 'model': 'nvdm', 'optimizer': {'lr': 5e-05, 'type': 'torch.optim.Adam'}, 'test_sample': 100, 'type': 'experiments.utils.BatchOperation'}}
+data/exp/nvdm/1
+reading data/20news-clean/train.feat
+reading data/20news-clean/test.feat
+creating dictionary
+splitting train, dev datasets
+train, dev, test 10132 1126 7487
+{'callback': {'embedding_path': '', 'every': 100, 'metric': 'npmi', 'topk': 100}, 'callback_npmi': {'embedding_path': '', 'every': 100, 'metric': 'npmi', 'topk': 100}, 'callback_wetc': {'embedding_path': '', 'every': 100, 'metric': 'wetc', 'topk': 10}, 'comment': '', 'dataset': {'batch_size': 64, 'data_dir': 'data/20news-clean/', 'dev_ratio': 0.1, 'device': 'cuda'}, 'device': 'cuda', 'hidden': {'activate': 'Tanh', 'features': [1994, 500], 'type': 'models.utils.get_mlp'}, 'normal': {'in_features': 500, 'out_features': 50, 'type': 'models.utils.NormalParameter'}, 'nvdm': {'h_to_z': {'type': 'models.utils.Identity'}, 'hidden': {'activate': 'Tanh', 'features': [1994, 500], 'type': 'models.utils.get_mlp'}, 'normal': {'in_features': 500, 'out_features': 50, 'type': 'models.utils.NormalParameter'}, 'topics': {'k': 50, 'type': 'models.utils.Topics', 'vocab_size': 1994}, 'type': 'models.NTM.NTM'}, 'topic': {'k': 50, 'type': 'models.utils.Topics', 'vocab_size': 1994}, 'trainer': {'early_stop': 10, 'eval_metric': {'key': 'ppx_doc', 'type': 'mlutils.pt.training.eval_metric_cmp_key'}, 'evaluate_interval': 1590, 'num_checkpoints_keep': 1, 'num_epochs': 64000, 'statistics': {'dotted_path': 'experiments.utils.PerplexStatistics', 'type': 'mlutils.pt.training.parse_class'}, 'trainer_batch': {'device': 'cuda', 'loss': 'sum', 'model': {'h_to_z': {'type': 'models.utils.Identity'}, 'hidden': {'activate': 'Tanh', 'features': [1994, 500], 'type': 'models.utils.get_mlp'}, 'normal': {'in_features': 500, 'out_features': 50, 'type': 'models.utils.NormalParameter'}, 'topics': {'k': 50, 'type': 'models.utils.Topics', 'vocab_size': 1994}, 'type': 'models.NTM.NTM'}, 'optimizer': {'lr': 5e-05, 'type': 'torch.optim.Adam'}, 'test_sample': 1, 'type': 'experiments.utils.BatchOperation'}, 'type': 'mlutils.pt.training.Trainer', 'save_checkpoint_interval': 1590, 'base_dir': 'data/exp/nvdm/1', 'train_iterator': <torch.utils.data.dataloader.DataLoader object at 0x7f018505ee80>, 'dev_iterator': <torch.utils.data.dataloader.DataLoader object at 0x7f0173101048>, 'test_iterator': None, 'callbacks': <experiments.utils.EvaluationCallback object at 0x7f01731012e8>, 'logger': <Logger main (INFO)>}, 'trainer_batch': {'device': 'cuda', 'loss': 'sum', 'model': {'h_to_z': {'type': 'models.utils.Identity'}, 'hidden': {'activate': 'Tanh', 'features': [1994, 500], 'type': 'models.utils.get_mlp'}, 'normal': {'in_features': 500, 'out_features': 50, 'type': 'models.utils.NormalParameter'}, 'topics': {'k': 50, 'type': 'models.utils.Topics', 'vocab_size': 1994}, 'type': 'models.NTM.NTM'}, 'optimizer': {'lr': 5e-05, 'type': 'torch.optim.Adam'}, 'test_sample': 1, 'type': 'experiments.utils.BatchOperation'}}
+INFO - main - model architecture
+NTM(
+  (hidden): Sequential(
+    (0): Linear(in_features=1994, out_features=500, bias=True)
+    (1): Tanh()
+  )
+  (normal): NormalParameter(
+    (mu): Linear(in_features=500, out_features=50, bias=True)
+    (log_sigma): Linear(in_features=500, out_features=50, bias=True)
+  )
+  (h_to_z): Identity()
+  (topics): Topics(
+    (topic): Linear(in_features=50, out_features=1994, bias=True)
+  )
+)
+WARNING - main - use latest model to restore, but not found any. Try to use best evaluation modle
+WARNING - main - best model data/exp/nvdm/1/model_best.pt does not exist
+WARNING - main - No checkpoint found and start training from fresh model
+INFO - main - train 159/10176000(epoch 1/64000, 0.00), train_ppx 2269.98315 | train_ppx_doc 2314.97729 | train_loss 683.27069 | train_loss_rec 682.58313 | train_kld 0.68725
+INFO - main - train 103032/10176000(epoch 648/64000, 0.01), train_ppx 542.65411 | train_ppx_doc 640.46558 | train_loss 556.73627 | train_loss_rec 529.86011 | train_kld 26.87617
+INFO - main - train 103191/10176000(epoch 649/64000, 0.01), train_ppx 542.98022 | train_ppx_doc 642.60510 | train_loss 556.78937 | train_loss_rec 529.84296 | train_kld 26.94634
+INFO - main - saving checkpoint
+INFO - main - save checkpoint to data/exp/nvdm/1/model_103350.pt
+INFO - main - train 103350/10176000(epoch 650/64000, 0.01), train_ppx 542.63416 | train_ppx_doc 641.03479 | train_loss 556.73303 | train_loss_rec 529.87885 | train_kld 26.85419
+INFO - main - evaluating model performance
+INFO - main - evaluate 103350/10176000(epoch 650/64000, 0.01), eval_ppx 668.85742 | eval_ppx_doc 737.09302 | eval_loss 552.44202 | eval_loss_rec 527.42676 | eval_kld 25.01537
+INFO - main - train 103509/10176000(epoch 651/64000, 0.01), train_ppx 542.95099 | train_ppx_doc 641.57208 | train_loss 556.78461 | train_loss_rec 529.82245 | train_kld 26.96198
+INFO - main - train 103668/10176000(epoch 652/64000, 0.01), train_ppx 542.60620 | train_ppx_doc 640.39142 | train_loss 556.72845 | train_loss_rec 529.82629 | train_kld 26.90214
+INFO - main - train 103827/10176000(epoch 653/64000, 0.01), train_ppx 542.27850 | train_ppx_doc 639.74615 | train_loss 556.67505 | train_loss_rec 529.80444 | train_kld 26.87057
+INFO - main - train 103986/10176000(epoch 654/64000, 0.01), train_ppx 542.13196 | train_ppx_doc 639.95911 | train_loss 556.65112 | train_loss_rec 529.74365 | train_kld 26.90740
+INFO - main - train 104145/10176000(epoch 655/64000, 0.01), train_ppx 542.40448 | train_ppx_doc 639.64459 | train_loss 556.69556 | train_loss_rec 529.73608 | train_kld 26.95958
+INFO - main - train 104304/10176000(epoch 656/64000, 0.01), train_ppx 542.06549 | train_ppx_doc 639.35156 | train_loss 556.64026 | train_loss_rec 529.71045 | train_kld 26.92980
+INFO - main - train 104463/10176000(epoch 657/64000, 0.01), train_ppx 541.98096 | train_ppx_doc 639.82452 | train_loss 556.62653 | train_loss_rec 529.74762 | train_kld 26.87869
+INFO - main - train 104622/10176000(epoch 658/64000, 0.01), train_ppx 542.39954 | train_ppx_doc 641.02594 | train_loss 556.69476 | train_loss_rec 529.75635 | train_kld 26.93848
+INFO - main - train 104781/10176000(epoch 659/64000, 0.01), train_ppx 542.07843 | train_ppx_doc 638.91754 | train_loss 556.64240 | train_loss_rec 529.71539 | train_kld 26.92733
+INFO - main - saving checkpoint
+INFO - main - save checkpoint to data/exp/nvdm/1/model_104940.pt
+INFO - main - train 104940/10176000(epoch 660/64000, 0.01), train_ppx 542.88080 | train_ppx_doc 641.25336 | train_loss 556.77319 | train_loss_rec 529.72839 | train_kld 27.04505
+INFO - main - evaluating model performance
+INFO - main - evaluate 104940/10176000(epoch 660/64000, 0.01), eval_ppx 663.25403 | eval_ppx_doc 721.22540 | eval_loss 551.72760 | eval_loss_rec 526.49194 | eval_kld 25.23567
+INFO - main - new best evaluation eval_ppx 663.25403 | eval_ppx_doc 721.22540 | eval_loss 551.72760 | eval_loss_rec 526.49194 | eval_kld 25.23567
+INFO - main - save checkpoint to data/exp/nvdm/1/model_best.pt
+INFO - main - train 105099/10176000(epoch 661/64000, 0.01), train_ppx 543.02917 | train_ppx_doc 641.59656 | train_loss 556.79736 | train_loss_rec 529.74493 | train_kld 27.05239
+INFO - main - train 105258/10176000(epoch 662/64000, 0.01), train_ppx 542.51416 | train_ppx_doc 642.40723 | train_loss 556.71344 | train_loss_rec 529.74176 | train_kld 26.97168
+INFO - main - train 105417/10176000(epoch 663/64000, 0.01), train_ppx 541.98718 | train_ppx_doc 641.04395 | train_loss 556.62750 | train_loss_rec 529.66394 | train_kld 26.96372
+INFO - main - train 105576/10176000(epoch 664/64000, 0.01), train_ppx 542.02515 | train_ppx_doc 640.91223 | train_loss 556.63373 | train_loss_rec 529.71191 | train_kld 26.92188
+INFO - main - train 105735/10176000(epoch 665/64000, 0.01), train_ppx 541.97089 | train_ppx_doc 638.63580 | train_loss 556.62488 | train_loss_rec 529.62146 | train_kld 27.00337
+INFO - main - train 105894/10176000(epoch 666/64000, 0.01), train_ppx 542.33435 | train_ppx_doc 640.50836 | train_loss 556.68420 | train_loss_rec 529.63391 | train_kld 27.05007
+INFO - main - train 106053/10176000(epoch 667/64000, 0.01), train_ppx 541.70477 | train_ppx_doc 638.32349 | train_loss 556.58148 | train_loss_rec 529.61194 | train_kld 26.96952
+INFO - main - train 106212/10176000(epoch 668/64000, 0.01), train_ppx 541.82361 | train_ppx_doc 641.02441 | train_loss 556.60083 | train_loss_rec 529.61176 | train_kld 26.98936
+INFO - main - train 106371/10176000(epoch 669/64000, 0.01), train_ppx 541.27277 | train_ppx_doc 638.17523 | train_loss 556.51086 | train_loss_rec 529.54254 | train_kld 26.96827
+INFO - main - saving checkpoint
+INFO - main - save checkpoint to data/exp/nvdm/1/model_106530.pt
+INFO - main - train 106530/10176000(epoch 670/64000, 0.01), train_ppx 541.36755 | train_ppx_doc 639.50464 | train_loss 556.52637 | train_loss_rec 529.60388 | train_kld 26.92277
+INFO - main - evaluating model performance
+INFO - main - evaluate 106530/10176000(epoch 670/64000, 0.01), eval_ppx 666.63593 | eval_ppx_doc 732.11932 | eval_loss 552.15948 | eval_loss_rec 527.21027 | eval_kld 24.94928
+INFO - main - train 106689/10176000(epoch 671/64000, 0.01), train_ppx 541.94250 | train_ppx_doc 639.75012 | train_loss 556.62024 | train_loss_rec 529.59784 | train_kld 27.02241
+INFO - main - train 106848/10176000(epoch 672/64000, 0.01), train_ppx 541.96057 | train_ppx_doc 640.99872 | train_loss 556.62317 | train_loss_rec 529.61346 | train_kld 27.00956
+INFO - main - train 107007/10176000(epoch 673/64000, 0.01), train_ppx 541.05524 | train_ppx_doc 636.39575 | train_loss 556.47534 | train_loss_rec 529.52838 | train_kld 26.94704
+INFO - main - train 107166/10176000(epoch 674/64000, 0.01), train_ppx 541.43518 | train_ppx_doc 638.04651 | train_loss 556.53741 | train_loss_rec 529.54272 | train_kld 26.99482
+INFO - main - train 107325/10176000(epoch 675/64000, 0.01), train_ppx 540.41193 | train_ppx_doc 637.46478 | train_loss 556.37012 | train_loss_rec 529.43585 | train_kld 26.93420
+INFO - main - train 107484/10176000(epoch 676/64000, 0.01), train_ppx 542.08667 | train_ppx_doc 640.49707 | train_loss 556.64374 | train_loss_rec 529.56885 | train_kld 27.07489
+INFO - main - train 107643/10176000(epoch 677/64000, 0.01), train_ppx 540.86847 | train_ppx_doc 638.48206 | train_loss 556.44482 | train_loss_rec 529.50067 | train_kld 26.94424
+INFO - main - train 107802/10176000(epoch 678/64000, 0.01), train_ppx 541.30792 | train_ppx_doc 639.52631 | train_loss 556.51660 | train_loss_rec 529.50293 | train_kld 27.01360
+INFO - main - train 107961/10176000(epoch 679/64000, 0.01), train_ppx 541.54852 | train_ppx_doc 639.61963 | train_loss 556.55597 | train_loss_rec 529.49988 | train_kld 27.05597
+INFO - main - saving checkpoint
+INFO - main - save checkpoint to data/exp/nvdm/1/model_108120.pt
+INFO - main - train 108120/10176000(epoch 680/64000, 0.01), train_ppx 541.23999 | train_ppx_doc 638.72931 | train_loss 556.50555 | train_loss_rec 529.47626 | train_kld 27.02926
+INFO - main - evaluating model performance
+INFO - main - evaluate 108120/10176000(epoch 680/64000, 0.01), eval_ppx 666.90265 | eval_ppx_doc 725.77100 | eval_loss 552.19348 | eval_loss_rec 526.93085 | eval_kld 25.26255
+INFO - main - train 108279/10176000(epoch 681/64000, 0.01), train_ppx 540.65912 | train_ppx_doc 637.47571 | train_loss 556.41058 | train_loss_rec 529.40076 | train_kld 27.00987
+INFO - main - train 108438/10176000(epoch 682/64000, 0.01), train_ppx 540.31506 | train_ppx_doc 636.59576 | train_loss 556.35431 | train_loss_rec 529.42554 | train_kld 26.92873
+INFO - main - train 108597/10176000(epoch 683/64000, 0.01), train_ppx 540.44391 | train_ppx_doc 637.88654 | train_loss 556.37537 | train_loss_rec 529.45172 | train_kld 26.92371
+INFO - main - train 108756/10176000(epoch 684/64000, 0.01), train_ppx 541.06866 | train_ppx_doc 637.81561 | train_loss 556.47754 | train_loss_rec 529.44025 | train_kld 27.03751
+INFO - main - train 108915/10176000(epoch 685/64000, 0.01), train_ppx 541.63605 | train_ppx_doc 639.14703 | train_loss 556.57019 | train_loss_rec 529.47906 | train_kld 27.09115
+INFO - main - train 109074/10176000(epoch 686/64000, 0.01), train_ppx 540.86279 | train_ppx_doc 638.72479 | train_loss 556.44397 | train_loss_rec 529.36444 | train_kld 27.07963
+INFO - main - train 109233/10176000(epoch 687/64000, 0.01), train_ppx 540.30298 | train_ppx_doc 636.44818 | train_loss 556.35236 | train_loss_rec 529.39124 | train_kld 26.96110
+INFO - main - train 109392/10176000(epoch 688/64000, 0.01), train_ppx 541.17212 | train_ppx_doc 637.47205 | train_loss 556.49445 | train_loss_rec 529.43976 | train_kld 27.05460
+INFO - main - train 109551/10176000(epoch 689/64000, 0.01), train_ppx 540.68719 | train_ppx_doc 637.50427 | train_loss 556.41522 | train_loss_rec 529.35846 | train_kld 27.05665
+INFO - main - saving checkpoint
+INFO - main - save checkpoint to data/exp/nvdm/1/model_109710.pt
+INFO - main - train 109710/10176000(epoch 690/64000, 0.01), train_ppx 540.70654 | train_ppx_doc 638.15393 | train_loss 556.41833 | train_loss_rec 529.31519 | train_kld 27.10324
+INFO - main - evaluating model performance
+INFO - main - evaluate 109710/10176000(epoch 690/64000, 0.01), eval_ppx 665.99469 | eval_ppx_doc 729.27338 | eval_loss 552.07776 | eval_loss_rec 527.02844 | eval_kld 25.04936
+INFO - main - train 109869/10176000(epoch 691/64000, 0.01), train_ppx 540.63800 | train_ppx_doc 638.58740 | train_loss 556.40717 | train_loss_rec 529.36139 | train_kld 27.04566
+INFO - main - train 110028/10176000(epoch 692/64000, 0.01), train_ppx 540.24371 | train_ppx_doc 637.57086 | train_loss 556.34259 | train_loss_rec 529.37524 | train_kld 26.96716
+INFO - main - train 110187/10176000(epoch 693/64000, 0.01), train_ppx 540.46094 | train_ppx_doc 638.49939 | train_loss 556.37817 | train_loss_rec 529.35107 | train_kld 27.02721
+INFO - main - train 110346/10176000(epoch 694/64000, 0.01), train_ppx 540.22516 | train_ppx_doc 636.17816 | train_loss 556.33960 | train_loss_rec 529.29773 | train_kld 27.04162
+INFO - main - train 110505/10176000(epoch 695/64000, 0.01), train_ppx 540.82257 | train_ppx_doc 638.11523 | train_loss 556.43732 | train_loss_rec 529.34747 | train_kld 27.08978
+INFO - main - train 110664/10176000(epoch 696/64000, 0.01), train_ppx 539.61011 | train_ppx_doc 634.47894 | train_loss 556.23889 | train_loss_rec 529.24591 | train_kld 26.99286
+INFO - main - train 110823/10176000(epoch 697/64000, 0.01), train_ppx 539.42358 | train_ppx_doc 634.56342 | train_loss 556.20825 | train_loss_rec 529.20880 | train_kld 26.99935
+INFO - main - train 110982/10176000(epoch 698/64000, 0.01), train_ppx 540.11157 | train_ppx_doc 636.67004 | train_loss 556.32098 | train_loss_rec 529.24188 | train_kld 27.07901
+INFO - main - train 111141/10176000(epoch 699/64000, 0.01), train_ppx 540.28363 | train_ppx_doc 637.29761 | train_loss 556.34918 | train_loss_rec 529.29382 | train_kld 27.05549
+INFO - main - saving checkpoint
+INFO - main - save checkpoint to data/exp/nvdm/1/model_111300.pt
+INFO - main - train 111300/10176000(epoch 700/64000, 0.01), train_ppx 540.35602 | train_ppx_doc 638.06750 | train_loss 556.36102 | train_loss_rec 529.25604 | train_kld 27.10499
+INFO - main - evaluating model performance
+INFO - main - evaluate 111300/10176000(epoch 700/64000, 0.01), eval_ppx 664.10437 | eval_ppx_doc 723.43634 | eval_loss 551.83636 | eval_loss_rec 526.62592 | eval_kld 25.21045
+INFO - main - saving topics to data/exp/nvdm/1/topic-700
+INFO - main - topic coherence 0.159
+INFO - main - train 111459/10176000(epoch 701/64000, 0.01), train_ppx 539.89911 | train_ppx_doc 635.11914 | train_loss 556.28619 | train_loss_rec 529.23523 | train_kld 27.05090
+INFO - main - train 111618/10176000(epoch 702/64000, 0.01), train_ppx 540.03253 | train_ppx_doc 635.69269 | train_loss 556.30804 | train_loss_rec 529.21320 | train_kld 27.09512
+INFO - main - train 111777/10176000(epoch 703/64000, 0.01), train_ppx 540.08636 | train_ppx_doc 634.84729 | train_loss 556.31683 | train_loss_rec 529.20947 | train_kld 27.10753
+INFO - main - train 111936/10176000(epoch 704/64000, 0.01), train_ppx 539.72278 | train_ppx_doc 635.44177 | train_loss 556.25732 | train_loss_rec 529.20166 | train_kld 27.05588
+INFO - main - train 112095/10176000(epoch 705/64000, 0.01), train_ppx 539.48431 | train_ppx_doc 634.40057 | train_loss 556.21826 | train_loss_rec 529.13477 | train_kld 27.08374
+INFO - main - train 112254/10176000(epoch 706/64000, 0.01), train_ppx 539.84631 | train_ppx_doc 634.98016 | train_loss 556.27759 | train_loss_rec 529.14642 | train_kld 27.13114
+INFO - main - train 112413/10176000(epoch 707/64000, 0.01), train_ppx 539.05280 | train_ppx_doc 634.47778 | train_loss 556.14746 | train_loss_rec 529.11603 | train_kld 27.03140
+INFO - main - train 112572/10176000(epoch 708/64000, 0.01), train_ppx 539.43256 | train_ppx_doc 635.22577 | train_loss 556.20978 | train_loss_rec 529.14191 | train_kld 27.06773
+INFO - main - train 112731/10176000(epoch 709/64000, 0.01), train_ppx 539.32147 | train_ppx_doc 636.04895 | train_loss 556.19153 | train_loss_rec 529.13763 | train_kld 27.05397
+INFO - main - saving checkpoint
+INFO - main - save checkpoint to data/exp/nvdm/1/model_112890.pt
+INFO - main - train 112890/10176000(epoch 710/64000, 0.01), train_ppx 539.27136 | train_ppx_doc 634.71680 | train_loss 556.18335 | train_loss_rec 529.12042 | train_kld 27.06299
+INFO - main - evaluating model performance
+INFO - main - evaluate 112890/10176000(epoch 710/64000, 0.01), eval_ppx 663.19586 | eval_ppx_doc 725.75751 | eval_loss 551.72015 | eval_loss_rec 526.84943 | eval_kld 24.87074
+INFO - main - train 113049/10176000(epoch 711/64000, 0.01), train_ppx 539.13251 | train_ppx_doc 633.90741 | train_loss 556.16058 | train_loss_rec 529.13293 | train_kld 27.02784
+INFO - main - train 113208/10176000(epoch 712/64000, 0.01), train_ppx 539.20575 | train_ppx_doc 634.68079 | train_loss 556.17261 | train_loss_rec 529.06836 | train_kld 27.10453
+INFO - main - train 113367/10176000(epoch 713/64000, 0.01), train_ppx 539.15900 | train_ppx_doc 633.94189 | train_loss 556.16492 | train_loss_rec 529.05957 | train_kld 27.10524
+INFO - main - train 113526/10176000(epoch 714/64000, 0.01), train_ppx 538.73883 | train_ppx_doc 634.53644 | train_loss 556.09595 | train_loss_rec 529.06793 | train_kld 27.02802
+INFO - main - train 113685/10176000(epoch 715/64000, 0.01), train_ppx 538.81299 | train_ppx_doc 633.24548 | train_loss 556.10815 | train_loss_rec 529.06482 | train_kld 27.04335
+INFO - main - train 113844/10176000(epoch 716/64000, 0.01), train_ppx 539.66052 | train_ppx_doc 637.19977 | train_loss 556.24713 | train_loss_rec 529.10840 | train_kld 27.13883
+INFO - main - train 114003/10176000(epoch 717/64000, 0.01), train_ppx 539.64923 | train_ppx_doc 634.98444 | train_loss 556.24530 | train_loss_rec 529.08136 | train_kld 27.16379
+INFO - main - train 114162/10176000(epoch 718/64000, 0.01), train_ppx 539.72076 | train_ppx_doc 635.72906 | train_loss 556.25696 | train_loss_rec 529.06580 | train_kld 27.19113
+INFO - main - train 114321/10176000(epoch 719/64000, 0.01), train_ppx 539.25696 | train_ppx_doc 635.34448 | train_loss 556.18097 | train_loss_rec 529.10907 | train_kld 27.07169
+INFO - main - saving checkpoint
+INFO - main - save checkpoint to data/exp/nvdm/1/model_114480.pt
+INFO - main - train 114480/10176000(epoch 720/64000, 0.01), train_ppx 538.62579 | train_ppx_doc 634.72528 | train_loss 556.07739 | train_loss_rec 528.97437 | train_kld 27.10325
+INFO - main - evaluating model performance
+INFO - main - evaluate 114480/10176000(epoch 720/64000, 0.01), eval_ppx 663.97675 | eval_ppx_doc 727.74005 | eval_loss 551.82007 | eval_loss_rec 526.71576 | eval_kld 25.10439
+INFO - main - train 114639/10176000(epoch 721/64000, 0.01), train_ppx 538.38281 | train_ppx_doc 633.90894 | train_loss 556.03754 | train_loss_rec 528.96350 | train_kld 27.07401
+INFO - main - train 114798/10176000(epoch 722/64000, 0.01), train_ppx 538.52100 | train_ppx_doc 631.65283 | train_loss 556.06024 | train_loss_rec 528.99884 | train_kld 27.06144
+INFO - main - train 114957/10176000(epoch 723/64000, 0.01), train_ppx 539.02734 | train_ppx_doc 633.28076 | train_loss 556.14331 | train_loss_rec 529.00958 | train_kld 27.13371
+INFO - main - train 115116/10176000(epoch 724/64000, 0.01), train_ppx 538.22449 | train_ppx_doc 633.43665 | train_loss 556.01154 | train_loss_rec 528.95490 | train_kld 27.05676
+INFO - main - train 115275/10176000(epoch 725/64000, 0.01), train_ppx 538.35565 | train_ppx_doc 634.00989 | train_loss 556.03308 | train_loss_rec 528.93756 | train_kld 27.09516
+INFO - main - train 115434/10176000(epoch 726/64000, 0.01), train_ppx 538.78143 | train_ppx_doc 634.14319 | train_loss 556.10297 | train_loss_rec 529.00061 | train_kld 27.10246
+INFO - main - train 115593/10176000(epoch 727/64000, 0.01), train_ppx 538.22449 | train_ppx_doc 632.30469 | train_loss 556.01154 | train_loss_rec 528.88971 | train_kld 27.12169
+INFO - main - train 115752/10176000(epoch 728/64000, 0.01), train_ppx 538.89960 | train_ppx_doc 633.55658 | train_loss 556.12238 | train_loss_rec 528.93549 | train_kld 27.18699
+INFO - main - train 115911/10176000(epoch 729/64000, 0.01), train_ppx 538.33795 | train_ppx_doc 633.28986 | train_loss 556.03021 | train_loss_rec 528.92181 | train_kld 27.10850
+INFO - main - saving checkpoint
+INFO - main - save checkpoint to data/exp/nvdm/1/model_116070.pt
+INFO - main - train 116070/10176000(epoch 730/64000, 0.01), train_ppx 537.86298 | train_ppx_doc 631.81219 | train_loss 555.95209 | train_loss_rec 528.88745 | train_kld 27.06499
+INFO - main - evaluating model performance
+INFO - main - evaluate 116070/10176000(epoch 730/64000, 0.01), eval_ppx 665.80768 | eval_ppx_doc 722.87048 | eval_loss 552.05389 | eval_loss_rec 526.94965 | eval_kld 25.10427
+INFO - main - train 116229/10176000(epoch 731/64000, 0.01), train_ppx 538.39545 | train_ppx_doc 632.08459 | train_loss 556.03961 | train_loss_rec 528.88715 | train_kld 27.15255
+INFO - main - train 116388/10176000(epoch 732/64000, 0.01), train_ppx 538.21881 | train_ppx_doc 633.33789 | train_loss 556.01062 | train_loss_rec 528.89935 | train_kld 27.11132
+INFO - main - train 116547/10176000(epoch 733/64000, 0.01), train_ppx 538.51843 | train_ppx_doc 635.38605 | train_loss 556.05981 | train_loss_rec 528.95111 | train_kld 27.10872
+INFO - main - train 116706/10176000(epoch 734/64000, 0.01), train_ppx 537.92706 | train_ppx_doc 633.53082 | train_loss 555.96265 | train_loss_rec 528.84576 | train_kld 27.11664
+INFO - main - train 116865/10176000(epoch 735/64000, 0.01), train_ppx 537.45203 | train_ppx_doc 632.05444 | train_loss 555.88458 | train_loss_rec 528.78711 | train_kld 27.09764
+INFO - main - train 117024/10176000(epoch 736/64000, 0.01), train_ppx 537.81427 | train_ppx_doc 632.50940 | train_loss 555.94409 | train_loss_rec 528.82642 | train_kld 27.11765
+INFO - main - train 117183/10176000(epoch 737/64000, 0.01), train_ppx 537.90759 | train_ppx_doc 632.87445 | train_loss 555.95947 | train_loss_rec 528.81354 | train_kld 27.14608
+INFO - main - train 117342/10176000(epoch 738/64000, 0.01), train_ppx 538.04437 | train_ppx_doc 632.80688 | train_loss 555.98193 | train_loss_rec 528.85535 | train_kld 27.12651
+INFO - main - train 117501/10176000(epoch 739/64000, 0.01), train_ppx 538.68048 | train_ppx_doc 633.65448 | train_loss 556.08636 | train_loss_rec 528.90955 | train_kld 27.17696
+INFO - main - saving checkpoint
+INFO - main - save checkpoint to data/exp/nvdm/1/model_117660.pt
+INFO - main - train 117660/10176000(epoch 740/64000, 0.01), train_ppx 537.10590 | train_ppx_doc 630.06030 | train_loss 555.82758 | train_loss_rec 528.74127 | train_kld 27.08638
+INFO - main - evaluating model performance
+INFO - main - evaluate 117660/10176000(epoch 740/64000, 0.01), eval_ppx 663.40936 | eval_ppx_doc 730.76642 | eval_loss 551.74744 | eval_loss_rec 526.61475 | eval_kld 25.13275
+INFO - main - train 117819/10176000(epoch 741/64000, 0.01), train_ppx 538.31226 | train_ppx_doc 632.28625 | train_loss 556.02594 | train_loss_rec 528.85565 | train_kld 27.17045
+INFO - main - train 117978/10176000(epoch 742/64000, 0.01), train_ppx 537.63684 | train_ppx_doc 632.54413 | train_loss 555.91498 | train_loss_rec 528.76740 | train_kld 27.14746
+INFO - main - train 118137/10176000(epoch 743/64000, 0.01), train_ppx 537.17120 | train_ppx_doc 630.19098 | train_loss 555.83832 | train_loss_rec 528.74561 | train_kld 27.09275
+INFO - main - train 118296/10176000(epoch 744/64000, 0.01), train_ppx 536.80914 | train_ppx_doc 630.66418 | train_loss 555.77869 | train_loss_rec 528.72882 | train_kld 27.04963
+INFO - main - train 118455/10176000(epoch 745/64000, 0.01), train_ppx 537.87067 | train_ppx_doc 632.83942 | train_loss 555.95337 | train_loss_rec 528.85492 | train_kld 27.09864
+INFO - main - train 118614/10176000(epoch 746/64000, 0.01), train_ppx 537.46588 | train_ppx_doc 632.15424 | train_loss 555.88684 | train_loss_rec 528.77252 | train_kld 27.11440
+INFO - main - train 118773/10176000(epoch 747/64000, 0.01), train_ppx 537.21454 | train_ppx_doc 631.96948 | train_loss 555.84546 | train_loss_rec 528.72455 | train_kld 27.12093
+INFO - main - train 118932/10176000(epoch 748/64000, 0.01), train_ppx 536.97528 | train_ppx_doc 629.99243 | train_loss 555.80609 | train_loss_rec 528.71802 | train_kld 27.08810
+INFO - main - train 119091/10176000(epoch 749/64000, 0.01), train_ppx 537.69629 | train_ppx_doc 632.48199 | train_loss 555.92474 | train_loss_rec 528.75775 | train_kld 27.16690
+INFO - main - saving checkpoint
+INFO - main - save checkpoint to data/exp/nvdm/1/model_119250.pt
+INFO - main - train 119250/10176000(epoch 750/64000, 0.01), train_ppx 537.53455 | train_ppx_doc 632.20245 | train_loss 555.89813 | train_loss_rec 528.78650 | train_kld 27.11177
+INFO - main - evaluating model performance
+INFO - main - evaluate 119250/10176000(epoch 750/64000, 0.01), eval_ppx 665.91150 | eval_ppx_doc 721.31726 | eval_loss 552.06720 | eval_loss_rec 526.84070 | eval_kld 25.22649
+INFO - main - train 119409/10176000(epoch 751/64000, 0.01), train_ppx 537.25446 | train_ppx_doc 631.36707 | train_loss 555.85205 | train_loss_rec 528.67786 | train_kld 27.17416
+INFO - main - train 119568/10176000(epoch 752/64000, 0.01), train_ppx 537.62323 | train_ppx_doc 630.29260 | train_loss 555.91266 | train_loss_rec 528.67969 | train_kld 27.23311
+INFO - main - train 119727/10176000(epoch 753/64000, 0.01), train_ppx 537.61401 | train_ppx_doc 630.46967 | train_loss 555.91119 | train_loss_rec 528.71429 | train_kld 27.19707
+INFO - main - train 119886/10176000(epoch 754/64000, 0.01), train_ppx 537.57227 | train_ppx_doc 631.81335 | train_loss 555.90436 | train_loss_rec 528.69928 | train_kld 27.20494
+INFO - main - train 120045/10176000(epoch 755/64000, 0.01), train_ppx 537.16248 | train_ppx_doc 631.78778 | train_loss 555.83691 | train_loss_rec 528.64594 | train_kld 27.19090
+INFO - main - train 120204/10176000(epoch 756/64000, 0.01), train_ppx 537.00037 | train_ppx_doc 629.95221 | train_loss 555.81018 | train_loss_rec 528.64575 | train_kld 27.16428
+INFO - main - train 120363/10176000(epoch 757/64000, 0.01), train_ppx 536.82684 | train_ppx_doc 630.29559 | train_loss 555.78162 | train_loss_rec 528.60785 | train_kld 27.17353
+INFO - main - train 120522/10176000(epoch 758/64000, 0.01), train_ppx 536.83984 | train_ppx_doc 629.85455 | train_loss 555.78381 | train_loss_rec 528.61456 | train_kld 27.16927
+INFO - main - train 120681/10176000(epoch 759/64000, 0.01), train_ppx 536.81451 | train_ppx_doc 631.04681 | train_loss 555.77960 | train_loss_rec 528.55347 | train_kld 27.22613
+INFO - main - saving checkpoint
+INFO - main - save checkpoint to data/exp/nvdm/1/model_120840.pt
+INFO - main - train 120840/10176000(epoch 760/64000, 0.01), train_ppx 536.94202 | train_ppx_doc 630.52045 | train_loss 555.80060 | train_loss_rec 528.65778 | train_kld 27.14289
+INFO - main - evaluating model performance
+INFO - main - evaluate 120840/10176000(epoch 760/64000, 0.01), eval_ppx 663.74567 | eval_ppx_doc 725.02008 | eval_loss 551.79053 | eval_loss_rec 526.44836 | eval_kld 25.34224
+INFO - main - early stop toggled and finished training
+INFO - main - save best evaluation statistics to data/exp/nvdm/1/best_eval.json
+INFO - main - saving topics to data/exp/nvdm/1/topic-760
+INFO - main - topic coherence 0.161
+INFO - main - load checkpoint from data/exp/nvdm/1/model_best.pt
+INFO - main - saving topics to data/exp/nvdm/1/topic-760
+INFO - main - topic coherence 0.158
+INFO - main - test result of best evaluation {'ppx': 713.7244873046875, 'ppx_doc': 769.5047607421875, 'loss': 552.2762451171875, 'loss_rec': 528.0670776367188, 'kld': 24.209253311157227, 'max_topic_coherence': 0.161, 'last_topic_coherence': 0.158}
+INFO - exp - Completed after 0:40:26

@@ -1,0 +1,1002 @@
+INFO - exp - Running command 'main'
+INFO - exp - Started run with ID "1"
+{'callback': 'callback_npmi', 'callback_npmi': {'embedding_path': '', 'every': 100, 'metric': 'npmi', 'topk': 100}, 'callback_wetc': {'embedding_path': '', 'every': 100, 'metric': 'wetc', 'topk': 10}, 'comment': '', 'dataset': {'batch_size': 256, 'data_dir': 'data/20news-clean/', 'dev_ratio': 0.1, 'device': 'device'}, 'device': 'cuda', 'hidden': {'activate': 'Sigmoid', 'features': [0, 150, 100], 'type': 'models.utils.get_mlp'}, 'normal': {'in_features': ('hidden', 'features', -1), 'out_features': 50, 'type': 'models.utils.NormalParameter'}, 'drop_rate': 0.2, 'ntmr': {'h_to_z': {'type': 'torch.nn.ReLU'}, 'hidden': {'type': 'models.utils.Sequential', 'args': {'type': 'collections.OrderedDict', 'f1': 'hidden', 'f2': {'type': 'torch.nn.Dropout', 'p': 'drop_rate'}}}, 'normal': 'normal', 'topics': 'topic', 'penalty': 0.2, 'embedding': {'type': 'mlutils.pt.modules.get_embedding', 'embedding_path': 'data/20news-clean/embedding.glove.50.npy', 'freeze': True}, 'type': 'models.NTM.NTMR'}, 'topic': {'k': 50, 'type': 'models.utils.Topics', 'vocab_size': ('hidden', 'features', 0)}, 'trainer': {'eval_metric': {'key': 'ppx_doc', 'type': 'mlutils.pt.training.eval_metric_cmp_key'}, 'evaluate_interval': 10, 'num_checkpoints_keep': 1, 'num_epochs': 32000, 'statistics': {'dotted_path': 'experiments.utils.PerplexStatistics', 'type': 'mlutils.pt.training.parse_class'}, 'trainer_batch': 'trainer_batch', 'type': 'mlutils.pt.training.Trainer'}, 'trainer_batch': {'device': 'device', 'loss': 'mean', 'model': 'ntmr', 'optimizer': {'lr': 0.01, 'type': 'torch.optim.Adadelta'}, 'test_sample': 100, 'type': 'experiments.utils.BatchOperation'}}
+data/exp/ntmr/1
+reading data/20news-clean/train.feat
+reading data/20news-clean/test.feat
+creating dictionary
+splitting train, dev datasets
+train, dev, test 10132 1126 7487
+{'callback': {'embedding_path': '', 'every': 100, 'metric': 'npmi', 'topk': 100}, 'callback_npmi': {'embedding_path': '', 'every': 100, 'metric': 'npmi', 'topk': 100}, 'callback_wetc': {'embedding_path': '', 'every': 100, 'metric': 'wetc', 'topk': 10}, 'comment': '', 'dataset': {'batch_size': 256, 'data_dir': 'data/20news-clean/', 'dev_ratio': 0.1, 'device': 'cuda'}, 'device': 'cuda', 'hidden': {'activate': 'Sigmoid', 'features': [1994, 150, 100], 'type': 'models.utils.get_mlp'}, 'normal': {'in_features': 100, 'out_features': 50, 'type': 'models.utils.NormalParameter'}, 'drop_rate': 0.2, 'ntmr': {'h_to_z': {'type': 'torch.nn.ReLU'}, 'hidden': {'type': 'models.utils.Sequential', 'args': {'type': 'collections.OrderedDict', 'f1': {'activate': 'Sigmoid', 'features': [1994, 150, 100], 'type': 'models.utils.get_mlp'}, 'f2': {'type': 'torch.nn.Dropout', 'p': 0.2}}}, 'normal': {'in_features': 100, 'out_features': 50, 'type': 'models.utils.NormalParameter'}, 'topics': {'k': 50, 'type': 'models.utils.Topics', 'vocab_size': 1994}, 'penalty': 0.2, 'embedding': {'type': 'mlutils.pt.modules.get_embedding', 'embedding_path': 'data/20news-clean/embedding.glove.50.npy', 'freeze': True}, 'type': 'models.NTM.NTMR'}, 'topic': {'k': 50, 'type': 'models.utils.Topics', 'vocab_size': 1994}, 'trainer': {'eval_metric': {'key': 'ppx_doc', 'type': 'mlutils.pt.training.eval_metric_cmp_key'}, 'evaluate_interval': 400, 'num_checkpoints_keep': 1, 'num_epochs': 32000, 'statistics': {'dotted_path': 'experiments.utils.PerplexStatistics', 'type': 'mlutils.pt.training.parse_class'}, 'trainer_batch': {'device': 'cuda', 'loss': 'mean', 'model': {'h_to_z': {'type': 'torch.nn.ReLU'}, 'hidden': {'type': 'models.utils.Sequential', 'args': {'type': 'collections.OrderedDict', 'f1': {'activate': 'Sigmoid', 'features': [1994, 150, 100], 'type': 'models.utils.get_mlp'}, 'f2': {'type': 'torch.nn.Dropout', 'p': 0.2}}}, 'normal': {'in_features': 100, 'out_features': 50, 'type': 'models.utils.NormalParameter'}, 'topics': {'k': 50, 'type': 'models.utils.Topics', 'vocab_size': 1994}, 'penalty': 0.2, 'embedding': {'type': 'mlutils.pt.modules.get_embedding', 'embedding_path': 'data/20news-clean/embedding.glove.50.npy', 'freeze': True}, 'type': 'models.NTM.NTMR'}, 'optimizer': {'lr': 0.01, 'type': 'torch.optim.Adadelta'}, 'test_sample': 1, 'type': 'experiments.utils.BatchOperation'}, 'type': 'mlutils.pt.training.Trainer', 'save_checkpoint_interval': 400, 'base_dir': 'data/exp/ntmr/1', 'train_iterator': <torch.utils.data.dataloader.DataLoader object at 0x7fd741e808d0>, 'dev_iterator': <torch.utils.data.dataloader.DataLoader object at 0x7fd741e80978>, 'test_iterator': None, 'callbacks': <experiments.utils.EvaluationCallback object at 0x7fd741e80b38>, 'logger': <Logger main (INFO)>}, 'trainer_batch': {'device': 'cuda', 'loss': 'mean', 'model': {'h_to_z': {'type': 'torch.nn.ReLU'}, 'hidden': {'type': 'models.utils.Sequential', 'args': {'type': 'collections.OrderedDict', 'f1': {'activate': 'Sigmoid', 'features': [1994, 150, 100], 'type': 'models.utils.get_mlp'}, 'f2': {'type': 'torch.nn.Dropout', 'p': 0.2}}}, 'normal': {'in_features': 100, 'out_features': 50, 'type': 'models.utils.NormalParameter'}, 'topics': {'k': 50, 'type': 'models.utils.Topics', 'vocab_size': 1994}, 'penalty': 0.2, 'embedding': {'type': 'mlutils.pt.modules.get_embedding', 'embedding_path': 'data/20news-clean/embedding.glove.50.npy', 'freeze': True}, 'type': 'models.NTM.NTMR'}, 'optimizer': {'lr': 0.01, 'type': 'torch.optim.Adadelta'}, 'test_sample': 1, 'type': 'experiments.utils.BatchOperation'}}
+INFO - main - model architecture
+NTMR(
+  (hidden): Sequential(
+    (f1): Sequential(
+      (0): Linear(in_features=1994, out_features=150, bias=True)
+      (1): Sigmoid()
+      (2): Linear(in_features=150, out_features=100, bias=True)
+      (3): Sigmoid()
+    )
+    (f2): Dropout(p=0.2)
+  )
+  (normal): NormalParameter(
+    (mu): Linear(in_features=100, out_features=50, bias=True)
+    (log_sigma): Linear(in_features=100, out_features=50, bias=True)
+  )
+  (h_to_z): ReLU()
+  (topics): Topics(
+    (topic): Linear(in_features=50, out_features=1994, bias=True)
+  )
+  (embedding): Embedding(1994, 50)
+)
+INFO - main - train 1252960/1280000(epoch 31324/32000, 0.98), train_ppx 715.35889 | train_ppx_doc 789.25891 | train_loss 322.65985 | train_loss_rec 572.39685 | train_kld 9.45146 | train_penalty -259.18851
+INFO - main - train 1253000/1280000(epoch 31325/32000, 0.98), train_ppx 715.96088 | train_ppx_doc 789.19196 | train_loss 322.73447 | train_loss_rec 572.51367 | train_kld 9.40913 | train_penalty -259.18839
+INFO - main - train 1253040/1280000(epoch 31326/32000, 0.98), train_ppx 714.24304 | train_ppx_doc 787.36444 | train_loss 322.52200 | train_loss_rec 572.26611 | train_kld 9.44403 | train_penalty -259.18823
+INFO - main - train 1253080/1280000(epoch 31327/32000, 0.98), train_ppx 714.95581 | train_ppx_doc 788.76270 | train_loss 322.61032 | train_loss_rec 572.37067 | train_kld 9.42774 | train_penalty -259.18817
+INFO - main - train 1253120/1280000(epoch 31328/32000, 0.98), train_ppx 716.10260 | train_ppx_doc 789.48364 | train_loss 322.75238 | train_loss_rec 572.53064 | train_kld 9.41002 | train_penalty -259.18811
+INFO - main - train 1253160/1280000(epoch 31329/32000, 0.98), train_ppx 715.11646 | train_ppx_doc 787.98151 | train_loss 322.63022 | train_loss_rec 572.37476 | train_kld 9.44361 | train_penalty -259.18814
+INFO - main - saving checkpoint
+INFO - main - save checkpoint to data/exp/ntmr/1/model_1253200.pt
+INFO - main - train 1253200/1280000(epoch 31330/32000, 0.98), train_ppx 715.07690 | train_ppx_doc 789.97510 | train_loss 322.62543 | train_loss_rec 572.39789 | train_kld 9.41567 | train_penalty -259.18811
+INFO - main - evaluating model performance
+INFO - main - evaluate 1253200/1280000(epoch 31330/32000, 0.98), eval_ppx 776.12830 | eval_ppx_doc 801.94489 | eval_loss 299.68723 | eval_loss_rec 550.19019 | eval_kld 8.68387 | eval_penalty -259.18683
+INFO - main - train 1253240/1280000(epoch 31331/32000, 0.98), train_ppx 715.97522 | train_ppx_doc 787.19507 | train_loss 322.73663 | train_loss_rec 572.50110 | train_kld 9.42353 | train_penalty -259.18796
+INFO - main - train 1253280/1280000(epoch 31332/32000, 0.98), train_ppx 716.20911 | train_ppx_doc 789.20355 | train_loss 322.76578 | train_loss_rec 572.51581 | train_kld 9.43772 | train_penalty -259.18777
+INFO - main - train 1253320/1280000(epoch 31333/32000, 0.98), train_ppx 715.64246 | train_ppx_doc 788.04993 | train_loss 322.69583 | train_loss_rec 572.42938 | train_kld 9.45409 | train_penalty -259.18762
+INFO - main - train 1253360/1280000(epoch 31334/32000, 0.98), train_ppx 715.61377 | train_ppx_doc 787.52515 | train_loss 322.69214 | train_loss_rec 572.43414 | train_kld 9.44580 | train_penalty -259.18777
+INFO - main - train 1253400/1280000(epoch 31335/32000, 0.98), train_ppx 716.77661 | train_ppx_doc 788.00745 | train_loss 322.83627 | train_loss_rec 572.62555 | train_kld 9.39822 | train_penalty -259.18750
+INFO - main - train 1253440/1280000(epoch 31336/32000, 0.98), train_ppx 716.31500 | train_ppx_doc 791.66022 | train_loss 322.77914 | train_loss_rec 572.50897 | train_kld 9.45750 | train_penalty -259.18741
+INFO - main - train 1253480/1280000(epoch 31337/32000, 0.98), train_ppx 716.58185 | train_ppx_doc 788.23102 | train_loss 322.81207 | train_loss_rec 572.56189 | train_kld 9.43765 | train_penalty -259.18744
+INFO - main - train 1253520/1280000(epoch 31338/32000, 0.98), train_ppx 716.08417 | train_ppx_doc 786.98871 | train_loss 322.75085 | train_loss_rec 572.46613 | train_kld 9.47206 | train_penalty -259.18732
+INFO - main - train 1253560/1280000(epoch 31339/32000, 0.98), train_ppx 715.40875 | train_ppx_doc 789.27850 | train_loss 322.66736 | train_loss_rec 572.38953 | train_kld 9.46507 | train_penalty -259.18723
+INFO - main - saving checkpoint
+INFO - main - save checkpoint to data/exp/ntmr/1/model_1253600.pt
+INFO - main - train 1253600/1280000(epoch 31340/32000, 0.98), train_ppx 715.05573 | train_ppx_doc 788.59644 | train_loss 322.62369 | train_loss_rec 572.35980 | train_kld 9.45104 | train_penalty -259.18723
+INFO - main - evaluating model performance
+INFO - main - evaluate 1253600/1280000(epoch 31340/32000, 0.98), eval_ppx 778.85767 | eval_ppx_doc 798.00366 | eval_loss 299.98322 | eval_loss_rec 550.48352 | eval_kld 8.68539 | eval_penalty -259.18570
+INFO - main - train 1253640/1280000(epoch 31341/32000, 0.98), train_ppx 714.98889 | train_ppx_doc 788.70959 | train_loss 322.61548 | train_loss_rec 572.36511 | train_kld 9.43745 | train_penalty -259.18713
+INFO - main - train 1253680/1280000(epoch 31342/32000, 0.98), train_ppx 716.05615 | train_ppx_doc 788.28217 | train_loss 322.74753 | train_loss_rec 572.49750 | train_kld 9.43708 | train_penalty -259.18713
+INFO - main - train 1253720/1280000(epoch 31343/32000, 0.98), train_ppx 715.05267 | train_ppx_doc 789.05383 | train_loss 322.62341 | train_loss_rec 572.36084 | train_kld 9.44963 | train_penalty -259.18707
+INFO - main - train 1253760/1280000(epoch 31344/32000, 0.98), train_ppx 715.62061 | train_ppx_doc 788.55322 | train_loss 322.69373 | train_loss_rec 572.45648 | train_kld 9.42432 | train_penalty -259.18698
+INFO - main - train 1253800/1280000(epoch 31345/32000, 0.98), train_ppx 715.90930 | train_ppx_doc 789.80859 | train_loss 322.72955 | train_loss_rec 572.49188 | train_kld 9.42461 | train_penalty -259.18713
+INFO - main - train 1253840/1280000(epoch 31346/32000, 0.98), train_ppx 715.01923 | train_ppx_doc 786.40308 | train_loss 322.61932 | train_loss_rec 572.39435 | train_kld 9.41195 | train_penalty -259.18704
+INFO - main - train 1253880/1280000(epoch 31347/32000, 0.98), train_ppx 715.93427 | train_ppx_doc 788.15326 | train_loss 322.73236 | train_loss_rec 572.50153 | train_kld 9.41800 | train_penalty -259.18710
+INFO - main - train 1253920/1280000(epoch 31348/32000, 0.98), train_ppx 714.46375 | train_ppx_doc 787.78766 | train_loss 322.55069 | train_loss_rec 572.31238 | train_kld 9.42516 | train_penalty -259.18686
+INFO - main - train 1253960/1280000(epoch 31349/32000, 0.98), train_ppx 716.20673 | train_ppx_doc 790.31598 | train_loss 322.76633 | train_loss_rec 572.51141 | train_kld 9.44178 | train_penalty -259.18689
+INFO - main - saving checkpoint
+INFO - main - save checkpoint to data/exp/ntmr/1/model_1254000.pt
+INFO - main - train 1254000/1280000(epoch 31350/32000, 0.98), train_ppx 715.16858 | train_ppx_doc 786.93842 | train_loss 322.63806 | train_loss_rec 572.41602 | train_kld 9.40860 | train_penalty -259.18665
+INFO - main - evaluating model performance
+INFO - main - evaluate 1254000/1280000(epoch 31350/32000, 0.98), eval_ppx 777.34650 | eval_ppx_doc 797.09436 | eval_loss 299.81985 | eval_loss_rec 550.36560 | eval_kld 8.64018 | eval_penalty -259.18591
+INFO - main - train 1254040/1280000(epoch 31351/32000, 0.98), train_ppx 716.90411 | train_ppx_doc 790.19958 | train_loss 322.85263 | train_loss_rec 572.64081 | train_kld 9.39851 | train_penalty -259.18661
+INFO - main - train 1254080/1280000(epoch 31352/32000, 0.98), train_ppx 715.76935 | train_ppx_doc 789.62708 | train_loss 322.71252 | train_loss_rec 572.46948 | train_kld 9.42968 | train_penalty -259.18661
+INFO - main - train 1254120/1280000(epoch 31353/32000, 0.98), train_ppx 715.73291 | train_ppx_doc 788.70471 | train_loss 322.70807 | train_loss_rec 572.46344 | train_kld 9.43132 | train_penalty -259.18658
+INFO - main - train 1254160/1280000(epoch 31354/32000, 0.98), train_ppx 716.29865 | train_ppx_doc 790.22034 | train_loss 322.77811 | train_loss_rec 572.55273 | train_kld 9.41195 | train_penalty -259.18655
+INFO - main - train 1254200/1280000(epoch 31355/32000, 0.98), train_ppx 715.29279 | train_ppx_doc 789.55664 | train_loss 322.65375 | train_loss_rec 572.41144 | train_kld 9.42880 | train_penalty -259.18646
+INFO - main - train 1254240/1280000(epoch 31356/32000, 0.98), train_ppx 715.98547 | train_ppx_doc 787.98944 | train_loss 322.73944 | train_loss_rec 572.47882 | train_kld 9.44704 | train_penalty -259.18643
+INFO - main - train 1254280/1280000(epoch 31357/32000, 0.98), train_ppx 716.72540 | train_ppx_doc 789.35034 | train_loss 322.83102 | train_loss_rec 572.60291 | train_kld 9.41436 | train_penalty -259.18631
+INFO - main - train 1254320/1280000(epoch 31358/32000, 0.98), train_ppx 714.98175 | train_ppx_doc 786.57074 | train_loss 322.61545 | train_loss_rec 572.38458 | train_kld 9.41707 | train_penalty -259.18622
+INFO - main - train 1254360/1280000(epoch 31359/32000, 0.98), train_ppx 715.51172 | train_ppx_doc 790.46301 | train_loss 322.68094 | train_loss_rec 572.44238 | train_kld 9.42490 | train_penalty -259.18625
+INFO - main - saving checkpoint
+INFO - main - save checkpoint to data/exp/ntmr/1/model_1254400.pt
+INFO - main - train 1254400/1280000(epoch 31360/32000, 0.98), train_ppx 715.14508 | train_ppx_doc 788.85144 | train_loss 322.63586 | train_loss_rec 572.35248 | train_kld 9.46945 | train_penalty -259.18613
+INFO - main - evaluating model performance
+INFO - main - evaluate 1254400/1280000(epoch 31360/32000, 0.98), eval_ppx 785.99261 | eval_ppx_doc 801.26215 | eval_loss 300.75082 | eval_loss_rec 551.24036 | eval_kld 8.69444 | eval_penalty -259.18393
+INFO - main - train 1254440/1280000(epoch 31361/32000, 0.98), train_ppx 715.36407 | train_ppx_doc 789.24426 | train_loss 322.66299 | train_loss_rec 572.42944 | train_kld 9.41948 | train_penalty -259.18594
+INFO - main - train 1254480/1280000(epoch 31362/32000, 0.98), train_ppx 715.42987 | train_ppx_doc 788.89435 | train_loss 322.67120 | train_loss_rec 572.40039 | train_kld 9.45691 | train_penalty -259.18607
+INFO - main - train 1254520/1280000(epoch 31363/32000, 0.98), train_ppx 715.54962 | train_ppx_doc 787.90186 | train_loss 322.68597 | train_loss_rec 572.42047 | train_kld 9.45145 | train_penalty -259.18607
+INFO - main - train 1254560/1280000(epoch 31364/32000, 0.98), train_ppx 715.83459 | train_ppx_doc 786.93878 | train_loss 322.72141 | train_loss_rec 572.46405 | train_kld 9.44311 | train_penalty -259.18591
+INFO - main - train 1254600/1280000(epoch 31365/32000, 0.98), train_ppx 715.28320 | train_ppx_doc 787.84210 | train_loss 322.65302 | train_loss_rec 572.40363 | train_kld 9.43552 | train_penalty -259.18604
+INFO - main - train 1254640/1280000(epoch 31366/32000, 0.98), train_ppx 715.41418 | train_ppx_doc 788.59119 | train_loss 322.66919 | train_loss_rec 572.42932 | train_kld 9.42590 | train_penalty -259.18600
+INFO - main - train 1254680/1280000(epoch 31367/32000, 0.98), train_ppx 715.29584 | train_ppx_doc 787.86578 | train_loss 322.65463 | train_loss_rec 572.41949 | train_kld 9.42101 | train_penalty -259.18585
+INFO - main - train 1254720/1280000(epoch 31368/32000, 0.98), train_ppx 715.40802 | train_ppx_doc 789.08356 | train_loss 322.66870 | train_loss_rec 572.39569 | train_kld 9.45880 | train_penalty -259.18570
+INFO - main - train 1254760/1280000(epoch 31369/32000, 0.98), train_ppx 715.65332 | train_ppx_doc 788.26147 | train_loss 322.69888 | train_loss_rec 572.45636 | train_kld 9.42833 | train_penalty -259.18582
+INFO - main - saving checkpoint
+INFO - main - save checkpoint to data/exp/ntmr/1/model_1254800.pt
+INFO - main - train 1254800/1280000(epoch 31370/32000, 0.98), train_ppx 716.62079 | train_ppx_doc 788.73224 | train_loss 322.81860 | train_loss_rec 572.59052 | train_kld 9.41391 | train_penalty -259.18579
+INFO - main - evaluating model performance
+INFO - main - evaluate 1254800/1280000(epoch 31370/32000, 0.98), eval_ppx 787.13318 | eval_ppx_doc 804.77887 | eval_loss 300.87198 | eval_loss_rec 551.36511 | eval_kld 8.69136 | eval_penalty -259.18454
+INFO - main - train 1254840/1280000(epoch 31371/32000, 0.98), train_ppx 716.24945 | train_ppx_doc 789.10803 | train_loss 322.77274 | train_loss_rec 572.50964 | train_kld 9.44884 | train_penalty -259.18579
+INFO - main - train 1254880/1280000(epoch 31372/32000, 0.98), train_ppx 715.76428 | train_ppx_doc 787.64197 | train_loss 322.71289 | train_loss_rec 572.43506 | train_kld 9.46333 | train_penalty -259.18567
+INFO - main - train 1254920/1280000(epoch 31373/32000, 0.98), train_ppx 714.74792 | train_ppx_doc 788.32953 | train_loss 322.58722 | train_loss_rec 572.34009 | train_kld 9.43270 | train_penalty -259.18558
+INFO - main - train 1254960/1280000(epoch 31374/32000, 0.98), train_ppx 716.15796 | train_ppx_doc 788.38629 | train_loss 322.76160 | train_loss_rec 572.51624 | train_kld 9.43105 | train_penalty -259.18564
+INFO - main - train 1255000/1280000(epoch 31375/32000, 0.98), train_ppx 714.80145 | train_ppx_doc 787.71027 | train_loss 322.59381 | train_loss_rec 572.33527 | train_kld 9.44420 | train_penalty -259.18558
+INFO - main - train 1255040/1280000(epoch 31376/32000, 0.98), train_ppx 716.60846 | train_ppx_doc 788.95410 | train_loss 322.81735 | train_loss_rec 572.60284 | train_kld 9.40000 | train_penalty -259.18555
+INFO - main - train 1255080/1280000(epoch 31377/32000, 0.98), train_ppx 714.87915 | train_ppx_doc 788.87250 | train_loss 322.60373 | train_loss_rec 572.34418 | train_kld 9.44489 | train_penalty -259.18536
+INFO - main - train 1255120/1280000(epoch 31378/32000, 0.98), train_ppx 716.22040 | train_ppx_doc 787.74066 | train_loss 322.76971 | train_loss_rec 572.50720 | train_kld 9.44781 | train_penalty -259.18524
+INFO - main - train 1255160/1280000(epoch 31379/32000, 0.98), train_ppx 716.45782 | train_ppx_doc 789.84210 | train_loss 322.79904 | train_loss_rec 572.53540 | train_kld 9.44878 | train_penalty -259.18521
+INFO - main - saving checkpoint
+INFO - main - save checkpoint to data/exp/ntmr/1/model_1255200.pt
+INFO - main - train 1255200/1280000(epoch 31380/32000, 0.98), train_ppx 715.10413 | train_ppx_doc 788.68146 | train_loss 322.63177 | train_loss_rec 572.32623 | train_kld 9.49066 | train_penalty -259.18506
+INFO - main - evaluating model performance
+INFO - main - evaluate 1255200/1280000(epoch 31380/32000, 0.98), eval_ppx 778.03101 | eval_ppx_doc 797.56433 | eval_loss 299.89639 | eval_loss_rec 550.38129 | eval_kld 8.69856 | eval_penalty -259.18341
+INFO - main - train 1255240/1280000(epoch 31381/32000, 0.98), train_ppx 714.47394 | train_ppx_doc 788.78748 | train_loss 322.55377 | train_loss_rec 572.30151 | train_kld 9.43738 | train_penalty -259.18500
+INFO - main - train 1255280/1280000(epoch 31382/32000, 0.98), train_ppx 715.45648 | train_ppx_doc 788.56000 | train_loss 322.67554 | train_loss_rec 572.43304 | train_kld 9.42754 | train_penalty -259.18509
+INFO - main - train 1255320/1280000(epoch 31383/32000, 0.98), train_ppx 715.86902 | train_ppx_doc 790.50183 | train_loss 322.72650 | train_loss_rec 572.47937 | train_kld 9.43209 | train_penalty -259.18494
+INFO - main - train 1255360/1280000(epoch 31384/32000, 0.98), train_ppx 716.16199 | train_ppx_doc 788.36670 | train_loss 322.76294 | train_loss_rec 572.53473 | train_kld 9.41308 | train_penalty -259.18484
+INFO - main - train 1255400/1280000(epoch 31385/32000, 0.98), train_ppx 716.87195 | train_ppx_doc 789.21753 | train_loss 322.85052 | train_loss_rec 572.63177 | train_kld 9.40361 | train_penalty -259.18484
+INFO - main - train 1255440/1280000(epoch 31386/32000, 0.98), train_ppx 715.16315 | train_ppx_doc 787.53979 | train_loss 322.63931 | train_loss_rec 572.40967 | train_kld 9.41438 | train_penalty -259.18478
+INFO - main - train 1255480/1280000(epoch 31387/32000, 0.98), train_ppx 715.07385 | train_ppx_doc 788.26941 | train_loss 322.62845 | train_loss_rec 572.36267 | train_kld 9.45045 | train_penalty -259.18469
+INFO - main - train 1255520/1280000(epoch 31388/32000, 0.98), train_ppx 715.93701 | train_ppx_doc 787.60358 | train_loss 322.73520 | train_loss_rec 572.48553 | train_kld 9.43446 | train_penalty -259.18475
+INFO - main - train 1255560/1280000(epoch 31389/32000, 0.98), train_ppx 715.74719 | train_ppx_doc 789.15015 | train_loss 322.71170 | train_loss_rec 572.46527 | train_kld 9.43116 | train_penalty -259.18469
+INFO - main - saving checkpoint
+INFO - main - save checkpoint to data/exp/ntmr/1/model_1255600.pt
+INFO - main - train 1255600/1280000(epoch 31390/32000, 0.98), train_ppx 715.02606 | train_ppx_doc 788.81342 | train_loss 322.62259 | train_loss_rec 572.37573 | train_kld 9.43136 | train_penalty -259.18463
+INFO - main - evaluating model performance
+INFO - main - evaluate 1255600/1280000(epoch 31390/32000, 0.98), eval_ppx 775.46832 | eval_ppx_doc 796.15729 | eval_loss 299.61911 | eval_loss_rec 550.13684 | eval_kld 8.66583 | eval_penalty -259.18353
+INFO - main - train 1255640/1280000(epoch 31391/32000, 0.98), train_ppx 715.41418 | train_ppx_doc 789.22321 | train_loss 322.67044 | train_loss_rec 572.43689 | train_kld 9.41822 | train_penalty -259.18469
+INFO - main - train 1255680/1280000(epoch 31392/32000, 0.98), train_ppx 716.13641 | train_ppx_doc 787.93152 | train_loss 322.75992 | train_loss_rec 572.52502 | train_kld 9.41949 | train_penalty -259.18460
+INFO - main - train 1255720/1280000(epoch 31393/32000, 0.98), train_ppx 715.57660 | train_ppx_doc 788.29572 | train_loss 322.69080 | train_loss_rec 572.44409 | train_kld 9.43133 | train_penalty -259.18445
+INFO - main - train 1255760/1280000(epoch 31394/32000, 0.98), train_ppx 716.37891 | train_ppx_doc 789.77173 | train_loss 322.79019 | train_loss_rec 572.54144 | train_kld 9.43317 | train_penalty -259.18430
+INFO - main - train 1255800/1280000(epoch 31395/32000, 0.98), train_ppx 715.12872 | train_ppx_doc 786.62885 | train_loss 322.63565 | train_loss_rec 572.39661 | train_kld 9.42324 | train_penalty -259.18420
+INFO - main - train 1255840/1280000(epoch 31396/32000, 0.98), train_ppx 715.58887 | train_ppx_doc 787.90222 | train_loss 322.69281 | train_loss_rec 572.46338 | train_kld 9.41366 | train_penalty -259.18423
+INFO - main - train 1255880/1280000(epoch 31397/32000, 0.98), train_ppx 716.53809 | train_ppx_doc 790.34918 | train_loss 322.81009 | train_loss_rec 572.57648 | train_kld 9.41773 | train_penalty -259.18417
+INFO - main - train 1255920/1280000(epoch 31398/32000, 0.98), train_ppx 715.22424 | train_ppx_doc 788.43402 | train_loss 322.64743 | train_loss_rec 572.39471 | train_kld 9.43690 | train_penalty -259.18411
+INFO - main - train 1255960/1280000(epoch 31399/32000, 0.98), train_ppx 714.67261 | train_ppx_doc 786.00690 | train_loss 322.57928 | train_loss_rec 572.30420 | train_kld 9.45920 | train_penalty -259.18411
+INFO - main - saving checkpoint
+INFO - main - save checkpoint to data/exp/ntmr/1/model_1256000.pt
+INFO - main - train 1256000/1280000(epoch 31400/32000, 0.98), train_ppx 716.24634 | train_ppx_doc 788.31073 | train_loss 322.77432 | train_loss_rec 572.53827 | train_kld 9.41991 | train_penalty -259.18393
+INFO - main - evaluating model performance
+INFO - main - evaluate 1256000/1280000(epoch 31400/32000, 0.98), eval_ppx 775.19104 | eval_ppx_doc 801.72192 | eval_loss 299.59048 | eval_loss_rec 550.10199 | eval_kld 8.67059 | eval_penalty -259.18213
+INFO - main - saving topics to data/exp/ntmr/1/topic-31400
+INFO - main - topic coherence 0.347
+INFO - main - train 1256040/1280000(epoch 31401/32000, 0.98), train_ppx 715.23718 | train_ppx_doc 788.14801 | train_loss 322.64941 | train_loss_rec 572.40039 | train_kld 9.43287 | train_penalty -259.18387
+INFO - main - train 1256080/1280000(epoch 31402/32000, 0.98), train_ppx 714.66071 | train_ppx_doc 787.29492 | train_loss 322.57816 | train_loss_rec 572.33917 | train_kld 9.42268 | train_penalty -259.18372
+INFO - main - train 1256120/1280000(epoch 31403/32000, 0.98), train_ppx 715.56055 | train_ppx_doc 789.11023 | train_loss 322.68967 | train_loss_rec 572.44611 | train_kld 9.42725 | train_penalty -259.18369
+INFO - main - train 1256160/1280000(epoch 31404/32000, 0.98), train_ppx 715.34192 | train_ppx_doc 788.78979 | train_loss 322.66257 | train_loss_rec 572.40582 | train_kld 9.44049 | train_penalty -259.18378
+INFO - main - train 1256200/1280000(epoch 31405/32000, 0.98), train_ppx 715.37738 | train_ppx_doc 787.89020 | train_loss 322.66693 | train_loss_rec 572.40717 | train_kld 9.44347 | train_penalty -259.18365
+INFO - main - train 1256240/1280000(epoch 31406/32000, 0.98), train_ppx 714.25323 | train_ppx_doc 788.48816 | train_loss 322.52765 | train_loss_rec 572.27582 | train_kld 9.43562 | train_penalty -259.18372
+INFO - main - train 1256280/1280000(epoch 31407/32000, 0.98), train_ppx 716.05957 | train_ppx_doc 788.11151 | train_loss 322.75146 | train_loss_rec 572.50873 | train_kld 9.42628 | train_penalty -259.18359
+INFO - main - train 1256320/1280000(epoch 31408/32000, 0.98), train_ppx 715.55579 | train_ppx_doc 788.33856 | train_loss 322.68912 | train_loss_rec 572.47986 | train_kld 9.39284 | train_penalty -259.18356
+INFO - main - train 1256360/1280000(epoch 31409/32000, 0.98), train_ppx 716.03156 | train_ppx_doc 788.17279 | train_loss 322.74811 | train_loss_rec 572.51807 | train_kld 9.41359 | train_penalty -259.18359
+INFO - main - saving checkpoint
+INFO - main - save checkpoint to data/exp/ntmr/1/model_1256400.pt
+INFO - main - train 1256400/1280000(epoch 31410/32000, 0.98), train_ppx 714.94287 | train_ppx_doc 788.81909 | train_loss 322.61353 | train_loss_rec 572.34973 | train_kld 9.44720 | train_penalty -259.18344
+INFO - main - evaluating model performance
+INFO - main - evaluate 1256400/1280000(epoch 31410/32000, 0.98), eval_ppx 778.88922 | eval_ppx_doc 800.75610 | eval_loss 299.99026 | eval_loss_rec 550.48260 | eval_kld 8.68973 | eval_penalty -259.18198
+INFO - main - train 1256440/1280000(epoch 31411/32000, 0.98), train_ppx 716.04041 | train_ppx_doc 788.67621 | train_loss 322.74933 | train_loss_rec 572.49542 | train_kld 9.43737 | train_penalty -259.18338
+INFO - main - train 1256480/1280000(epoch 31412/32000, 0.98), train_ppx 715.71960 | train_ppx_doc 787.40497 | train_loss 322.70950 | train_loss_rec 572.45660 | train_kld 9.43640 | train_penalty -259.18344
+INFO - main - train 1256520/1280000(epoch 31413/32000, 0.98), train_ppx 715.99878 | train_ppx_doc 789.83911 | train_loss 322.74432 | train_loss_rec 572.46613 | train_kld 9.46134 | train_penalty -259.18320
+INFO - main - train 1256560/1280000(epoch 31414/32000, 0.98), train_ppx 716.16815 | train_ppx_doc 790.41473 | train_loss 322.76547 | train_loss_rec 572.50519 | train_kld 9.44325 | train_penalty -259.18301
+INFO - main - train 1256600/1280000(epoch 31415/32000, 0.98), train_ppx 715.25250 | train_ppx_doc 788.85065 | train_loss 322.65219 | train_loss_rec 572.39777 | train_kld 9.43742 | train_penalty -259.18301
+INFO - main - train 1256640/1280000(epoch 31416/32000, 0.98), train_ppx 714.61603 | train_ppx_doc 787.70239 | train_loss 322.57361 | train_loss_rec 572.33032 | train_kld 9.42605 | train_penalty -259.18274
+INFO - main - train 1256680/1280000(epoch 31417/32000, 0.98), train_ppx 717.26831 | train_ppx_doc 789.37219 | train_loss 322.90173 | train_loss_rec 572.64624 | train_kld 9.43819 | train_penalty -259.18262
+INFO - main - train 1256720/1280000(epoch 31418/32000, 0.98), train_ppx 714.16534 | train_ppx_doc 786.61017 | train_loss 322.51804 | train_loss_rec 572.25824 | train_kld 9.44241 | train_penalty -259.18262
+INFO - main - train 1256760/1280000(epoch 31419/32000, 0.98), train_ppx 715.10382 | train_ppx_doc 787.45190 | train_loss 322.63409 | train_loss_rec 572.40503 | train_kld 9.41172 | train_penalty -259.18262
+INFO - main - saving checkpoint
+INFO - main - save checkpoint to data/exp/ntmr/1/model_1256800.pt
+INFO - main - train 1256800/1280000(epoch 31420/32000, 0.98), train_ppx 715.60455 | train_ppx_doc 788.05365 | train_loss 322.69611 | train_loss_rec 572.50000 | train_kld 9.37871 | train_penalty -259.18268
+INFO - main - evaluating model performance
+INFO - main - evaluate 1256800/1280000(epoch 31420/32000, 0.98), eval_ppx 783.59607 | eval_ppx_doc 804.53711 | eval_loss 300.49777 | eval_loss_rec 551.02130 | eval_kld 8.65698 | eval_penalty -259.18051
+INFO - main - train 1256840/1280000(epoch 31421/32000, 0.98), train_ppx 715.62299 | train_ppx_doc 788.80817 | train_loss 322.69849 | train_loss_rec 572.46936 | train_kld 9.41163 | train_penalty -259.18250
+INFO - main - train 1256880/1280000(epoch 31422/32000, 0.98), train_ppx 713.73706 | train_ppx_doc 787.12079 | train_loss 322.46481 | train_loss_rec 572.20886 | train_kld 9.43855 | train_penalty -259.18265
+INFO - main - train 1256920/1280000(epoch 31423/32000, 0.98), train_ppx 715.15497 | train_ppx_doc 787.10010 | train_loss 322.64066 | train_loss_rec 572.41382 | train_kld 9.40939 | train_penalty -259.18259
+INFO - main - train 1256960/1280000(epoch 31424/32000, 0.98), train_ppx 716.28015 | train_ppx_doc 788.31934 | train_loss 322.77991 | train_loss_rec 572.55902 | train_kld 9.40328 | train_penalty -259.18246
+INFO - main - train 1257000/1280000(epoch 31425/32000, 0.98), train_ppx 714.96063 | train_ppx_doc 787.89020 | train_loss 322.61649 | train_loss_rec 572.36420 | train_kld 9.43474 | train_penalty -259.18250
+INFO - main - train 1257040/1280000(epoch 31426/32000, 0.98), train_ppx 715.39240 | train_ppx_doc 787.16174 | train_loss 322.67001 | train_loss_rec 572.42993 | train_kld 9.42260 | train_penalty -259.18256
+INFO - main - train 1257080/1280000(epoch 31427/32000, 0.98), train_ppx 715.88782 | train_ppx_doc 787.90295 | train_loss 322.73157 | train_loss_rec 572.46497 | train_kld 9.44896 | train_penalty -259.18225
+INFO - main - train 1257120/1280000(epoch 31428/32000, 0.98), train_ppx 714.43683 | train_ppx_doc 787.46808 | train_loss 322.55194 | train_loss_rec 572.30957 | train_kld 9.42479 | train_penalty -259.18231
+INFO - main - train 1257160/1280000(epoch 31429/32000, 0.98), train_ppx 715.98547 | train_ppx_doc 787.94244 | train_loss 322.74362 | train_loss_rec 572.51874 | train_kld 9.40720 | train_penalty -259.18222
+INFO - main - saving checkpoint
+INFO - main - save checkpoint to data/exp/ntmr/1/model_1257200.pt
+INFO - main - train 1257200/1280000(epoch 31430/32000, 0.98), train_ppx 715.27502 | train_ppx_doc 787.42975 | train_loss 322.65594 | train_loss_rec 572.38824 | train_kld 9.44993 | train_penalty -259.18219
+INFO - main - evaluating model performance
+INFO - main - evaluate 1257200/1280000(epoch 31430/32000, 0.98), eval_ppx 777.84595 | eval_ppx_doc 800.68280 | eval_loss 299.87936 | eval_loss_rec 550.37238 | eval_kld 8.68738 | eval_penalty -259.18039
+INFO - main - train 1257240/1280000(epoch 31431/32000, 0.98), train_ppx 715.45581 | train_ppx_doc 788.26520 | train_loss 322.67871 | train_loss_rec 572.44513 | train_kld 9.41540 | train_penalty -259.18179
+INFO - main - train 1257280/1280000(epoch 31432/32000, 0.98), train_ppx 716.20911 | train_ppx_doc 790.55579 | train_loss 322.77164 | train_loss_rec 572.51263 | train_kld 9.44088 | train_penalty -259.18179
+INFO - main - train 1257320/1280000(epoch 31433/32000, 0.98), train_ppx 715.18018 | train_ppx_doc 788.75330 | train_loss 322.64450 | train_loss_rec 572.39563 | train_kld 9.43063 | train_penalty -259.18173
+INFO - main - train 1257360/1280000(epoch 31434/32000, 0.98), train_ppx 715.52063 | train_ppx_doc 788.80707 | train_loss 322.68665 | train_loss_rec 572.46680 | train_kld 9.40175 | train_penalty -259.18173
+INFO - main - train 1257400/1280000(epoch 31435/32000, 0.98), train_ppx 715.48376 | train_ppx_doc 789.28674 | train_loss 322.68210 | train_loss_rec 572.43921 | train_kld 9.42463 | train_penalty -259.18173
+INFO - main - train 1257440/1280000(epoch 31436/32000, 0.98), train_ppx 714.90881 | train_ppx_doc 787.73767 | train_loss 322.61096 | train_loss_rec 572.36847 | train_kld 9.42411 | train_penalty -259.18167
+INFO - main - train 1257480/1280000(epoch 31437/32000, 0.98), train_ppx 715.09155 | train_ppx_doc 787.99280 | train_loss 322.63367 | train_loss_rec 572.37610 | train_kld 9.43927 | train_penalty -259.18158
+INFO - main - train 1257520/1280000(epoch 31438/32000, 0.98), train_ppx 716.19104 | train_ppx_doc 788.97974 | train_loss 322.76974 | train_loss_rec 572.47058 | train_kld 9.48072 | train_penalty -259.18158
+INFO - main - train 1257560/1280000(epoch 31439/32000, 0.98), train_ppx 715.45990 | train_ppx_doc 788.40698 | train_loss 322.67920 | train_loss_rec 572.40570 | train_kld 9.45510 | train_penalty -259.18158
+INFO - main - saving checkpoint
+INFO - main - save checkpoint to data/exp/ntmr/1/model_1257600.pt
+INFO - main - train 1257600/1280000(epoch 31440/32000, 0.98), train_ppx 714.97357 | train_ppx_doc 786.89154 | train_loss 322.61920 | train_loss_rec 572.36761 | train_kld 9.43328 | train_penalty -259.18158
+INFO - main - evaluating model performance
+INFO - main - evaluate 1257600/1280000(epoch 31440/32000, 0.98), eval_ppx 774.77423 | eval_ppx_doc 797.23621 | eval_loss 299.54663 | eval_loss_rec 550.06415 | eval_kld 8.66325 | eval_penalty -259.18079
+INFO - main - train 1257640/1280000(epoch 31441/32000, 0.98), train_ppx 715.39783 | train_ppx_doc 788.66565 | train_loss 322.67172 | train_loss_rec 572.44568 | train_kld 9.40758 | train_penalty -259.18152
+INFO - main - train 1257680/1280000(epoch 31442/32000, 0.98), train_ppx 715.58820 | train_ppx_doc 789.38727 | train_loss 322.69534 | train_loss_rec 572.47565 | train_kld 9.40107 | train_penalty -259.18137
+INFO - main - train 1257720/1280000(epoch 31443/32000, 0.98), train_ppx 714.95142 | train_ppx_doc 789.12384 | train_loss 322.61649 | train_loss_rec 572.37091 | train_kld 9.42700 | train_penalty -259.18140
+INFO - main - train 1257760/1280000(epoch 31444/32000, 0.98), train_ppx 715.90625 | train_ppx_doc 788.87439 | train_loss 322.73480 | train_loss_rec 572.48181 | train_kld 9.43433 | train_penalty -259.18127
+INFO - main - train 1257800/1280000(epoch 31445/32000, 0.98), train_ppx 715.87421 | train_ppx_doc 788.50848 | train_loss 322.73099 | train_loss_rec 572.51715 | train_kld 9.39494 | train_penalty -259.18121
+INFO - main - train 1257840/1280000(epoch 31446/32000, 0.98), train_ppx 715.93085 | train_ppx_doc 789.33948 | train_loss 322.73813 | train_loss_rec 572.47784 | train_kld 9.44132 | train_penalty -259.18106
+INFO - main - train 1257880/1280000(epoch 31447/32000, 0.98), train_ppx 714.90912 | train_ppx_doc 788.04163 | train_loss 322.61163 | train_loss_rec 572.32031 | train_kld 9.47232 | train_penalty -259.18106
+INFO - main - train 1257920/1280000(epoch 31448/32000, 0.98), train_ppx 714.56354 | train_ppx_doc 787.86542 | train_loss 322.56876 | train_loss_rec 572.31293 | train_kld 9.43701 | train_penalty -259.18118
+INFO - main - train 1257960/1280000(epoch 31449/32000, 0.98), train_ppx 715.60699 | train_ppx_doc 788.66565 | train_loss 322.69812 | train_loss_rec 572.44537 | train_kld 9.43373 | train_penalty -259.18103
+INFO - main - saving checkpoint
+INFO - main - save checkpoint to data/exp/ntmr/1/model_1258000.pt
+INFO - main - train 1258000/1280000(epoch 31450/32000, 0.98), train_ppx 715.82367 | train_ppx_doc 787.94617 | train_loss 322.72491 | train_loss_rec 572.50140 | train_kld 9.40456 | train_penalty -259.18103
+INFO - main - evaluating model performance
+INFO - main - evaluate 1258000/1280000(epoch 31450/32000, 0.98), eval_ppx 780.26099 | eval_ppx_doc 799.59045 | eval_loss 300.14029 | eval_loss_rec 550.64191 | eval_kld 8.67814 | eval_penalty -259.17975
+INFO - main - train 1258040/1280000(epoch 31451/32000, 0.98), train_ppx 714.06628 | train_ppx_doc 787.53790 | train_loss 322.50726 | train_loss_rec 572.27106 | train_kld 9.41726 | train_penalty -259.18103
+INFO - main - train 1258080/1280000(epoch 31452/32000, 0.98), train_ppx 717.46906 | train_ppx_doc 789.94983 | train_loss 322.92828 | train_loss_rec 572.66406 | train_kld 9.44500 | train_penalty -259.18082
+INFO - main - train 1258120/1280000(epoch 31453/32000, 0.98), train_ppx 715.61786 | train_ppx_doc 788.57465 | train_loss 322.69968 | train_loss_rec 572.41888 | train_kld 9.46149 | train_penalty -259.18069
+INFO - main - train 1258160/1280000(epoch 31454/32000, 0.98), train_ppx 716.00293 | train_ppx_doc 789.19159 | train_loss 322.74753 | train_loss_rec 572.47107 | train_kld 9.45706 | train_penalty -259.18057
+INFO - main - train 1258200/1280000(epoch 31455/32000, 0.98), train_ppx 714.49103 | train_ppx_doc 787.45715 | train_loss 322.56039 | train_loss_rec 572.33154 | train_kld 9.40944 | train_penalty -259.18057
+INFO - main - train 1258240/1280000(epoch 31456/32000, 0.98), train_ppx 715.54657 | train_ppx_doc 787.77301 | train_loss 322.69113 | train_loss_rec 572.42114 | train_kld 9.45046 | train_penalty -259.18042
+INFO - main - train 1258280/1280000(epoch 31457/32000, 0.98), train_ppx 715.40430 | train_ppx_doc 787.33704 | train_loss 322.67358 | train_loss_rec 572.43634 | train_kld 9.41777 | train_penalty -259.18048
+INFO - main - train 1258320/1280000(epoch 31458/32000, 0.98), train_ppx 715.93970 | train_ppx_doc 788.00745 | train_loss 322.73990 | train_loss_rec 572.45093 | train_kld 9.46931 | train_penalty -259.18033
+INFO - main - train 1258360/1280000(epoch 31459/32000, 0.98), train_ppx 715.98480 | train_ppx_doc 789.24384 | train_loss 322.74551 | train_loss_rec 572.48315 | train_kld 9.44258 | train_penalty -259.18030
+INFO - main - saving checkpoint
+INFO - main - save checkpoint to data/exp/ntmr/1/model_1258400.pt
+INFO - main - train 1258400/1280000(epoch 31460/32000, 0.98), train_ppx 714.77856 | train_ppx_doc 787.86279 | train_loss 322.59628 | train_loss_rec 572.33484 | train_kld 9.44178 | train_penalty -259.18030
+INFO - main - evaluating model performance
+INFO - main - evaluate 1258400/1280000(epoch 31460/32000, 0.98), eval_ppx 779.54431 | eval_ppx_doc 799.80896 | eval_loss 300.06403 | eval_loss_rec 550.54608 | eval_kld 8.69682 | eval_penalty -259.17889
+INFO - main - train 1258440/1280000(epoch 31461/32000, 0.98), train_ppx 715.97351 | train_ppx_doc 787.38055 | train_loss 322.74420 | train_loss_rec 572.48608 | train_kld 9.43828 | train_penalty -259.18021
+INFO - main - train 1258480/1280000(epoch 31462/32000, 0.98), train_ppx 715.73016 | train_ppx_doc 788.85370 | train_loss 322.71417 | train_loss_rec 572.46368 | train_kld 9.43056 | train_penalty -259.18005
+INFO - main - train 1258520/1280000(epoch 31463/32000, 0.98), train_ppx 714.21167 | train_ppx_doc 788.53253 | train_loss 322.52615 | train_loss_rec 572.26068 | train_kld 9.44562 | train_penalty -259.18021
+INFO - main - train 1258560/1280000(epoch 31464/32000, 0.98), train_ppx 715.54175 | train_ppx_doc 788.80219 | train_loss 322.69107 | train_loss_rec 572.43073 | train_kld 9.44027 | train_penalty -259.17996
+INFO - main - train 1258600/1280000(epoch 31465/32000, 0.98), train_ppx 715.49677 | train_ppx_doc 789.20355 | train_loss 322.68552 | train_loss_rec 572.42413 | train_kld 9.44136 | train_penalty -259.17990
+INFO - main - train 1258640/1280000(epoch 31466/32000, 0.98), train_ppx 716.54224 | train_ppx_doc 789.56488 | train_loss 322.81482 | train_loss_rec 572.56006 | train_kld 9.43470 | train_penalty -259.17984
+INFO - main - train 1258680/1280000(epoch 31467/32000, 0.98), train_ppx 715.83771 | train_ppx_doc 788.87817 | train_loss 322.72772 | train_loss_rec 572.43237 | train_kld 9.47511 | train_penalty -259.17984
+INFO - main - train 1258720/1280000(epoch 31468/32000, 0.98), train_ppx 714.74451 | train_ppx_doc 788.60925 | train_loss 322.59241 | train_loss_rec 572.33484 | train_kld 9.43752 | train_penalty -259.17987
+INFO - main - train 1258760/1280000(epoch 31469/32000, 0.98), train_ppx 716.00085 | train_ppx_doc 789.52429 | train_loss 322.74796 | train_loss_rec 572.51813 | train_kld 9.40968 | train_penalty -259.17993
+INFO - main - saving checkpoint
+INFO - main - save checkpoint to data/exp/ntmr/1/model_1258800.pt
+INFO - main - train 1258800/1280000(epoch 31470/32000, 0.98), train_ppx 715.31458 | train_ppx_doc 788.02209 | train_loss 322.66309 | train_loss_rec 572.41101 | train_kld 9.43192 | train_penalty -259.17981
+INFO - main - evaluating model performance
+INFO - main - evaluate 1258800/1280000(epoch 31470/32000, 0.98), eval_ppx 785.22729 | eval_ppx_doc 796.79797 | eval_loss 300.67432 | eval_loss_rec 551.14062 | eval_kld 8.71236 | eval_penalty -259.17862
+INFO - main - train 1258840/1280000(epoch 31471/32000, 0.98), train_ppx 715.11163 | train_ppx_doc 786.88586 | train_loss 322.63800 | train_loss_rec 572.36188 | train_kld 9.45587 | train_penalty -259.17975
+INFO - main - train 1258880/1280000(epoch 31472/32000, 0.98), train_ppx 715.05304 | train_ppx_doc 786.49011 | train_loss 322.63077 | train_loss_rec 572.39252 | train_kld 9.41793 | train_penalty -259.17972
+INFO - main - train 1258920/1280000(epoch 31473/32000, 0.98), train_ppx 715.69434 | train_ppx_doc 788.04205 | train_loss 322.71011 | train_loss_rec 572.46692 | train_kld 9.42301 | train_penalty -259.17975
+INFO - main - train 1258960/1280000(epoch 31474/32000, 0.98), train_ppx 714.87573 | train_ppx_doc 787.39478 | train_loss 322.60892 | train_loss_rec 572.35211 | train_kld 9.43657 | train_penalty -259.17960
+INFO - main - train 1259000/1280000(epoch 31475/32000, 0.98), train_ppx 714.43311 | train_ppx_doc 789.36432 | train_loss 322.55399 | train_loss_rec 572.31641 | train_kld 9.41715 | train_penalty -259.17963
+INFO - main - train 1259040/1280000(epoch 31476/32000, 0.98), train_ppx 714.59283 | train_ppx_doc 787.29083 | train_loss 322.57394 | train_loss_rec 572.31262 | train_kld 9.44090 | train_penalty -259.17953
+INFO - main - train 1259080/1280000(epoch 31477/32000, 0.98), train_ppx 715.00763 | train_ppx_doc 787.50037 | train_loss 322.62527 | train_loss_rec 572.37787 | train_kld 9.42701 | train_penalty -259.17960
+INFO - main - train 1259120/1280000(epoch 31478/32000, 0.98), train_ppx 714.93542 | train_ppx_doc 788.46338 | train_loss 322.61642 | train_loss_rec 572.34192 | train_kld 9.45409 | train_penalty -259.17950
+INFO - main - train 1259160/1280000(epoch 31479/32000, 0.98), train_ppx 714.15887 | train_ppx_doc 786.83521 | train_loss 322.52017 | train_loss_rec 572.27710 | train_kld 9.42275 | train_penalty -259.17960
+INFO - main - saving checkpoint
+INFO - main - save checkpoint to data/exp/ntmr/1/model_1259200.pt
+INFO - main - train 1259200/1280000(epoch 31480/32000, 0.98), train_ppx 714.16980 | train_ppx_doc 787.80042 | train_loss 322.52151 | train_loss_rec 572.24469 | train_kld 9.45651 | train_penalty -259.17957
+INFO - main - evaluating model performance
+INFO - main - evaluate 1259200/1280000(epoch 31480/32000, 0.98), eval_ppx 777.70093 | eval_ppx_doc 795.54401 | eval_loss 299.86536 | eval_loss_rec 550.38513 | eval_kld 8.65895 | eval_penalty -259.17871
+INFO - main - train 1259240/1280000(epoch 31481/32000, 0.98), train_ppx 715.58820 | train_ppx_doc 788.49609 | train_loss 322.69727 | train_loss_rec 572.45007 | train_kld 9.42668 | train_penalty -259.17953
+INFO - main - train 1259280/1280000(epoch 31482/32000, 0.98), train_ppx 715.71307 | train_ppx_doc 788.87817 | train_loss 322.71283 | train_loss_rec 572.46313 | train_kld 9.42908 | train_penalty -259.17935
+INFO - main - train 1259320/1280000(epoch 31483/32000, 0.98), train_ppx 717.96875 | train_ppx_doc 789.13361 | train_loss 322.99170 | train_loss_rec 572.72961 | train_kld 9.44125 | train_penalty -259.17914
+INFO - main - train 1259360/1280000(epoch 31484/32000, 0.98), train_ppx 714.50391 | train_ppx_doc 790.01953 | train_loss 322.56360 | train_loss_rec 572.27643 | train_kld 9.46619 | train_penalty -259.17902
+INFO - main - train 1259400/1280000(epoch 31485/32000, 0.98), train_ppx 716.02881 | train_ppx_doc 788.33441 | train_loss 322.75226 | train_loss_rec 572.47180 | train_kld 9.45932 | train_penalty -259.17892
+INFO - main - train 1259440/1280000(epoch 31486/32000, 0.98), train_ppx 715.61584 | train_ppx_doc 788.02808 | train_loss 322.70135 | train_loss_rec 572.42322 | train_kld 9.45706 | train_penalty -259.17886
+INFO - main - train 1259480/1280000(epoch 31487/32000, 0.98), train_ppx 714.45117 | train_ppx_doc 786.67126 | train_loss 322.55722 | train_loss_rec 572.29047 | train_kld 9.44555 | train_penalty -259.17874
+INFO - main - train 1259520/1280000(epoch 31488/32000, 0.98), train_ppx 715.37256 | train_ppx_doc 789.05682 | train_loss 322.67133 | train_loss_rec 572.40912 | train_kld 9.44082 | train_penalty -259.17871
+INFO - main - train 1259560/1280000(epoch 31489/32000, 0.98), train_ppx 714.68286 | train_ppx_doc 787.17371 | train_loss 322.58606 | train_loss_rec 572.32343 | train_kld 9.44134 | train_penalty -259.17862
+INFO - main - saving checkpoint
+INFO - main - save checkpoint to data/exp/ntmr/1/model_1259600.pt
+INFO - main - train 1259600/1280000(epoch 31490/32000, 0.98), train_ppx 715.29858 | train_ppx_doc 787.33289 | train_loss 322.66232 | train_loss_rec 572.39648 | train_kld 9.44443 | train_penalty -259.17871
+INFO - main - evaluating model performance
+INFO - main - evaluate 1259600/1280000(epoch 31490/32000, 0.98), eval_ppx 783.62189 | eval_ppx_doc 800.98639 | eval_loss 300.50391 | eval_loss_rec 550.96857 | eval_kld 8.71255 | eval_penalty -259.17715
+INFO - main - train 1259640/1280000(epoch 31491/32000, 0.98), train_ppx 715.90460 | train_ppx_doc 789.99768 | train_loss 322.73749 | train_loss_rec 572.42975 | train_kld 9.48631 | train_penalty -259.17850
+INFO - main - train 1259680/1280000(epoch 31492/32000, 0.98), train_ppx 715.73523 | train_ppx_doc 789.19568 | train_loss 322.71637 | train_loss_rec 572.43866 | train_kld 9.45633 | train_penalty -259.17862
+INFO - main - train 1259720/1280000(epoch 31493/32000, 0.98), train_ppx 714.86212 | train_ppx_doc 786.96204 | train_loss 322.60831 | train_loss_rec 572.34613 | train_kld 9.44060 | train_penalty -259.17853
+INFO - main - train 1259760/1280000(epoch 31494/32000, 0.98), train_ppx 716.35876 | train_ppx_doc 789.00525 | train_loss 322.79330 | train_loss_rec 572.50183 | train_kld 9.47016 | train_penalty -259.17868
+INFO - main - train 1259800/1280000(epoch 31495/32000, 0.98), train_ppx 716.69354 | train_ppx_doc 788.80328 | train_loss 322.83484 | train_loss_rec 572.54944 | train_kld 9.46402 | train_penalty -259.17853
+INFO - main - train 1259840/1280000(epoch 31496/32000, 0.98), train_ppx 716.52954 | train_ppx_doc 787.31073 | train_loss 322.81467 | train_loss_rec 572.53943 | train_kld 9.45371 | train_penalty -259.17841
+INFO - main - train 1259880/1280000(epoch 31497/32000, 0.98), train_ppx 715.43909 | train_ppx_doc 788.73071 | train_loss 322.68002 | train_loss_rec 572.37317 | train_kld 9.48525 | train_penalty -259.17834
+INFO - main - train 1259920/1280000(epoch 31498/32000, 0.98), train_ppx 715.94244 | train_ppx_doc 788.34192 | train_loss 322.74234 | train_loss_rec 572.46912 | train_kld 9.45152 | train_penalty -259.17828
+INFO - main - train 1259960/1280000(epoch 31499/32000, 0.98), train_ppx 715.28662 | train_ppx_doc 787.59796 | train_loss 322.66122 | train_loss_rec 572.39307 | train_kld 9.44641 | train_penalty -259.17822
+INFO - main - saving checkpoint
+INFO - main - save checkpoint to data/exp/ntmr/1/model_1260000.pt
+INFO - main - train 1260000/1280000(epoch 31500/32000, 0.98), train_ppx 716.77496 | train_ppx_doc 789.14447 | train_loss 322.84537 | train_loss_rec 572.58942 | train_kld 9.43397 | train_penalty -259.17798
+INFO - main - evaluating model performance
+INFO - main - evaluate 1260000/1280000(epoch 31500/32000, 0.98), eval_ppx 777.88153 | eval_ppx_doc 799.09686 | eval_loss 299.88675 | eval_loss_rec 550.36157 | eval_kld 8.70196 | eval_penalty -259.17682
+INFO - main - saving topics to data/exp/ntmr/1/topic-31500
+INFO - main - topic coherence 0.346
+INFO - main - train 1260040/1280000(epoch 31501/32000, 0.98), train_ppx 714.58948 | train_ppx_doc 788.15887 | train_loss 322.57520 | train_loss_rec 572.31238 | train_kld 9.44065 | train_penalty -259.17783
+INFO - main - train 1260080/1280000(epoch 31502/32000, 0.98), train_ppx 716.30377 | train_ppx_doc 789.01843 | train_loss 322.78748 | train_loss_rec 572.51416 | train_kld 9.45115 | train_penalty -259.17773
+INFO - main - train 1260120/1280000(epoch 31503/32000, 0.98), train_ppx 715.12628 | train_ppx_doc 786.85925 | train_loss 322.64203 | train_loss_rec 572.37994 | train_kld 9.43965 | train_penalty -259.17767
+INFO - main - train 1260160/1280000(epoch 31504/32000, 0.98), train_ppx 715.17780 | train_ppx_doc 787.67682 | train_loss 322.64825 | train_loss_rec 572.36792 | train_kld 9.45797 | train_penalty -259.17758
+INFO - main - train 1260200/1280000(epoch 31505/32000, 0.98), train_ppx 715.74213 | train_ppx_doc 788.72278 | train_loss 322.71820 | train_loss_rec 572.47272 | train_kld 9.42296 | train_penalty -259.17749
+INFO - main - train 1260240/1280000(epoch 31506/32000, 0.98), train_ppx 715.56293 | train_ppx_doc 788.28595 | train_loss 322.69626 | train_loss_rec 572.42145 | train_kld 9.45216 | train_penalty -259.17740
+INFO - main - train 1260280/1280000(epoch 31507/32000, 0.98), train_ppx 716.10364 | train_ppx_doc 787.19360 | train_loss 322.76331 | train_loss_rec 572.49591 | train_kld 9.44460 | train_penalty -259.17728
+INFO - main - train 1260320/1280000(epoch 31508/32000, 0.98), train_ppx 714.51959 | train_ppx_doc 788.23291 | train_loss 322.56726 | train_loss_rec 572.31122 | train_kld 9.43332 | train_penalty -259.17722
+INFO - main - train 1260360/1280000(epoch 31509/32000, 0.98), train_ppx 715.21875 | train_ppx_doc 788.37683 | train_loss 322.65402 | train_loss_rec 572.38617 | train_kld 9.44481 | train_penalty -259.17709
+INFO - main - saving checkpoint
+INFO - main - save checkpoint to data/exp/ntmr/1/model_1260400.pt
+INFO - main - train 1260400/1280000(epoch 31510/32000, 0.98), train_ppx 716.75305 | train_ppx_doc 788.84576 | train_loss 322.84369 | train_loss_rec 572.58630 | train_kld 9.43437 | train_penalty -259.17697
+INFO - main - evaluating model performance
+INFO - main - evaluate 1260400/1280000(epoch 31510/32000, 0.98), eval_ppx 783.82220 | eval_ppx_doc 799.51654 | eval_loss 300.52707 | eval_loss_rec 551.00897 | eval_kld 8.69364 | eval_penalty -259.17551
+INFO - main - train 1260440/1280000(epoch 31511/32000, 0.98), train_ppx 713.69318 | train_ppx_doc 787.71893 | train_loss 322.46506 | train_loss_rec 572.20422 | train_kld 9.43779 | train_penalty -259.17694
+INFO - main - train 1260480/1280000(epoch 31512/32000, 0.98), train_ppx 715.64960 | train_ppx_doc 789.30444 | train_loss 322.70737 | train_loss_rec 572.43835 | train_kld 9.44611 | train_penalty -259.17703
+INFO - main - train 1260520/1280000(epoch 31513/32000, 0.98), train_ppx 714.87573 | train_ppx_doc 788.83716 | train_loss 322.61169 | train_loss_rec 572.35339 | train_kld 9.43528 | train_penalty -259.17691
+INFO - main - train 1260560/1280000(epoch 31514/32000, 0.98), train_ppx 716.15381 | train_ppx_doc 788.15399 | train_loss 322.76993 | train_loss_rec 572.51434 | train_kld 9.43236 | train_penalty -259.17670
+INFO - main - train 1260600/1280000(epoch 31515/32000, 0.98), train_ppx 715.59125 | train_ppx_doc 788.44385 | train_loss 322.70062 | train_loss_rec 572.44000 | train_kld 9.43724 | train_penalty -259.17651
+INFO - main - train 1260640/1280000(epoch 31516/32000, 0.98), train_ppx 714.87097 | train_ppx_doc 788.41034 | train_loss 322.61151 | train_loss_rec 572.31677 | train_kld 9.47128 | train_penalty -259.17642
+INFO - main - train 1260680/1280000(epoch 31517/32000, 0.98), train_ppx 715.65680 | train_ppx_doc 788.40131 | train_loss 322.70871 | train_loss_rec 572.43945 | train_kld 9.44573 | train_penalty -259.17645
+INFO - main - train 1260720/1280000(epoch 31518/32000, 0.98), train_ppx 716.41821 | train_ppx_doc 787.20300 | train_loss 322.80295 | train_loss_rec 572.54993 | train_kld 9.42938 | train_penalty -259.17645
+INFO - main - train 1260760/1280000(epoch 31519/32000, 0.98), train_ppx 714.40851 | train_ppx_doc 786.81610 | train_loss 322.55420 | train_loss_rec 572.28339 | train_kld 9.44729 | train_penalty -259.17645
+INFO - main - saving checkpoint
+INFO - main - save checkpoint to data/exp/ntmr/1/model_1260800.pt
+INFO - main - train 1260800/1280000(epoch 31520/32000, 0.98), train_ppx 715.15430 | train_ppx_doc 789.58264 | train_loss 322.64651 | train_loss_rec 572.38062 | train_kld 9.44244 | train_penalty -259.17651
+INFO - main - evaluating model performance
+INFO - main - evaluate 1260800/1280000(epoch 31520/32000, 0.98), eval_ppx 777.57147 | eval_ppx_doc 797.25598 | eval_loss 299.85489 | eval_loss_rec 550.35840 | eval_kld 8.67165 | eval_penalty -259.17514
+INFO - main - train 1260840/1280000(epoch 31521/32000, 0.99), train_ppx 715.06226 | train_ppx_doc 787.72156 | train_loss 322.63492 | train_loss_rec 572.38635 | train_kld 9.42525 | train_penalty -259.17657
+INFO - main - train 1260880/1280000(epoch 31522/32000, 0.99), train_ppx 715.46094 | train_ppx_doc 788.39417 | train_loss 322.68445 | train_loss_rec 572.45355 | train_kld 9.40739 | train_penalty -259.17657
+INFO - main - train 1260920/1280000(epoch 31523/32000, 0.99), train_ppx 714.45831 | train_ppx_doc 787.86432 | train_loss 322.56046 | train_loss_rec 572.29950 | train_kld 9.43737 | train_penalty -259.17648
+INFO - main - train 1260960/1280000(epoch 31524/32000, 0.99), train_ppx 713.32031 | train_ppx_doc 785.65759 | train_loss 322.41922 | train_loss_rec 572.17261 | train_kld 9.42320 | train_penalty -259.17645
+INFO - main - train 1261000/1280000(epoch 31525/32000, 0.99), train_ppx 714.81470 | train_ppx_doc 787.46021 | train_loss 322.60461 | train_loss_rec 572.35504 | train_kld 9.42612 | train_penalty -259.17648
+INFO - main - train 1261040/1280000(epoch 31526/32000, 0.99), train_ppx 715.23578 | train_ppx_doc 786.75269 | train_loss 322.65677 | train_loss_rec 572.43097 | train_kld 9.40214 | train_penalty -259.17642
+INFO - main - train 1261080/1280000(epoch 31527/32000, 0.99), train_ppx 715.12970 | train_ppx_doc 788.53625 | train_loss 322.64362 | train_loss_rec 572.40674 | train_kld 9.41323 | train_penalty -259.17642
+INFO - main - train 1261120/1280000(epoch 31528/32000, 0.99), train_ppx 714.99127 | train_ppx_doc 786.80219 | train_loss 322.62650 | train_loss_rec 572.36566 | train_kld 9.43723 | train_penalty -259.17639
+INFO - main - train 1261160/1280000(epoch 31529/32000, 0.99), train_ppx 715.23718 | train_ppx_doc 788.51636 | train_loss 322.65695 | train_loss_rec 572.41937 | train_kld 9.41400 | train_penalty -259.17636
+INFO - main - saving checkpoint
+INFO - main - save checkpoint to data/exp/ntmr/1/model_1261200.pt
+INFO - main - train 1261200/1280000(epoch 31530/32000, 0.99), train_ppx 714.58948 | train_ppx_doc 787.93225 | train_loss 322.57669 | train_loss_rec 572.32733 | train_kld 9.42592 | train_penalty -259.17645
+INFO - main - evaluating model performance
+INFO - main - evaluate 1261200/1280000(epoch 31530/32000, 0.99), eval_ppx 777.94019 | eval_ppx_doc 801.97540 | eval_loss 299.89450 | eval_loss_rec 550.39661 | eval_kld 8.67331 | eval_penalty -259.17538
+INFO - main - train 1261240/1280000(epoch 31531/32000, 0.99), train_ppx 714.08228 | train_ppx_doc 787.27203 | train_loss 322.51392 | train_loss_rec 572.27319 | train_kld 9.41698 | train_penalty -259.17642
+INFO - main - train 1261280/1280000(epoch 31532/32000, 0.99), train_ppx 714.92621 | train_ppx_doc 788.15887 | train_loss 322.61856 | train_loss_rec 572.38708 | train_kld 9.40775 | train_penalty -259.17630
+INFO - main - train 1261320/1280000(epoch 31533/32000, 0.99), train_ppx 715.15088 | train_ppx_doc 789.40875 | train_loss 322.64642 | train_loss_rec 572.40002 | train_kld 9.42274 | train_penalty -259.17630
+INFO - main - train 1261360/1280000(epoch 31534/32000, 0.99), train_ppx 714.60919 | train_ppx_doc 787.23938 | train_loss 322.57953 | train_loss_rec 572.33832 | train_kld 9.41727 | train_penalty -259.17612
+INFO - main - train 1261400/1280000(epoch 31535/32000, 0.99), train_ppx 715.57251 | train_ppx_doc 789.30823 | train_loss 322.69885 | train_loss_rec 572.45105 | train_kld 9.42370 | train_penalty -259.17590
+INFO - main - train 1261440/1280000(epoch 31536/32000, 0.99), train_ppx 714.76154 | train_ppx_doc 787.48193 | train_loss 322.59866 | train_loss_rec 572.33551 | train_kld 9.43890 | train_penalty -259.17566
+INFO - main - train 1261480/1280000(epoch 31537/32000, 0.99), train_ppx 714.85864 | train_ppx_doc 787.86877 | train_loss 322.61081 | train_loss_rec 572.38318 | train_kld 9.40338 | train_penalty -259.17578
+INFO - main - train 1261520/1280000(epoch 31538/32000, 0.99), train_ppx 715.38348 | train_ppx_doc 789.52240 | train_loss 322.67578 | train_loss_rec 572.45508 | train_kld 9.39636 | train_penalty -259.17575
+INFO - main - train 1261560/1280000(epoch 31539/32000, 0.99), train_ppx 714.38062 | train_ppx_doc 788.06720 | train_loss 322.55179 | train_loss_rec 572.27826 | train_kld 9.44914 | train_penalty -259.17557
+INFO - main - saving checkpoint
+INFO - main - save checkpoint to data/exp/ntmr/1/model_1261600.pt
+INFO - main - train 1261600/1280000(epoch 31540/32000, 0.99), train_ppx 715.36914 | train_ppx_doc 788.24646 | train_loss 322.67404 | train_loss_rec 572.42938 | train_kld 9.42027 | train_penalty -259.17554
+INFO - main - evaluating model performance
+INFO - main - evaluate 1261600/1280000(epoch 31540/32000, 0.99), eval_ppx 777.63904 | eval_ppx_doc 796.24341 | eval_loss 299.86380 | eval_loss_rec 550.34973 | eval_kld 8.68773 | eval_penalty -259.17361
+INFO - main - train 1261640/1280000(epoch 31541/32000, 0.99), train_ppx 715.09222 | train_ppx_doc 789.96570 | train_loss 322.63992 | train_loss_rec 572.35455 | train_kld 9.46081 | train_penalty -259.17542
+INFO - main - train 1261680/1280000(epoch 31542/32000, 0.99), train_ppx 715.95404 | train_ppx_doc 786.62701 | train_loss 322.74652 | train_loss_rec 572.51465 | train_kld 9.40734 | train_penalty -259.17551
+INFO - main - train 1261720/1280000(epoch 31543/32000, 0.99), train_ppx 715.97150 | train_ppx_doc 788.58630 | train_loss 322.74887 | train_loss_rec 572.45508 | train_kld 9.46910 | train_penalty -259.17532
+INFO - main - train 1261760/1280000(epoch 31544/32000, 0.99), train_ppx 715.24365 | train_ppx_doc 788.49078 | train_loss 322.65900 | train_loss_rec 572.39258 | train_kld 9.44166 | train_penalty -259.17520
+INFO - main - train 1261800/1280000(epoch 31545/32000, 0.99), train_ppx 715.43671 | train_ppx_doc 789.60822 | train_loss 322.68286 | train_loss_rec 572.40063 | train_kld 9.45740 | train_penalty -259.17517
+INFO - main - train 1261840/1280000(epoch 31546/32000, 0.99), train_ppx 715.00562 | train_ppx_doc 788.62506 | train_loss 322.62949 | train_loss_rec 572.32990 | train_kld 9.47460 | train_penalty -259.17514
+INFO - main - train 1261880/1280000(epoch 31547/32000, 0.99), train_ppx 715.52844 | train_ppx_doc 788.34192 | train_loss 322.69421 | train_loss_rec 572.39618 | train_kld 9.47315 | train_penalty -259.17514
+INFO - main - train 1261920/1280000(epoch 31548/32000, 0.99), train_ppx 714.92651 | train_ppx_doc 787.67651 | train_loss 322.61972 | train_loss_rec 572.35046 | train_kld 9.44444 | train_penalty -259.17514
+INFO - main - train 1261960/1280000(epoch 31549/32000, 0.99), train_ppx 715.69843 | train_ppx_doc 788.58063 | train_loss 322.71542 | train_loss_rec 572.41211 | train_kld 9.47826 | train_penalty -259.17499
+INFO - main - saving checkpoint
+INFO - main - save checkpoint to data/exp/ntmr/1/model_1262000.pt
+INFO - main - train 1262000/1280000(epoch 31550/32000, 0.99), train_ppx 715.57831 | train_ppx_doc 789.27740 | train_loss 322.70059 | train_loss_rec 572.40955 | train_kld 9.46618 | train_penalty -259.17499
+INFO - main - evaluating model performance
+INFO - main - evaluate 1262000/1280000(epoch 31550/32000, 0.99), eval_ppx 774.73291 | eval_ppx_doc 797.68488 | eval_loss 299.54910 | eval_loss_rec 550.03003 | eval_kld 8.69292 | eval_penalty -259.17383
+INFO - main - train 1262040/1280000(epoch 31551/32000, 0.99), train_ppx 714.27771 | train_ppx_doc 786.20325 | train_loss 322.53967 | train_loss_rec 572.27051 | train_kld 9.44412 | train_penalty -259.17490
+INFO - main - train 1262080/1280000(epoch 31552/32000, 0.99), train_ppx 715.00085 | train_ppx_doc 786.72754 | train_loss 322.62936 | train_loss_rec 572.37964 | train_kld 9.42439 | train_penalty -259.17468
+INFO - main - train 1262120/1280000(epoch 31553/32000, 0.99), train_ppx 715.66156 | train_ppx_doc 786.80371 | train_loss 322.71106 | train_loss_rec 572.46527 | train_kld 9.42046 | train_penalty -259.17468
+INFO - main - train 1262160/1280000(epoch 31554/32000, 0.99), train_ppx 715.13995 | train_ppx_doc 787.69940 | train_loss 322.64658 | train_loss_rec 572.39551 | train_kld 9.42570 | train_penalty -259.17465
+INFO - main - train 1262200/1280000(epoch 31555/32000, 0.99), train_ppx 715.59705 | train_ppx_doc 788.17957 | train_loss 322.70343 | train_loss_rec 572.43829 | train_kld 9.43958 | train_penalty -259.17447
+INFO - main - train 1262240/1280000(epoch 31556/32000, 0.99), train_ppx 715.45819 | train_ppx_doc 787.72083 | train_loss 322.68634 | train_loss_rec 572.41699 | train_kld 9.44387 | train_penalty -259.17447
+INFO - main - train 1262280/1280000(epoch 31557/32000, 0.99), train_ppx 715.73633 | train_ppx_doc 789.12079 | train_loss 322.72061 | train_loss_rec 572.43170 | train_kld 9.46340 | train_penalty -259.17447
+INFO - main - train 1262320/1280000(epoch 31558/32000, 0.99), train_ppx 714.63104 | train_ppx_doc 787.48944 | train_loss 322.58377 | train_loss_rec 572.32935 | train_kld 9.42887 | train_penalty -259.17444
+INFO - main - train 1262360/1280000(epoch 31559/32000, 0.99), train_ppx 715.16895 | train_ppx_doc 786.86487 | train_loss 322.65051 | train_loss_rec 572.39404 | train_kld 9.43087 | train_penalty -259.17444
+INFO - main - saving checkpoint
+INFO - main - save checkpoint to data/exp/ntmr/1/model_1262400.pt
+INFO - main - train 1262400/1280000(epoch 31560/32000, 0.99), train_ppx 714.44775 | train_ppx_doc 787.94128 | train_loss 322.56119 | train_loss_rec 572.29108 | train_kld 9.44447 | train_penalty -259.17432
+INFO - main - evaluating model performance
+INFO - main - evaluate 1262400/1280000(epoch 31560/32000, 0.99), eval_ppx 778.23773 | eval_ppx_doc 796.59399 | eval_loss 299.92896 | eval_loss_rec 550.42572 | eval_kld 8.67631 | eval_penalty -259.17307
+INFO - main - train 1262440/1280000(epoch 31561/32000, 0.99), train_ppx 716.97937 | train_ppx_doc 788.62201 | train_loss 322.87445 | train_loss_rec 572.63556 | train_kld 9.41317 | train_penalty -259.17429
+INFO - main - train 1262480/1280000(epoch 31562/32000, 0.99), train_ppx 717.22412 | train_ppx_doc 789.22839 | train_loss 322.90472 | train_loss_rec 572.65570 | train_kld 9.42330 | train_penalty -259.17413
+INFO - main - train 1262520/1280000(epoch 31563/32000, 0.99), train_ppx 715.23346 | train_ppx_doc 788.14648 | train_loss 322.65887 | train_loss_rec 572.34198 | train_kld 9.49089 | train_penalty -259.17398
+INFO - main - train 1262560/1280000(epoch 31564/32000, 0.99), train_ppx 716.03497 | train_ppx_doc 789.59802 | train_loss 322.75806 | train_loss_rec 572.49744 | train_kld 9.43459 | train_penalty -259.17401
+INFO - main - train 1262600/1280000(epoch 31565/32000, 0.99), train_ppx 715.42615 | train_ppx_doc 787.81061 | train_loss 322.68271 | train_loss_rec 572.37732 | train_kld 9.47938 | train_penalty -259.17398
+INFO - main - train 1262640/1280000(epoch 31566/32000, 0.99), train_ppx 715.06696 | train_ppx_doc 787.03632 | train_loss 322.63828 | train_loss_rec 572.37109 | train_kld 9.44121 | train_penalty -259.17401
+INFO - main - train 1262680/1280000(epoch 31567/32000, 0.99), train_ppx 714.35541 | train_ppx_doc 787.26642 | train_loss 322.55014 | train_loss_rec 572.28827 | train_kld 9.43599 | train_penalty -259.17398
+INFO - main - train 1262720/1280000(epoch 31568/32000, 0.99), train_ppx 715.58649 | train_ppx_doc 788.40356 | train_loss 322.70270 | train_loss_rec 572.44873 | train_kld 9.42779 | train_penalty -259.17386
+INFO - main - train 1262760/1280000(epoch 31569/32000, 0.99), train_ppx 715.17340 | train_ppx_doc 786.26855 | train_loss 322.65167 | train_loss_rec 572.38098 | train_kld 9.44438 | train_penalty -259.17371
+INFO - main - saving checkpoint
+INFO - main - save checkpoint to data/exp/ntmr/1/model_1262800.pt
+INFO - main - train 1262800/1280000(epoch 31570/32000, 0.99), train_ppx 714.93268 | train_ppx_doc 787.88342 | train_loss 322.62189 | train_loss_rec 572.33618 | train_kld 9.45939 | train_penalty -259.17374
+INFO - main - evaluating model performance
+INFO - main - evaluate 1262800/1280000(epoch 31570/32000, 0.99), eval_ppx 776.53625 | eval_ppx_doc 794.68823 | eval_loss 299.74567 | eval_loss_rec 550.21783 | eval_kld 8.70041 | eval_penalty -259.17252
+INFO - main - train 1262840/1280000(epoch 31571/32000, 0.99), train_ppx 716.63617 | train_ppx_doc 787.09601 | train_loss 322.83273 | train_loss_rec 572.57025 | train_kld 9.43604 | train_penalty -259.17358
+INFO - main - train 1262880/1280000(epoch 31572/32000, 0.99), train_ppx 715.45209 | train_ppx_doc 788.86841 | train_loss 322.68637 | train_loss_rec 572.40387 | train_kld 9.45593 | train_penalty -259.17352
+INFO - main - train 1262920/1280000(epoch 31573/32000, 0.99), train_ppx 714.38501 | train_ppx_doc 787.82593 | train_loss 322.55426 | train_loss_rec 572.28333 | train_kld 9.44444 | train_penalty -259.17337
+INFO - main - train 1262960/1280000(epoch 31574/32000, 0.99), train_ppx 715.25793 | train_ppx_doc 789.14337 | train_loss 322.66263 | train_loss_rec 572.38306 | train_kld 9.45287 | train_penalty -259.17334
+INFO - main - train 1263000/1280000(epoch 31575/32000, 0.99), train_ppx 716.01685 | train_ppx_doc 788.12128 | train_loss 322.75659 | train_loss_rec 572.49664 | train_kld 9.43309 | train_penalty -259.17316
+INFO - main - train 1263040/1280000(epoch 31576/32000, 0.99), train_ppx 715.48889 | train_ppx_doc 786.37347 | train_loss 322.69128 | train_loss_rec 572.42993 | train_kld 9.43455 | train_penalty -259.17310
+INFO - main - train 1263080/1280000(epoch 31577/32000, 0.99), train_ppx 715.58411 | train_ppx_doc 788.67352 | train_loss 322.70331 | train_loss_rec 572.47101 | train_kld 9.40530 | train_penalty -259.17297
+INFO - main - train 1263120/1280000(epoch 31578/32000, 0.99), train_ppx 715.11676 | train_ppx_doc 786.73505 | train_loss 322.64539 | train_loss_rec 572.38971 | train_kld 9.42871 | train_penalty -259.17300
+INFO - main - train 1263160/1280000(epoch 31579/32000, 0.99), train_ppx 714.55066 | train_ppx_doc 787.17072 | train_loss 322.57544 | train_loss_rec 572.32324 | train_kld 9.42521 | train_penalty -259.17303
+INFO - main - saving checkpoint
+INFO - main - save checkpoint to data/exp/ntmr/1/model_1263200.pt
+INFO - main - train 1263200/1280000(epoch 31580/32000, 0.99), train_ppx 715.69604 | train_ppx_doc 789.10126 | train_loss 322.71719 | train_loss_rec 572.46875 | train_kld 9.42136 | train_penalty -259.17288
+INFO - main - evaluating model performance
+INFO - main - evaluate 1263200/1280000(epoch 31580/32000, 0.99), eval_ppx 776.18237 | eval_ppx_doc 794.14917 | eval_loss 299.70807 | eval_loss_rec 550.21240 | eval_kld 8.66753 | eval_penalty -259.17178
+INFO - main - train 1263240/1280000(epoch 31581/32000, 0.99), train_ppx 716.80603 | train_ppx_doc 789.73065 | train_loss 322.85428 | train_loss_rec 572.60602 | train_kld 9.42117 | train_penalty -259.17285
+INFO - main - train 1263280/1280000(epoch 31582/32000, 0.99), train_ppx 714.98621 | train_ppx_doc 787.61267 | train_loss 322.62955 | train_loss_rec 572.38080 | train_kld 9.42158 | train_penalty -259.17282
+INFO - main - train 1263320/1280000(epoch 31583/32000, 0.99), train_ppx 715.17542 | train_ppx_doc 788.56860 | train_loss 322.65283 | train_loss_rec 572.38556 | train_kld 9.44013 | train_penalty -259.17282
+INFO - main - train 1263360/1280000(epoch 31584/32000, 0.99), train_ppx 715.35718 | train_ppx_doc 788.66449 | train_loss 322.67548 | train_loss_rec 572.41010 | train_kld 9.43810 | train_penalty -259.17270
+INFO - main - train 1263400/1280000(epoch 31585/32000, 0.99), train_ppx 714.52985 | train_ppx_doc 789.32782 | train_loss 322.57306 | train_loss_rec 572.31934 | train_kld 9.42632 | train_penalty -259.17267
+INFO - main - train 1263440/1280000(epoch 31586/32000, 0.99), train_ppx 716.02094 | train_ppx_doc 789.17010 | train_loss 322.75769 | train_loss_rec 572.47980 | train_kld 9.45041 | train_penalty -259.17258
+INFO - main - train 1263480/1280000(epoch 31587/32000, 0.99), train_ppx 715.33063 | train_ppx_doc 787.15009 | train_loss 322.67212 | train_loss_rec 572.41443 | train_kld 9.43024 | train_penalty -259.17261
+INFO - main - train 1263520/1280000(epoch 31588/32000, 0.99), train_ppx 715.27026 | train_ppx_doc 788.12579 | train_loss 322.66467 | train_loss_rec 572.41858 | train_kld 9.41883 | train_penalty -259.17273
+INFO - main - train 1263560/1280000(epoch 31589/32000, 0.99), train_ppx 714.58533 | train_ppx_doc 787.78687 | train_loss 322.57999 | train_loss_rec 572.33069 | train_kld 9.42200 | train_penalty -259.17267
+INFO - main - saving checkpoint
+INFO - main - save checkpoint to data/exp/ntmr/1/model_1263600.pt
+INFO - main - train 1263600/1280000(epoch 31590/32000, 0.99), train_ppx 715.27026 | train_ppx_doc 787.27917 | train_loss 322.66492 | train_loss_rec 572.39722 | train_kld 9.44037 | train_penalty -259.17258
+INFO - main - evaluating model performance
+INFO - main - evaluate 1263600/1280000(epoch 31590/32000, 0.99), eval_ppx 779.77148 | eval_ppx_doc 797.44067 | eval_loss 300.09576 | eval_loss_rec 550.58563 | eval_kld 8.68178 | eval_penalty -259.17166
+INFO - main - train 1263640/1280000(epoch 31591/32000, 0.99), train_ppx 714.59052 | train_ppx_doc 786.98419 | train_loss 322.58069 | train_loss_rec 572.31824 | train_kld 9.43501 | train_penalty -259.17252
+INFO - main - train 1263680/1280000(epoch 31592/32000, 0.99), train_ppx 715.53424 | train_ppx_doc 788.57196 | train_loss 322.69769 | train_loss_rec 572.42346 | train_kld 9.44652 | train_penalty -259.17236
+INFO - main - train 1263720/1280000(epoch 31593/32000, 0.99), train_ppx 716.25928 | train_ppx_doc 787.59088 | train_loss 322.78748 | train_loss_rec 572.52905 | train_kld 9.43077 | train_penalty -259.17230
+INFO - main - train 1263760/1280000(epoch 31594/32000, 0.99), train_ppx 715.07825 | train_ppx_doc 788.37384 | train_loss 322.64130 | train_loss_rec 572.37762 | train_kld 9.43612 | train_penalty -259.17227
+INFO - main - train 1263800/1280000(epoch 31595/32000, 0.99), train_ppx 715.87933 | train_ppx_doc 786.22125 | train_loss 322.74048 | train_loss_rec 572.47638 | train_kld 9.43634 | train_penalty -259.17230
+INFO - main - train 1263840/1280000(epoch 31596/32000, 0.99), train_ppx 715.26001 | train_ppx_doc 789.09027 | train_loss 322.66391 | train_loss_rec 572.36035 | train_kld 9.47582 | train_penalty -259.17218
+INFO - main - train 1263880/1280000(epoch 31597/32000, 0.99), train_ppx 715.59430 | train_ppx_doc 786.43951 | train_loss 322.70523 | train_loss_rec 572.46326 | train_kld 9.41419 | train_penalty -259.17218
+INFO - main - train 1263920/1280000(epoch 31598/32000, 0.99), train_ppx 714.90747 | train_ppx_doc 788.56708 | train_loss 322.62045 | train_loss_rec 572.34393 | train_kld 9.44859 | train_penalty -259.17206
+INFO - main - train 1263960/1280000(epoch 31599/32000, 0.99), train_ppx 715.17096 | train_ppx_doc 789.37592 | train_loss 322.65311 | train_loss_rec 572.39221 | train_kld 9.43293 | train_penalty -259.17197
+INFO - main - saving checkpoint
+INFO - main - save checkpoint to data/exp/ntmr/1/model_1264000.pt
+INFO - main - train 1264000/1280000(epoch 31600/32000, 0.99), train_ppx 714.68555 | train_ppx_doc 788.02808 | train_loss 322.59311 | train_loss_rec 572.33234 | train_kld 9.43267 | train_penalty -259.17194
+INFO - main - evaluating model performance
+INFO - main - evaluate 1264000/1280000(epoch 31600/32000, 0.99), eval_ppx 780.09839 | eval_ppx_doc 798.13800 | eval_loss 300.13239 | eval_loss_rec 550.60748 | eval_kld 8.69509 | eval_penalty -259.17017
+INFO - main - saving topics to data/exp/ntmr/1/topic-31600
+INFO - main - topic coherence 0.346
+INFO - main - train 1264040/1280000(epoch 31601/32000, 0.99), train_ppx 716.95099 | train_ppx_doc 789.38690 | train_loss 322.87335 | train_loss_rec 572.62091 | train_kld 9.42425 | train_penalty -259.17178
+INFO - main - train 1264080/1280000(epoch 31602/32000, 0.99), train_ppx 715.19281 | train_ppx_doc 788.54114 | train_loss 322.65607 | train_loss_rec 572.35950 | train_kld 9.46852 | train_penalty -259.17178
+INFO - main - train 1264120/1280000(epoch 31603/32000, 0.99), train_ppx 716.14252 | train_ppx_doc 788.66754 | train_loss 322.77347 | train_loss_rec 572.48096 | train_kld 9.46425 | train_penalty -259.17178
+INFO - main - train 1264160/1280000(epoch 31604/32000, 0.99), train_ppx 715.45270 | train_ppx_doc 788.64496 | train_loss 322.68832 | train_loss_rec 572.38452 | train_kld 9.47538 | train_penalty -259.17166
+INFO - main - train 1264200/1280000(epoch 31605/32000, 0.99), train_ppx 714.79626 | train_ppx_doc 787.65881 | train_loss 322.60690 | train_loss_rec 572.34033 | train_kld 9.43830 | train_penalty -259.17175
+INFO - main - train 1264240/1280000(epoch 31606/32000, 0.99), train_ppx 716.52136 | train_ppx_doc 788.76416 | train_loss 322.82043 | train_loss_rec 572.55890 | train_kld 9.43317 | train_penalty -259.17166
+INFO - main - train 1264280/1280000(epoch 31607/32000, 0.99), train_ppx 715.98651 | train_ppx_doc 788.89093 | train_loss 322.75439 | train_loss_rec 572.46478 | train_kld 9.46126 | train_penalty -259.17154
+INFO - main - train 1264320/1280000(epoch 31608/32000, 0.99), train_ppx 714.66132 | train_ppx_doc 788.83258 | train_loss 322.59027 | train_loss_rec 572.30780 | train_kld 9.45411 | train_penalty -259.17163
+INFO - main - train 1264360/1280000(epoch 31609/32000, 0.99), train_ppx 714.89038 | train_ppx_doc 788.14197 | train_loss 322.61877 | train_loss_rec 572.31702 | train_kld 9.47342 | train_penalty -259.17157
+INFO - main - saving checkpoint
+INFO - main - save checkpoint to data/exp/ntmr/1/model_1264400.pt
+INFO - main - train 1264400/1280000(epoch 31610/32000, 0.99), train_ppx 715.44727 | train_ppx_doc 788.39569 | train_loss 322.68787 | train_loss_rec 572.42310 | train_kld 9.43619 | train_penalty -259.17148
+INFO - main - evaluating model performance
+INFO - main - evaluate 1264400/1280000(epoch 31610/32000, 0.99), eval_ppx 778.33234 | eval_ppx_doc 803.34869 | eval_loss 299.94199 | eval_loss_rec 550.41016 | eval_kld 8.70210 | eval_penalty -259.17026
+INFO - main - train 1264440/1280000(epoch 31611/32000, 0.99), train_ppx 714.44025 | train_ppx_doc 787.78198 | train_loss 322.56329 | train_loss_rec 572.30365 | train_kld 9.43099 | train_penalty -259.17136
+INFO - main - train 1264480/1280000(epoch 31612/32000, 0.99), train_ppx 715.35754 | train_ppx_doc 787.39899 | train_loss 322.67682 | train_loss_rec 572.43195 | train_kld 9.41617 | train_penalty -259.17133
+INFO - main - train 1264520/1280000(epoch 31613/32000, 0.99), train_ppx 715.34698 | train_ppx_doc 787.47705 | train_loss 322.67548 | train_loss_rec 572.41876 | train_kld 9.42805 | train_penalty -259.17142
+INFO - main - train 1264560/1280000(epoch 31614/32000, 0.99), train_ppx 714.82935 | train_ppx_doc 787.68848 | train_loss 322.61139 | train_loss_rec 572.34387 | train_kld 9.43890 | train_penalty -259.17139
+INFO - main - train 1264600/1280000(epoch 31615/32000, 0.99), train_ppx 714.10577 | train_ppx_doc 787.64984 | train_loss 322.52167 | train_loss_rec 572.24152 | train_kld 9.45157 | train_penalty -259.17139
+INFO - main - train 1264640/1280000(epoch 31616/32000, 0.99), train_ppx 714.75201 | train_ppx_doc 787.81317 | train_loss 322.60193 | train_loss_rec 572.34406 | train_kld 9.42914 | train_penalty -259.17133
+INFO - main - train 1264680/1280000(epoch 31617/32000, 0.99), train_ppx 716.00903 | train_ppx_doc 789.05157 | train_loss 322.75766 | train_loss_rec 572.46442 | train_kld 9.46454 | train_penalty -259.17126
+INFO - main - train 1264720/1280000(epoch 31618/32000, 0.99), train_ppx 715.86298 | train_ppx_doc 788.16791 | train_loss 322.73947 | train_loss_rec 572.46301 | train_kld 9.44778 | train_penalty -259.17117
+INFO - main - train 1264760/1280000(epoch 31619/32000, 0.99), train_ppx 715.69293 | train_ppx_doc 788.13220 | train_loss 322.71869 | train_loss_rec 572.42938 | train_kld 9.46040 | train_penalty -259.17111
+INFO - main - saving checkpoint
+INFO - main - save checkpoint to data/exp/ntmr/1/model_1264800.pt
+INFO - main - train 1264800/1280000(epoch 31620/32000, 0.99), train_ppx 714.80621 | train_ppx_doc 789.07751 | train_loss 322.60886 | train_loss_rec 572.31024 | train_kld 9.46971 | train_penalty -259.17105
+INFO - main - evaluating model performance
+INFO - main - evaluate 1264800/1280000(epoch 31620/32000, 0.99), eval_ppx 783.36749 | eval_ppx_doc 801.78961 | eval_loss 300.48376 | eval_loss_rec 550.95001 | eval_kld 8.70382 | eval_penalty -259.17007
+INFO - main - train 1264840/1280000(epoch 31621/32000, 0.99), train_ppx 715.28015 | train_ppx_doc 788.31482 | train_loss 322.66766 | train_loss_rec 572.40076 | train_kld 9.43794 | train_penalty -259.17102
+INFO - main - train 1264880/1280000(epoch 31622/32000, 0.99), train_ppx 714.63239 | train_ppx_doc 788.19910 | train_loss 322.58771 | train_loss_rec 572.29913 | train_kld 9.45942 | train_penalty -259.17090
+INFO - main - train 1264920/1280000(epoch 31623/32000, 0.99), train_ppx 714.31519 | train_ppx_doc 788.73224 | train_loss 322.54816 | train_loss_rec 572.27686 | train_kld 9.44235 | train_penalty -259.17096
+INFO - main - train 1264960/1280000(epoch 31624/32000, 0.99), train_ppx 715.37390 | train_ppx_doc 788.51074 | train_loss 322.67941 | train_loss_rec 572.41510 | train_kld 9.43509 | train_penalty -259.17081
+INFO - main - train 1265000/1280000(epoch 31625/32000, 0.99), train_ppx 715.14166 | train_ppx_doc 789.00415 | train_loss 322.65073 | train_loss_rec 572.39459 | train_kld 9.42700 | train_penalty -259.17078
+INFO - main - train 1265040/1280000(epoch 31626/32000, 0.99), train_ppx 715.99261 | train_ppx_doc 790.67712 | train_loss 322.75620 | train_loss_rec 572.49548 | train_kld 9.43145 | train_penalty -259.17068
+INFO - main - train 1265080/1280000(epoch 31627/32000, 0.99), train_ppx 716.00122 | train_ppx_doc 786.64386 | train_loss 322.75739 | train_loss_rec 572.52234 | train_kld 9.40558 | train_penalty -259.17053
+INFO - main - train 1265120/1280000(epoch 31628/32000, 0.99), train_ppx 715.42682 | train_ppx_doc 787.53864 | train_loss 322.68622 | train_loss_rec 572.41937 | train_kld 9.43729 | train_penalty -259.17041
+INFO - main - train 1265160/1280000(epoch 31629/32000, 0.99), train_ppx 715.28766 | train_ppx_doc 788.10211 | train_loss 322.66919 | train_loss_rec 572.41107 | train_kld 9.42844 | train_penalty -259.17035
+INFO - main - saving checkpoint
+INFO - main - save checkpoint to data/exp/ntmr/1/model_1265200.pt
+INFO - main - train 1265200/1280000(epoch 31630/32000, 0.99), train_ppx 715.67761 | train_ppx_doc 788.74841 | train_loss 322.71750 | train_loss_rec 572.45758 | train_kld 9.43028 | train_penalty -259.17032
+INFO - main - evaluating model performance
+INFO - main - evaluate 1265200/1280000(epoch 31630/32000, 0.99), eval_ppx 774.28748 | eval_ppx_doc 796.36456 | eval_loss 299.50568 | eval_loss_rec 549.95398 | eval_kld 8.72060 | eval_penalty -259.16895
+INFO - main - train 1265240/1280000(epoch 31631/32000, 0.99), train_ppx 714.76086 | train_ppx_doc 787.83081 | train_loss 322.60416 | train_loss_rec 572.30731 | train_kld 9.46697 | train_penalty -259.17023
+INFO - main - train 1265280/1280000(epoch 31632/32000, 0.99), train_ppx 715.66833 | train_ppx_doc 789.66357 | train_loss 322.71649 | train_loss_rec 572.43048 | train_kld 9.45623 | train_penalty -259.17010
+INFO - main - train 1265320/1280000(epoch 31633/32000, 0.99), train_ppx 714.38501 | train_ppx_doc 787.60400 | train_loss 322.55777 | train_loss_rec 572.25702 | train_kld 9.47076 | train_penalty -259.17014
+INFO - main - train 1265360/1280000(epoch 31634/32000, 0.99), train_ppx 716.79578 | train_ppx_doc 788.02618 | train_loss 322.85593 | train_loss_rec 572.56873 | train_kld 9.45711 | train_penalty -259.17007
+INFO - main - train 1265400/1280000(epoch 31635/32000, 0.99), train_ppx 714.53699 | train_ppx_doc 787.54694 | train_loss 322.57687 | train_loss_rec 572.27765 | train_kld 9.46898 | train_penalty -259.16974
+INFO - main - train 1265440/1280000(epoch 31636/32000, 0.99), train_ppx 715.26752 | train_ppx_doc 787.60175 | train_loss 322.66733 | train_loss_rec 572.37982 | train_kld 9.45727 | train_penalty -259.16977
+INFO - main - train 1265480/1280000(epoch 31637/32000, 0.99), train_ppx 714.40680 | train_ppx_doc 787.16962 | train_loss 322.56064 | train_loss_rec 572.29022 | train_kld 9.44028 | train_penalty -259.16980
+INFO - main - train 1265520/1280000(epoch 31638/32000, 0.99), train_ppx 715.99158 | train_ppx_doc 786.67688 | train_loss 322.75708 | train_loss_rec 572.49091 | train_kld 9.43584 | train_penalty -259.16962
+INFO - main - train 1265560/1280000(epoch 31639/32000, 0.99), train_ppx 716.01587 | train_ppx_doc 787.91803 | train_loss 322.76016 | train_loss_rec 572.48975 | train_kld 9.44012 | train_penalty -259.16959
+INFO - main - saving checkpoint
+INFO - main - save checkpoint to data/exp/ntmr/1/model_1265600.pt
+INFO - main - train 1265600/1280000(epoch 31640/32000, 0.99), train_ppx 715.69025 | train_ppx_doc 786.93500 | train_loss 322.71985 | train_loss_rec 572.44720 | train_kld 9.44242 | train_penalty -259.16971
+INFO - main - evaluating model performance
+INFO - main - evaluate 1265600/1280000(epoch 31640/32000, 0.99), eval_ppx 780.95660 | eval_ppx_doc 798.38770 | eval_loss 300.22720 | eval_loss_rec 550.70758 | eval_kld 8.68735 | eval_penalty -259.16779
+INFO - main - train 1265640/1280000(epoch 31641/32000, 0.99), train_ppx 715.29956 | train_ppx_doc 788.62915 | train_loss 322.67166 | train_loss_rec 572.38196 | train_kld 9.45913 | train_penalty -259.16949
+INFO - main - train 1265680/1280000(epoch 31642/32000, 0.99), train_ppx 714.18304 | train_ppx_doc 787.38733 | train_loss 322.53345 | train_loss_rec 572.28491 | train_kld 9.41784 | train_penalty -259.16928
+INFO - main - train 1265720/1280000(epoch 31643/32000, 0.99), train_ppx 715.83563 | train_ppx_doc 787.58301 | train_loss 322.73801 | train_loss_rec 572.48108 | train_kld 9.42625 | train_penalty -259.16937
+INFO - main - train 1265760/1280000(epoch 31644/32000, 0.99), train_ppx 714.31519 | train_ppx_doc 787.29004 | train_loss 322.54980 | train_loss_rec 572.31567 | train_kld 9.40341 | train_penalty -259.16925
+INFO - main - train 1265800/1280000(epoch 31645/32000, 0.99), train_ppx 715.88885 | train_ppx_doc 787.28516 | train_loss 322.74472 | train_loss_rec 572.48785 | train_kld 9.42629 | train_penalty -259.16919
+INFO - main - train 1265840/1280000(epoch 31646/32000, 0.99), train_ppx 714.49506 | train_ppx_doc 786.23175 | train_loss 322.57227 | train_loss_rec 572.33972 | train_kld 9.40161 | train_penalty -259.16910
+INFO - main - train 1265880/1280000(epoch 31647/32000, 0.99), train_ppx 716.37482 | train_ppx_doc 788.51373 | train_loss 322.80508 | train_loss_rec 572.54962 | train_kld 9.42436 | train_penalty -259.16888
+INFO - main - train 1265920/1280000(epoch 31648/32000, 0.99), train_ppx 715.51453 | train_ppx_doc 787.29761 | train_loss 322.69870 | train_loss_rec 572.42676 | train_kld 9.44099 | train_penalty -259.16901
+INFO - main - train 1265960/1280000(epoch 31649/32000, 0.99), train_ppx 715.49091 | train_ppx_doc 787.97174 | train_loss 322.69577 | train_loss_rec 572.45312 | train_kld 9.41158 | train_penalty -259.16891
+INFO - main - saving checkpoint
+INFO - main - save checkpoint to data/exp/ntmr/1/model_1266000.pt
+INFO - main - train 1266000/1280000(epoch 31650/32000, 0.99), train_ppx 715.74243 | train_ppx_doc 788.56409 | train_loss 322.72690 | train_loss_rec 572.45636 | train_kld 9.43944 | train_penalty -259.16895
+INFO - main - evaluating model performance
+INFO - main - evaluate 1266000/1280000(epoch 31650/32000, 0.99), eval_ppx 775.21143 | eval_ppx_doc 794.35223 | eval_loss 299.60745 | eval_loss_rec 550.09552 | eval_kld 8.67924 | eval_penalty -259.16736
+INFO - main - train 1266040/1280000(epoch 31651/32000, 0.99), train_ppx 715.92743 | train_ppx_doc 788.73444 | train_loss 322.74966 | train_loss_rec 572.50775 | train_kld 9.41081 | train_penalty -259.16888
+INFO - main - train 1266080/1280000(epoch 31652/32000, 0.99), train_ppx 715.44116 | train_ppx_doc 790.15588 | train_loss 322.68967 | train_loss_rec 572.40131 | train_kld 9.45722 | train_penalty -259.16882
+INFO - main - train 1266120/1280000(epoch 31653/32000, 0.99), train_ppx 714.93542 | train_ppx_doc 787.77374 | train_loss 322.62729 | train_loss_rec 572.34442 | train_kld 9.45157 | train_penalty -259.16879
+INFO - main - train 1266160/1280000(epoch 31654/32000, 0.99), train_ppx 715.34119 | train_ppx_doc 788.63861 | train_loss 322.67749 | train_loss_rec 572.42065 | train_kld 9.42562 | train_penalty -259.16867
+INFO - main - train 1266200/1280000(epoch 31655/32000, 0.99), train_ppx 715.16553 | train_ppx_doc 788.11450 | train_loss 322.65591 | train_loss_rec 572.40546 | train_kld 9.41908 | train_penalty -259.16855
+INFO - main - train 1266240/1280000(epoch 31656/32000, 0.99), train_ppx 714.35577 | train_ppx_doc 787.70880 | train_loss 322.55579 | train_loss_rec 572.31787 | train_kld 9.40641 | train_penalty -259.16846
+INFO - main - train 1266280/1280000(epoch 31657/32000, 0.99), train_ppx 717.78558 | train_ppx_doc 789.93103 | train_loss 322.97977 | train_loss_rec 572.72235 | train_kld 9.42578 | train_penalty -259.16833
+INFO - main - train 1266320/1280000(epoch 31658/32000, 0.99), train_ppx 715.86938 | train_ppx_doc 787.90674 | train_loss 322.74335 | train_loss_rec 572.46753 | train_kld 9.44411 | train_penalty -259.16824
+INFO - main - train 1266360/1280000(epoch 31659/32000, 0.99), train_ppx 714.56897 | train_ppx_doc 788.38251 | train_loss 322.58234 | train_loss_rec 572.30835 | train_kld 9.44227 | train_penalty -259.16818
+INFO - main - saving checkpoint
+INFO - main - save checkpoint to data/exp/ntmr/1/model_1266400.pt
+INFO - main - train 1266400/1280000(epoch 31660/32000, 0.99), train_ppx 715.13928 | train_ppx_doc 788.09723 | train_loss 322.65308 | train_loss_rec 572.38806 | train_kld 9.43310 | train_penalty -259.16806
+INFO - main - evaluating model performance
+INFO - main - evaluate 1266400/1280000(epoch 31660/32000, 0.99), eval_ppx 788.70630 | eval_ppx_doc 800.91528 | eval_loss 301.05740 | eval_loss_rec 551.53400 | eval_kld 8.69026 | eval_penalty -259.16690
+INFO - main - train 1266440/1280000(epoch 31661/32000, 0.99), train_ppx 715.80798 | train_ppx_doc 789.10992 | train_loss 322.73584 | train_loss_rec 572.45844 | train_kld 9.44548 | train_penalty -259.16797
+INFO - main - train 1266480/1280000(epoch 31662/32000, 0.99), train_ppx 715.95239 | train_ppx_doc 789.30896 | train_loss 322.75388 | train_loss_rec 572.49310 | train_kld 9.42861 | train_penalty -259.16791
+INFO - main - train 1266520/1280000(epoch 31663/32000, 0.99), train_ppx 715.35547 | train_ppx_doc 789.12872 | train_loss 322.68015 | train_loss_rec 572.39087 | train_kld 9.45701 | train_penalty -259.16782
+INFO - main - train 1266560/1280000(epoch 31664/32000, 0.99), train_ppx 714.26685 | train_ppx_doc 787.28369 | train_loss 322.54544 | train_loss_rec 572.26208 | train_kld 9.45117 | train_penalty -259.16772
+INFO - main - train 1266600/1280000(epoch 31665/32000, 0.99), train_ppx 715.02026 | train_ppx_doc 788.47125 | train_loss 322.63889 | train_loss_rec 572.36792 | train_kld 9.43858 | train_penalty -259.16766
+INFO - main - train 1266640/1280000(epoch 31666/32000, 0.99), train_ppx 715.03394 | train_ppx_doc 787.71100 | train_loss 322.64047 | train_loss_rec 572.34546 | train_kld 9.46270 | train_penalty -259.16763
+INFO - main - train 1266680/1280000(epoch 31667/32000, 0.99), train_ppx 715.16315 | train_ppx_doc 787.05066 | train_loss 322.65656 | train_loss_rec 572.32556 | train_kld 9.49857 | train_penalty -259.16757
+INFO - main - train 1266720/1280000(epoch 31668/32000, 0.99), train_ppx 716.38159 | train_ppx_doc 788.63184 | train_loss 322.80725 | train_loss_rec 572.52380 | train_kld 9.45098 | train_penalty -259.16754
+INFO - main - train 1266760/1280000(epoch 31669/32000, 0.99), train_ppx 714.64435 | train_ppx_doc 788.01605 | train_loss 322.59241 | train_loss_rec 572.31256 | train_kld 9.44731 | train_penalty -259.16751
+INFO - main - saving checkpoint
+INFO - main - save checkpoint to data/exp/ntmr/1/model_1266800.pt
+INFO - main - train 1266800/1280000(epoch 31670/32000, 0.99), train_ppx 714.43683 | train_ppx_doc 787.22888 | train_loss 322.56668 | train_loss_rec 572.30316 | train_kld 9.43108 | train_penalty -259.16754
+INFO - main - evaluating model performance
+INFO - main - evaluate 1266800/1280000(epoch 31670/32000, 0.99), eval_ppx 779.30682 | eval_ppx_doc 799.06183 | eval_loss 300.05109 | eval_loss_rec 550.52917 | eval_kld 8.68818 | eval_penalty -259.16626
+INFO - main - train 1266840/1280000(epoch 31671/32000, 0.99), train_ppx 715.34662 | train_ppx_doc 787.81061 | train_loss 322.67944 | train_loss_rec 572.40759 | train_kld 9.43937 | train_penalty -259.16751
+INFO - main - train 1266880/1280000(epoch 31672/32000, 0.99), train_ppx 714.04138 | train_ppx_doc 788.36072 | train_loss 322.51770 | train_loss_rec 572.24176 | train_kld 9.44348 | train_penalty -259.16742
+INFO - main - train 1266920/1280000(epoch 31673/32000, 0.99), train_ppx 714.72815 | train_ppx_doc 787.24463 | train_loss 322.60303 | train_loss_rec 572.31293 | train_kld 9.45747 | train_penalty -259.16730
+INFO - main - train 1266960/1280000(epoch 31674/32000, 0.99), train_ppx 716.35394 | train_ppx_doc 789.77173 | train_loss 322.80426 | train_loss_rec 572.52136 | train_kld 9.45007 | train_penalty -259.16718
+INFO - main - train 1267000/1280000(epoch 31675/32000, 0.99), train_ppx 714.96100 | train_ppx_doc 787.44141 | train_loss 322.63196 | train_loss_rec 572.34369 | train_kld 9.45551 | train_penalty -259.16721
+INFO - main - train 1267040/1280000(epoch 31676/32000, 0.99), train_ppx 715.78613 | train_ppx_doc 788.72247 | train_loss 322.73392 | train_loss_rec 572.47943 | train_kld 9.42177 | train_penalty -259.16736
+INFO - main - train 1267080/1280000(epoch 31677/32000, 0.99), train_ppx 715.64752 | train_ppx_doc 788.12238 | train_loss 322.71664 | train_loss_rec 572.43610 | train_kld 9.44793 | train_penalty -259.16739
+INFO - main - train 1267120/1280000(epoch 31678/32000, 0.99), train_ppx 714.80927 | train_ppx_doc 787.28296 | train_loss 322.61282 | train_loss_rec 572.35022 | train_kld 9.43005 | train_penalty -259.16751
+INFO - main - train 1267160/1280000(epoch 31679/32000, 0.99), train_ppx 715.32715 | train_ppx_doc 789.24500 | train_loss 322.67703 | train_loss_rec 572.40131 | train_kld 9.44309 | train_penalty -259.16736
+INFO - main - saving checkpoint
+INFO - main - save checkpoint to data/exp/ntmr/1/model_1267200.pt
+INFO - main - train 1267200/1280000(epoch 31680/32000, 0.99), train_ppx 715.38794 | train_ppx_doc 789.61011 | train_loss 322.68481 | train_loss_rec 572.38666 | train_kld 9.46507 | train_penalty -259.16711
+INFO - main - evaluating model performance
+INFO - main - evaluate 1267200/1280000(epoch 31680/32000, 0.99), eval_ppx 780.65283 | eval_ppx_doc 802.64990 | eval_loss 300.19635 | eval_loss_rec 550.65692 | eval_kld 8.70534 | eval_penalty -259.16592
+INFO - main - train 1267240/1280000(epoch 31681/32000, 0.99), train_ppx 715.51825 | train_ppx_doc 788.21484 | train_loss 322.70096 | train_loss_rec 572.43085 | train_kld 9.43733 | train_penalty -259.16711
+INFO - main - train 1267280/1280000(epoch 31682/32000, 0.99), train_ppx 715.09497 | train_ppx_doc 787.64197 | train_loss 322.64859 | train_loss_rec 572.37915 | train_kld 9.43644 | train_penalty -259.16705
+INFO - main - train 1267320/1280000(epoch 31683/32000, 0.99), train_ppx 715.91211 | train_ppx_doc 788.88226 | train_loss 322.74969 | train_loss_rec 572.47351 | train_kld 9.44321 | train_penalty -259.16699
+INFO - main - train 1267360/1280000(epoch 31684/32000, 0.99), train_ppx 714.95618 | train_ppx_doc 788.11078 | train_loss 322.63162 | train_loss_rec 572.31024 | train_kld 9.48822 | train_penalty -259.16690
+INFO - main - train 1267400/1280000(epoch 31685/32000, 0.99), train_ppx 714.39734 | train_ppx_doc 787.32202 | train_loss 322.56250 | train_loss_rec 572.26221 | train_kld 9.46713 | train_penalty -259.16675
+INFO - main - train 1267440/1280000(epoch 31686/32000, 0.99), train_ppx 714.29614 | train_ppx_doc 787.98975 | train_loss 322.54996 | train_loss_rec 572.30438 | train_kld 9.41228 | train_penalty -259.16678
+INFO - main - train 1267480/1280000(epoch 31687/32000, 0.99), train_ppx 714.97601 | train_ppx_doc 789.36127 | train_loss 322.63446 | train_loss_rec 572.37061 | train_kld 9.43039 | train_penalty -259.16666
+INFO - main - train 1267520/1280000(epoch 31688/32000, 0.99), train_ppx 714.15753 | train_ppx_doc 787.88800 | train_loss 322.53287 | train_loss_rec 572.27954 | train_kld 9.42006 | train_penalty -259.16669
+INFO - main - train 1267560/1280000(epoch 31689/32000, 0.99), train_ppx 714.08191 | train_ppx_doc 788.24567 | train_loss 322.52347 | train_loss_rec 572.28790 | train_kld 9.40235 | train_penalty -259.16672
+INFO - main - saving checkpoint
+INFO - main - save checkpoint to data/exp/ntmr/1/model_1267600.pt
+INFO - main - train 1267600/1280000(epoch 31690/32000, 0.99), train_ppx 715.81409 | train_ppx_doc 789.87640 | train_loss 322.73798 | train_loss_rec 572.43103 | train_kld 9.47353 | train_penalty -259.16653
+INFO - main - evaluating model performance
+INFO - main - evaluate 1267600/1280000(epoch 31690/32000, 0.99), eval_ppx 774.39490 | eval_ppx_doc 798.99127 | eval_loss 299.52121 | eval_loss_rec 549.99829 | eval_kld 8.68791 | eval_penalty -259.16504
+INFO - main - train 1267640/1280000(epoch 31691/32000, 0.99), train_ppx 716.61536 | train_ppx_doc 788.75476 | train_loss 322.83728 | train_loss_rec 572.55743 | train_kld 9.44629 | train_penalty -259.16650
+INFO - main - train 1267680/1280000(epoch 31692/32000, 0.99), train_ppx 716.65289 | train_ppx_doc 788.05737 | train_loss 322.84189 | train_loss_rec 572.59241 | train_kld 9.41595 | train_penalty -259.16647
+INFO - main - train 1267720/1280000(epoch 31693/32000, 0.99), train_ppx 716.19543 | train_ppx_doc 787.82825 | train_loss 322.78543 | train_loss_rec 572.48914 | train_kld 9.46268 | train_penalty -259.16650
+INFO - main - train 1267760/1280000(epoch 31694/32000, 0.99), train_ppx 716.18488 | train_ppx_doc 788.29980 | train_loss 322.78406 | train_loss_rec 572.47400 | train_kld 9.47642 | train_penalty -259.16641
+INFO - main - train 1267800/1280000(epoch 31695/32000, 0.99), train_ppx 715.10382 | train_ppx_doc 787.30469 | train_loss 322.65057 | train_loss_rec 572.37683 | train_kld 9.44007 | train_penalty -259.16629
+INFO - main - train 1267840/1280000(epoch 31696/32000, 0.99), train_ppx 715.03119 | train_ppx_doc 788.30359 | train_loss 322.64148 | train_loss_rec 572.36060 | train_kld 9.44700 | train_penalty -259.16626
+INFO - main - train 1267880/1280000(epoch 31697/32000, 0.99), train_ppx 714.41260 | train_ppx_doc 788.20618 | train_loss 322.56522 | train_loss_rec 572.25873 | train_kld 9.47253 | train_penalty -259.16599
+INFO - main - train 1267920/1280000(epoch 31698/32000, 0.99), train_ppx 716.03259 | train_ppx_doc 788.08630 | train_loss 322.76596 | train_loss_rec 572.47729 | train_kld 9.45451 | train_penalty -259.16586
+INFO - main - train 1267960/1280000(epoch 31699/32000, 0.99), train_ppx 715.84619 | train_ppx_doc 788.39270 | train_loss 322.74280 | train_loss_rec 572.48334 | train_kld 9.42528 | train_penalty -259.16589
+INFO - main - saving checkpoint
+INFO - main - save checkpoint to data/exp/ntmr/1/model_1268000.pt
+INFO - main - train 1268000/1280000(epoch 31700/32000, 0.99), train_ppx 716.00562 | train_ppx_doc 787.30585 | train_loss 322.76251 | train_loss_rec 572.51117 | train_kld 9.41718 | train_penalty -259.16586
+INFO - main - evaluating model performance
+INFO - main - evaluate 1268000/1280000(epoch 31700/32000, 0.99), eval_ppx 783.19305 | eval_ppx_doc 799.58246 | eval_loss 300.47092 | eval_loss_rec 550.95416 | eval_kld 8.68095 | eval_penalty -259.16415
+INFO - main - saving topics to data/exp/ntmr/1/topic-31700
+INFO - main - topic coherence 0.346
+INFO - main - train 1268040/1280000(epoch 31701/32000, 0.99), train_ppx 716.11011 | train_ppx_doc 789.56458 | train_loss 322.77567 | train_loss_rec 572.50031 | train_kld 9.44099 | train_penalty -259.16562
+INFO - main - train 1268080/1280000(epoch 31702/32000, 0.99), train_ppx 714.83893 | train_ppx_doc 787.20520 | train_loss 322.61835 | train_loss_rec 572.35931 | train_kld 9.42468 | train_penalty -259.16568
+INFO - main - train 1268120/1280000(epoch 31703/32000, 0.99), train_ppx 714.82935 | train_ppx_doc 788.31445 | train_loss 322.61722 | train_loss_rec 572.32776 | train_kld 9.45517 | train_penalty -259.16562
+INFO - main - train 1268160/1280000(epoch 31704/32000, 0.99), train_ppx 714.79254 | train_ppx_doc 787.93341 | train_loss 322.61273 | train_loss_rec 572.35760 | train_kld 9.42057 | train_penalty -259.16562
+INFO - main - train 1268200/1280000(epoch 31705/32000, 0.99), train_ppx 714.49103 | train_ppx_doc 786.68817 | train_loss 322.57541 | train_loss_rec 572.31891 | train_kld 9.42193 | train_penalty -259.16550
+INFO - main - train 1268240/1280000(epoch 31706/32000, 0.99), train_ppx 716.88910 | train_ppx_doc 787.46686 | train_loss 322.87225 | train_loss_rec 572.58044 | train_kld 9.45715 | train_penalty -259.16534
+INFO - main - train 1268280/1280000(epoch 31707/32000, 0.99), train_ppx 716.36902 | train_ppx_doc 788.36896 | train_loss 322.80804 | train_loss_rec 572.48669 | train_kld 9.48667 | train_penalty -259.16525
+INFO - main - train 1268320/1280000(epoch 31708/32000, 0.99), train_ppx 715.67450 | train_ppx_doc 789.26569 | train_loss 322.72232 | train_loss_rec 572.42242 | train_kld 9.46514 | train_penalty -259.16516
+INFO - main - train 1268360/1280000(epoch 31709/32000, 0.99), train_ppx 714.55231 | train_ppx_doc 787.89807 | train_loss 322.58328 | train_loss_rec 572.31110 | train_kld 9.43742 | train_penalty -259.16513
+INFO - main - saving checkpoint
+INFO - main - save checkpoint to data/exp/ntmr/1/model_1268400.pt
+INFO - main - train 1268400/1280000(epoch 31710/32000, 0.99), train_ppx 716.29077 | train_ppx_doc 787.78278 | train_loss 322.79858 | train_loss_rec 572.50989 | train_kld 9.45372 | train_penalty -259.16504
+INFO - main - evaluating model performance
+INFO - main - evaluate 1268400/1280000(epoch 31710/32000, 0.99), eval_ppx 775.97992 | eval_ppx_doc 797.22858 | eval_loss 299.69391 | eval_loss_rec 550.15881 | eval_kld 8.69927 | eval_penalty -259.16412
+INFO - main - train 1268440/1280000(epoch 31711/32000, 0.99), train_ppx 714.79395 | train_ppx_doc 788.29907 | train_loss 322.61337 | train_loss_rec 572.34357 | train_kld 9.43480 | train_penalty -259.16504
+INFO - main - train 1268480/1280000(epoch 31712/32000, 0.99), train_ppx 716.35974 | train_ppx_doc 787.78687 | train_loss 322.80710 | train_loss_rec 572.53339 | train_kld 9.43877 | train_penalty -259.16498
+INFO - main - train 1268520/1280000(epoch 31713/32000, 0.99), train_ppx 715.33026 | train_ppx_doc 787.94434 | train_loss 322.67987 | train_loss_rec 572.41925 | train_kld 9.42561 | train_penalty -259.16498
+INFO - main - train 1268560/1280000(epoch 31714/32000, 0.99), train_ppx 714.62933 | train_ppx_doc 789.45538 | train_loss 322.59305 | train_loss_rec 572.34753 | train_kld 9.41051 | train_penalty -259.16501
+INFO - main - train 1268600/1280000(epoch 31715/32000, 0.99), train_ppx 714.92822 | train_ppx_doc 786.91888 | train_loss 322.63000 | train_loss_rec 572.35571 | train_kld 9.43935 | train_penalty -259.16519
+INFO - main - train 1268640/1280000(epoch 31716/32000, 0.99), train_ppx 715.39679 | train_ppx_doc 786.47736 | train_loss 322.68802 | train_loss_rec 572.39557 | train_kld 9.45749 | train_penalty -259.16498
+INFO - main - train 1268680/1280000(epoch 31717/32000, 0.99), train_ppx 715.40802 | train_ppx_doc 788.65472 | train_loss 322.68958 | train_loss_rec 572.40253 | train_kld 9.45193 | train_penalty -259.16498
+INFO - main - train 1268720/1280000(epoch 31718/32000, 0.99), train_ppx 716.34814 | train_ppx_doc 788.93042 | train_loss 322.80582 | train_loss_rec 572.53333 | train_kld 9.43724 | train_penalty -259.16492
+INFO - main - train 1268760/1280000(epoch 31719/32000, 0.99), train_ppx 715.59949 | train_ppx_doc 789.58905 | train_loss 322.71310 | train_loss_rec 572.43536 | train_kld 9.44265 | train_penalty -259.16492
+INFO - main - saving checkpoint
+INFO - main - save checkpoint to data/exp/ntmr/1/model_1268800.pt
+INFO - main - train 1268800/1280000(epoch 31720/32000, 0.99), train_ppx 714.57513 | train_ppx_doc 788.59833 | train_loss 322.58649 | train_loss_rec 572.29224 | train_kld 9.45918 | train_penalty -259.16486
+INFO - main - evaluating model performance
+INFO - main - evaluate 1268800/1280000(epoch 31720/32000, 0.99), eval_ppx 778.92822 | eval_ppx_doc 799.74261 | eval_loss 300.01340 | eval_loss_rec 550.47040 | eval_kld 8.70616 | eval_penalty -259.16321
+INFO - main - train 1268840/1280000(epoch 31721/32000, 0.99), train_ppx 714.58533 | train_ppx_doc 787.80530 | train_loss 322.58777 | train_loss_rec 572.30817 | train_kld 9.44449 | train_penalty -259.16470
+INFO - main - train 1268880/1280000(epoch 31722/32000, 0.99), train_ppx 714.76666 | train_ppx_doc 787.22961 | train_loss 322.61038 | train_loss_rec 572.31958 | train_kld 9.45538 | train_penalty -259.16470
+INFO - main - train 1268920/1280000(epoch 31723/32000, 0.99), train_ppx 714.39966 | train_ppx_doc 787.24731 | train_loss 322.56482 | train_loss_rec 572.27527 | train_kld 9.45417 | train_penalty -259.16461
+INFO - main - train 1268960/1280000(epoch 31724/32000, 0.99), train_ppx 715.15161 | train_ppx_doc 787.58521 | train_loss 322.65805 | train_loss_rec 572.41290 | train_kld 9.40982 | train_penalty -259.16470
+INFO - main - train 1269000/1280000(epoch 31725/32000, 0.99), train_ppx 715.88513 | train_ppx_doc 787.84180 | train_loss 322.74875 | train_loss_rec 572.48560 | train_kld 9.42780 | train_penalty -259.16461
+INFO - main - train 1269040/1280000(epoch 31726/32000, 0.99), train_ppx 716.39392 | train_ppx_doc 788.85144 | train_loss 322.81186 | train_loss_rec 572.52191 | train_kld 9.45449 | train_penalty -259.16455
+INFO - main - train 1269080/1280000(epoch 31727/32000, 0.99), train_ppx 716.97351 | train_ppx_doc 791.57080 | train_loss 322.88354 | train_loss_rec 572.58856 | train_kld 9.45932 | train_penalty -259.16440
+INFO - main - train 1269120/1280000(epoch 31728/32000, 0.99), train_ppx 714.03461 | train_ppx_doc 786.79877 | train_loss 322.52002 | train_loss_rec 572.20905 | train_kld 9.47530 | train_penalty -259.16425
+INFO - main - train 1269160/1280000(epoch 31729/32000, 0.99), train_ppx 714.89655 | train_ppx_doc 786.85321 | train_loss 322.62692 | train_loss_rec 572.33820 | train_kld 9.45296 | train_penalty -259.16418
+INFO - main - saving checkpoint
+INFO - main - save checkpoint to data/exp/ntmr/1/model_1269200.pt
+INFO - main - train 1269200/1280000(epoch 31730/32000, 0.99), train_ppx 714.98859 | train_ppx_doc 787.61566 | train_loss 322.63828 | train_loss_rec 572.34741 | train_kld 9.45504 | train_penalty -259.16412
+INFO - main - evaluating model performance
+INFO - main - evaluate 1269200/1280000(epoch 31730/32000, 0.99), eval_ppx 781.35895 | eval_ppx_doc 801.68372 | eval_loss 300.27521 | eval_loss_rec 550.75494 | eval_kld 8.68324 | eval_penalty -259.16296
+INFO - main - train 1269240/1280000(epoch 31731/32000, 0.99), train_ppx 714.32611 | train_ppx_doc 787.82227 | train_loss 322.55630 | train_loss_rec 572.28284 | train_kld 9.43763 | train_penalty -259.16418
+INFO - main - train 1269280/1280000(epoch 31732/32000, 0.99), train_ppx 715.45789 | train_ppx_doc 787.81317 | train_loss 322.69650 | train_loss_rec 572.41766 | train_kld 9.44298 | train_penalty -259.16409
+INFO - main - train 1269320/1280000(epoch 31733/32000, 0.99), train_ppx 715.63940 | train_ppx_doc 789.00946 | train_loss 322.71906 | train_loss_rec 572.45587 | train_kld 9.42714 | train_penalty -259.16406
+INFO - main - train 1269360/1280000(epoch 31734/32000, 0.99), train_ppx 714.95618 | train_ppx_doc 787.69147 | train_loss 322.63461 | train_loss_rec 572.33093 | train_kld 9.46759 | train_penalty -259.16394
+INFO - main - train 1269400/1280000(epoch 31735/32000, 0.99), train_ppx 715.39850 | train_ppx_doc 788.76270 | train_loss 322.68942 | train_loss_rec 572.38873 | train_kld 9.46449 | train_penalty -259.16385
+INFO - main - train 1269440/1280000(epoch 31736/32000, 0.99), train_ppx 715.39240 | train_ppx_doc 787.84210 | train_loss 322.68872 | train_loss_rec 572.41357 | train_kld 9.43894 | train_penalty -259.16382
+INFO - main - train 1269480/1280000(epoch 31737/32000, 0.99), train_ppx 714.44739 | train_ppx_doc 788.68219 | train_loss 322.57184 | train_loss_rec 572.31549 | train_kld 9.42008 | train_penalty -259.16379
+INFO - main - train 1269520/1280000(epoch 31738/32000, 0.99), train_ppx 714.80994 | train_ppx_doc 788.38324 | train_loss 322.61673 | train_loss_rec 572.35199 | train_kld 9.42854 | train_penalty -259.16379
+INFO - main - train 1269560/1280000(epoch 31739/32000, 0.99), train_ppx 716.14288 | train_ppx_doc 790.44043 | train_loss 322.78186 | train_loss_rec 572.50818 | train_kld 9.43716 | train_penalty -259.16360
+INFO - main - saving checkpoint
+INFO - main - save checkpoint to data/exp/ntmr/1/model_1269600.pt
+INFO - main - train 1269600/1280000(epoch 31740/32000, 0.99), train_ppx 714.82935 | train_ppx_doc 786.73810 | train_loss 322.61923 | train_loss_rec 572.35962 | train_kld 9.42335 | train_penalty -259.16370
+INFO - main - evaluating model performance
+INFO - main - evaluate 1269600/1280000(epoch 31740/32000, 0.99), eval_ppx 778.69727 | eval_ppx_doc 800.68317 | eval_loss 299.98923 | eval_loss_rec 550.45172 | eval_kld 8.69992 | eval_penalty -259.16235
+INFO - main - train 1269640/1280000(epoch 31741/32000, 0.99), train_ppx 715.79327 | train_ppx_doc 788.11450 | train_loss 322.73871 | train_loss_rec 572.43347 | train_kld 9.46873 | train_penalty -259.16345
+INFO - main - train 1269680/1280000(epoch 31742/32000, 0.99), train_ppx 713.89673 | train_ppx_doc 787.05548 | train_loss 322.50400 | train_loss_rec 572.21838 | train_kld 9.44897 | train_penalty -259.16330
+INFO - main - train 1269720/1280000(epoch 31743/32000, 0.99), train_ppx 714.72614 | train_ppx_doc 786.37836 | train_loss 322.60696 | train_loss_rec 572.34357 | train_kld 9.42653 | train_penalty -259.16324
+INFO - main - train 1269760/1280000(epoch 31744/32000, 0.99), train_ppx 714.97766 | train_ppx_doc 787.81738 | train_loss 322.63803 | train_loss_rec 572.39062 | train_kld 9.41044 | train_penalty -259.16312
+INFO - main - train 1269800/1280000(epoch 31745/32000, 0.99), train_ppx 714.96405 | train_ppx_doc 786.12311 | train_loss 322.63644 | train_loss_rec 572.34412 | train_kld 9.45540 | train_penalty -259.16299
+INFO - main - train 1269840/1280000(epoch 31746/32000, 0.99), train_ppx 715.85266 | train_ppx_doc 788.51782 | train_loss 322.74649 | train_loss_rec 572.47742 | train_kld 9.43203 | train_penalty -259.16290
+INFO - main - train 1269880/1280000(epoch 31747/32000, 0.99), train_ppx 715.34290 | train_ppx_doc 786.33301 | train_loss 322.68359 | train_loss_rec 572.37439 | train_kld 9.47206 | train_penalty -259.16281
+INFO - main - train 1269920/1280000(epoch 31748/32000, 0.99), train_ppx 715.53119 | train_ppx_doc 788.47723 | train_loss 322.70688 | train_loss_rec 572.41345 | train_kld 9.45636 | train_penalty -259.16287
+INFO - main - train 1269960/1280000(epoch 31749/32000, 0.99), train_ppx 715.33301 | train_ppx_doc 788.27686 | train_loss 322.68222 | train_loss_rec 572.37646 | train_kld 9.46867 | train_penalty -259.16296
+INFO - main - saving checkpoint
+INFO - main - save checkpoint to data/exp/ntmr/1/model_1270000.pt
+INFO - main - train 1270000/1280000(epoch 31750/32000, 0.99), train_ppx 715.35211 | train_ppx_doc 789.24500 | train_loss 322.68445 | train_loss_rec 572.39075 | train_kld 9.45659 | train_penalty -259.16293
+INFO - main - evaluating model performance
+INFO - main - evaluate 1270000/1280000(epoch 31750/32000, 0.99), eval_ppx 779.36560 | eval_ppx_doc 800.52820 | eval_loss 300.06223 | eval_loss_rec 550.51801 | eval_kld 8.70563 | eval_penalty -259.16138
+INFO - main - train 1270040/1280000(epoch 31751/32000, 0.99), train_ppx 714.46307 | train_ppx_doc 788.02509 | train_loss 322.57440 | train_loss_rec 572.29358 | train_kld 9.44379 | train_penalty -259.16296
+INFO - main - train 1270080/1280000(epoch 31752/32000, 0.99), train_ppx 716.00732 | train_ppx_doc 788.47235 | train_loss 322.76544 | train_loss_rec 572.50818 | train_kld 9.42042 | train_penalty -259.16302
+INFO - main - train 1270120/1280000(epoch 31753/32000, 0.99), train_ppx 715.07385 | train_ppx_doc 788.04462 | train_loss 322.65027 | train_loss_rec 572.36981 | train_kld 9.44347 | train_penalty -259.16293
+INFO - main - train 1270160/1280000(epoch 31754/32000, 0.99), train_ppx 714.20215 | train_ppx_doc 787.79443 | train_loss 322.54230 | train_loss_rec 572.21594 | train_kld 9.48922 | train_penalty -259.16281
+INFO - main - train 1270200/1280000(epoch 31755/32000, 0.99), train_ppx 715.31152 | train_ppx_doc 787.06146 | train_loss 322.67990 | train_loss_rec 572.36841 | train_kld 9.47413 | train_penalty -259.16269
+INFO - main - train 1270240/1280000(epoch 31756/32000, 0.99), train_ppx 714.96405 | train_ppx_doc 787.85864 | train_loss 322.63687 | train_loss_rec 572.32214 | train_kld 9.47740 | train_penalty -259.16266
+INFO - main - train 1270280/1280000(epoch 31757/32000, 0.99), train_ppx 714.82086 | train_ppx_doc 787.76813 | train_loss 322.61914 | train_loss_rec 572.31616 | train_kld 9.46577 | train_penalty -259.16272
+INFO - main - train 1270320/1280000(epoch 31758/32000, 0.99), train_ppx 714.00055 | train_ppx_doc 788.18854 | train_loss 322.51767 | train_loss_rec 572.21783 | train_kld 9.46233 | train_penalty -259.16263
+INFO - main - train 1270360/1280000(epoch 31759/32000, 0.99), train_ppx 714.54755 | train_ppx_doc 787.02844 | train_loss 322.58548 | train_loss_rec 572.30817 | train_kld 9.43989 | train_penalty -259.16251
+INFO - main - saving checkpoint
+INFO - main - save checkpoint to data/exp/ntmr/1/model_1270400.pt
+INFO - main - train 1270400/1280000(epoch 31760/32000, 0.99), train_ppx 714.59528 | train_ppx_doc 787.67950 | train_loss 322.59137 | train_loss_rec 572.31396 | train_kld 9.43987 | train_penalty -259.16251
+INFO - main - evaluating model performance
+INFO - main - evaluate 1270400/1280000(epoch 31760/32000, 0.99), eval_ppx 787.91876 | eval_ppx_doc 806.40802 | eval_loss 300.97910 | eval_loss_rec 551.46429 | eval_kld 8.67592 | eval_penalty -259.16119
+INFO - main - train 1270440/1280000(epoch 31761/32000, 0.99), train_ppx 714.24640 | train_ppx_doc 787.01160 | train_loss 322.54816 | train_loss_rec 572.26874 | train_kld 9.44190 | train_penalty -259.16251
+INFO - main - train 1270480/1280000(epoch 31762/32000, 0.99), train_ppx 714.84674 | train_ppx_doc 787.32538 | train_loss 322.62247 | train_loss_rec 572.34589 | train_kld 9.43905 | train_penalty -259.16245
+INFO - main - train 1270520/1280000(epoch 31763/32000, 0.99), train_ppx 715.99603 | train_ppx_doc 788.98193 | train_loss 322.76495 | train_loss_rec 572.50494 | train_kld 9.42231 | train_penalty -259.16223
+INFO - main - train 1270560/1280000(epoch 31764/32000, 0.99), train_ppx 715.43054 | train_ppx_doc 788.53253 | train_loss 322.69498 | train_loss_rec 572.41498 | train_kld 9.44220 | train_penalty -259.16226
+INFO - main - train 1270600/1280000(epoch 31765/32000, 0.99), train_ppx 715.71173 | train_ppx_doc 787.16174 | train_loss 322.72974 | train_loss_rec 572.45697 | train_kld 9.43512 | train_penalty -259.16217
+INFO - main - train 1270640/1280000(epoch 31766/32000, 0.99), train_ppx 715.02509 | train_ppx_doc 787.32050 | train_loss 322.64493 | train_loss_rec 572.34692 | train_kld 9.46022 | train_penalty -259.16214
+INFO - main - train 1270680/1280000(epoch 31767/32000, 0.99), train_ppx 715.23236 | train_ppx_doc 789.53180 | train_loss 322.67087 | train_loss_rec 572.35107 | train_kld 9.48175 | train_penalty -259.16196
+INFO - main - train 1270720/1280000(epoch 31768/32000, 0.99), train_ppx 714.12006 | train_ppx_doc 788.40021 | train_loss 322.53299 | train_loss_rec 572.26062 | train_kld 9.43427 | train_penalty -259.16193
+INFO - main - train 1270760/1280000(epoch 31769/32000, 0.99), train_ppx 714.65039 | train_ppx_doc 788.17200 | train_loss 322.59875 | train_loss_rec 572.29663 | train_kld 9.46395 | train_penalty -259.16183
+INFO - main - saving checkpoint
+INFO - main - save checkpoint to data/exp/ntmr/1/model_1270800.pt
+INFO - main - train 1270800/1280000(epoch 31770/32000, 0.99), train_ppx 715.78784 | train_ppx_doc 789.42194 | train_loss 322.73962 | train_loss_rec 572.44971 | train_kld 9.45168 | train_penalty -259.16171
+INFO - main - evaluating model performance
+INFO - main - evaluate 1270800/1280000(epoch 31770/32000, 0.99), eval_ppx 778.76373 | eval_ppx_doc 798.45123 | eval_loss 299.99799 | eval_loss_rec 550.45319 | eval_kld 8.70564 | eval_penalty -259.16077
+INFO - main - train 1270840/1280000(epoch 31771/32000, 0.99), train_ppx 715.00122 | train_ppx_doc 786.88922 | train_loss 322.64252 | train_loss_rec 572.36188 | train_kld 9.44240 | train_penalty -259.16174
+INFO - main - train 1270880/1280000(epoch 31772/32000, 0.99), train_ppx 715.16144 | train_ppx_doc 787.44324 | train_loss 322.66220 | train_loss_rec 572.37659 | train_kld 9.44749 | train_penalty -259.16171
+INFO - main - train 1270920/1280000(epoch 31773/32000, 0.99), train_ppx 715.24603 | train_ppx_doc 789.49042 | train_loss 322.67279 | train_loss_rec 572.37305 | train_kld 9.46131 | train_penalty -259.16162
+INFO - main - train 1270960/1280000(epoch 31774/32000, 0.99), train_ppx 714.76770 | train_ppx_doc 787.71515 | train_loss 322.61359 | train_loss_rec 572.29877 | train_kld 9.47639 | train_penalty -259.16162
+INFO - main - train 1271000/1280000(epoch 31775/32000, 0.99), train_ppx 715.93768 | train_ppx_doc 788.55322 | train_loss 322.75833 | train_loss_rec 572.47656 | train_kld 9.44340 | train_penalty -259.16162
+INFO - main - train 1271040/1280000(epoch 31776/32000, 0.99), train_ppx 714.18848 | train_ppx_doc 788.03558 | train_loss 322.54190 | train_loss_rec 572.27606 | train_kld 9.42734 | train_penalty -259.16156
+INFO - main - train 1271080/1280000(epoch 31777/32000, 0.99), train_ppx 714.90613 | train_ppx_doc 786.75909 | train_loss 322.63080 | train_loss_rec 572.36285 | train_kld 9.42946 | train_penalty -259.16144
+INFO - main - train 1271120/1280000(epoch 31778/32000, 0.99), train_ppx 715.02954 | train_ppx_doc 788.47833 | train_loss 322.64627 | train_loss_rec 572.34210 | train_kld 9.46544 | train_penalty -259.16135
+INFO - main - train 1271160/1280000(epoch 31779/32000, 0.99), train_ppx 715.17267 | train_ppx_doc 789.01245 | train_loss 322.66403 | train_loss_rec 572.37292 | train_kld 9.45244 | train_penalty -259.16122
+INFO - main - saving checkpoint
+INFO - main - save checkpoint to data/exp/ntmr/1/model_1271200.pt
+INFO - main - train 1271200/1280000(epoch 31780/32000, 0.99), train_ppx 714.39697 | train_ppx_doc 788.06268 | train_loss 322.56818 | train_loss_rec 572.24982 | train_kld 9.47949 | train_penalty -259.16107
+INFO - main - evaluating model performance
+INFO - main - evaluate 1271200/1280000(epoch 31780/32000, 0.99), eval_ppx 776.46814 | eval_ppx_doc 800.85883 | eval_loss 299.75089 | eval_loss_rec 550.22235 | eval_kld 8.68844 | eval_penalty -259.15991
+INFO - main - train 1271240/1280000(epoch 31781/32000, 0.99), train_ppx 716.07971 | train_ppx_doc 787.83691 | train_loss 322.77658 | train_loss_rec 572.47601 | train_kld 9.46162 | train_penalty -259.16098
+INFO - main - train 1271280/1280000(epoch 31782/32000, 0.99), train_ppx 715.50049 | train_ppx_doc 787.22363 | train_loss 322.70505 | train_loss_rec 572.39581 | train_kld 9.47009 | train_penalty -259.16095
+INFO - main - train 1271320/1280000(epoch 31783/32000, 0.99), train_ppx 714.36328 | train_ppx_doc 786.55499 | train_loss 322.56421 | train_loss_rec 572.29065 | train_kld 9.43440 | train_penalty -259.16083
+INFO - main - train 1271360/1280000(epoch 31784/32000, 0.99), train_ppx 714.27191 | train_ppx_doc 786.03156 | train_loss 322.55292 | train_loss_rec 572.24719 | train_kld 9.46639 | train_penalty -259.16080
+INFO - main - train 1271400/1280000(epoch 31785/32000, 0.99), train_ppx 714.99542 | train_ppx_doc 786.58691 | train_loss 322.64252 | train_loss_rec 572.36603 | train_kld 9.43730 | train_penalty -259.16071
+INFO - main - train 1271440/1280000(epoch 31786/32000, 0.99), train_ppx 714.29480 | train_ppx_doc 787.46466 | train_loss 322.55597 | train_loss_rec 572.24646 | train_kld 9.47019 | train_penalty -259.16061
+INFO - main - train 1271480/1280000(epoch 31787/32000, 0.99), train_ppx 715.34357 | train_ppx_doc 787.85193 | train_loss 322.68573 | train_loss_rec 572.38660 | train_kld 9.45977 | train_penalty -259.16058
+INFO - main - train 1271520/1280000(epoch 31788/32000, 0.99), train_ppx 715.54175 | train_ppx_doc 788.93042 | train_loss 322.71033 | train_loss_rec 572.41882 | train_kld 9.45218 | train_penalty -259.16061
+INFO - main - train 1271560/1280000(epoch 31789/32000, 0.99), train_ppx 715.12567 | train_ppx_doc 788.92554 | train_loss 322.65906 | train_loss_rec 572.36707 | train_kld 9.45241 | train_penalty -259.16043
+INFO - main - saving checkpoint
+INFO - main - save checkpoint to data/exp/ntmr/1/model_1271600.pt
+INFO - main - train 1271600/1280000(epoch 31790/32000, 0.99), train_ppx 715.02606 | train_ppx_doc 788.38782 | train_loss 322.64670 | train_loss_rec 572.33380 | train_kld 9.47334 | train_penalty -259.16040
+INFO - main - evaluating model performance
+INFO - main - evaluate 1271600/1280000(epoch 31790/32000, 0.99), eval_ppx 781.00769 | eval_ppx_doc 803.62610 | eval_loss 300.24152 | eval_loss_rec 550.68573 | eval_kld 8.71464 | eval_penalty -259.15891
+INFO - main - train 1271640/1280000(epoch 31791/32000, 0.99), train_ppx 715.54285 | train_ppx_doc 788.20508 | train_loss 322.71075 | train_loss_rec 572.42810 | train_kld 9.44308 | train_penalty -259.16031
+INFO - main - train 1271680/1280000(epoch 31792/32000, 0.99), train_ppx 715.12427 | train_ppx_doc 786.08374 | train_loss 322.65891 | train_loss_rec 572.36859 | train_kld 9.45079 | train_penalty -259.16034
+INFO - main - train 1271720/1280000(epoch 31793/32000, 0.99), train_ppx 715.21155 | train_ppx_doc 788.47833 | train_loss 322.67017 | train_loss_rec 572.38300 | train_kld 9.44720 | train_penalty -259.16019
+INFO - main - train 1271760/1280000(epoch 31794/32000, 0.99), train_ppx 714.18512 | train_ppx_doc 787.88342 | train_loss 322.54282 | train_loss_rec 572.23071 | train_kld 9.47234 | train_penalty -259.16016
+INFO - main - train 1271800/1280000(epoch 31795/32000, 0.99), train_ppx 715.22076 | train_ppx_doc 787.65808 | train_loss 322.67105 | train_loss_rec 572.39233 | train_kld 9.43881 | train_penalty -259.16022
+INFO - main - train 1271840/1280000(epoch 31796/32000, 0.99), train_ppx 714.44910 | train_ppx_doc 787.00067 | train_loss 322.57553 | train_loss_rec 572.26666 | train_kld 9.46907 | train_penalty -259.16016
+INFO - main - train 1271880/1280000(epoch 31797/32000, 0.99), train_ppx 715.07349 | train_ppx_doc 788.51862 | train_loss 322.65302 | train_loss_rec 572.36792 | train_kld 9.44510 | train_penalty -259.16003
+INFO - main - train 1271920/1280000(epoch 31798/32000, 0.99), train_ppx 714.66339 | train_ppx_doc 789.36462 | train_loss 322.60226 | train_loss_rec 572.31451 | train_kld 9.44769 | train_penalty -259.16006
+INFO - main - train 1271960/1280000(epoch 31799/32000, 0.99), train_ppx 715.76971 | train_ppx_doc 788.25543 | train_loss 322.73901 | train_loss_rec 572.43286 | train_kld 9.46635 | train_penalty -259.16006
+INFO - main - saving checkpoint
+INFO - main - save checkpoint to data/exp/ntmr/1/model_1272000.pt
+INFO - main - train 1272000/1280000(epoch 31800/32000, 0.99), train_ppx 714.51483 | train_ppx_doc 786.74176 | train_loss 322.58371 | train_loss_rec 572.28534 | train_kld 9.45848 | train_penalty -259.16000
+INFO - main - evaluating model performance
+INFO - main - evaluate 1272000/1280000(epoch 31800/32000, 0.99), eval_ppx 780.37927 | eval_ppx_doc 800.30341 | eval_loss 300.17386 | eval_loss_rec 550.64148 | eval_kld 8.69134 | eval_penalty -259.15900
+INFO - main - saving topics to data/exp/ntmr/1/topic-31800
+INFO - main - topic coherence 0.349
+INFO - main - train 1272040/1280000(epoch 31801/32000, 0.99), train_ppx 715.23816 | train_ppx_doc 788.02582 | train_loss 322.67358 | train_loss_rec 572.39862 | train_kld 9.43489 | train_penalty -259.15994
+INFO - main - train 1272080/1280000(epoch 31802/32000, 0.99), train_ppx 715.28113 | train_ppx_doc 786.81458 | train_loss 322.67899 | train_loss_rec 572.38507 | train_kld 9.45356 | train_penalty -259.15982
+INFO - main - train 1272120/1280000(epoch 31803/32000, 0.99), train_ppx 714.63068 | train_ppx_doc 789.47083 | train_loss 322.59860 | train_loss_rec 572.28906 | train_kld 9.46924 | train_penalty -259.15967
+INFO - main - train 1272160/1280000(epoch 31804/32000, 0.99), train_ppx 715.09253 | train_ppx_doc 789.11481 | train_loss 322.65582 | train_loss_rec 572.36255 | train_kld 9.45295 | train_penalty -259.15958
+INFO - main - train 1272200/1280000(epoch 31805/32000, 0.99), train_ppx 714.35541 | train_ppx_doc 787.29462 | train_loss 322.56458 | train_loss_rec 572.28113 | train_kld 9.44292 | train_penalty -259.15948
+INFO - main - train 1272240/1280000(epoch 31806/32000, 0.99), train_ppx 714.37482 | train_ppx_doc 788.24567 | train_loss 322.56689 | train_loss_rec 572.24591 | train_kld 9.48057 | train_penalty -259.15964
+INFO - main - train 1272280/1280000(epoch 31807/32000, 0.99), train_ppx 715.31219 | train_ppx_doc 789.03503 | train_loss 322.68304 | train_loss_rec 572.40997 | train_kld 9.43271 | train_penalty -259.15958
+INFO - main - train 1272320/1280000(epoch 31808/32000, 0.99), train_ppx 713.97131 | train_ppx_doc 787.25555 | train_loss 322.51688 | train_loss_rec 572.21466 | train_kld 9.46188 | train_penalty -259.15958
+INFO - main - train 1272360/1280000(epoch 31809/32000, 0.99), train_ppx 715.69702 | train_ppx_doc 787.91199 | train_loss 322.73071 | train_loss_rec 572.47107 | train_kld 9.41922 | train_penalty -259.15952
+INFO - main - saving checkpoint
+INFO - main - save checkpoint to data/exp/ntmr/1/model_1272400.pt
+INFO - main - train 1272400/1280000(epoch 31810/32000, 0.99), train_ppx 714.72577 | train_ppx_doc 787.57733 | train_loss 322.61060 | train_loss_rec 572.31140 | train_kld 9.45857 | train_penalty -259.15933
+INFO - main - evaluating model performance
+INFO - main - evaluate 1272400/1280000(epoch 31810/32000, 0.99), eval_ppx 787.24615 | eval_ppx_doc 803.29468 | eval_loss 300.91058 | eval_loss_rec 551.36627 | eval_kld 8.70233 | eval_penalty -259.15805
+INFO - main - train 1272440/1280000(epoch 31811/32000, 0.99), train_ppx 714.38159 | train_ppx_doc 787.50336 | train_loss 322.56799 | train_loss_rec 572.28894 | train_kld 9.43843 | train_penalty -259.15939
+INFO - main - train 1272480/1280000(epoch 31812/32000, 0.99), train_ppx 715.06635 | train_ppx_doc 787.55139 | train_loss 322.65259 | train_loss_rec 572.35596 | train_kld 9.45616 | train_penalty -259.15939
+INFO - main - train 1272520/1280000(epoch 31813/32000, 0.99), train_ppx 714.73834 | train_ppx_doc 787.96802 | train_loss 322.61246 | train_loss_rec 572.31519 | train_kld 9.45647 | train_penalty -259.15915
+INFO - main - train 1272560/1280000(epoch 31814/32000, 0.99), train_ppx 716.01074 | train_ppx_doc 789.09406 | train_loss 322.76993 | train_loss_rec 572.48828 | train_kld 9.44072 | train_penalty -259.15909
+INFO - main - train 1272600/1280000(epoch 31815/32000, 0.99), train_ppx 714.61670 | train_ppx_doc 786.09644 | train_loss 322.59753 | train_loss_rec 572.27814 | train_kld 9.47832 | train_penalty -259.15894
+INFO - main - train 1272640/1280000(epoch 31816/32000, 0.99), train_ppx 715.82465 | train_ppx_doc 787.63708 | train_loss 322.74716 | train_loss_rec 572.46600 | train_kld 9.44022 | train_penalty -259.15891
+INFO - main - train 1272680/1280000(epoch 31817/32000, 0.99), train_ppx 715.79187 | train_ppx_doc 788.37988 | train_loss 322.74301 | train_loss_rec 572.45721 | train_kld 9.44477 | train_penalty -259.15894
+INFO - main - train 1272720/1280000(epoch 31818/32000, 0.99), train_ppx 714.58160 | train_ppx_doc 789.98523 | train_loss 322.59317 | train_loss_rec 572.32007 | train_kld 9.43205 | train_penalty -259.15891
+INFO - main - train 1272760/1280000(epoch 31819/32000, 0.99), train_ppx 714.42285 | train_ppx_doc 786.93958 | train_loss 322.57346 | train_loss_rec 572.26208 | train_kld 9.47027 | train_penalty -259.15887
+INFO - main - saving checkpoint
+INFO - main - save checkpoint to data/exp/ntmr/1/model_1272800.pt
+INFO - main - train 1272800/1280000(epoch 31820/32000, 0.99), train_ppx 715.09326 | train_ppx_doc 788.75098 | train_loss 322.65649 | train_loss_rec 572.36523 | train_kld 9.45013 | train_penalty -259.15891
+INFO - main - evaluating model performance
+INFO - main - evaluate 1272800/1280000(epoch 31820/32000, 0.99), eval_ppx 785.59839 | eval_ppx_doc 801.03601 | eval_loss 300.73547 | eval_loss_rec 551.18506 | eval_kld 8.70761 | eval_penalty -259.15717
+INFO - main - train 1272840/1280000(epoch 31821/32000, 0.99), train_ppx 714.75134 | train_ppx_doc 787.39636 | train_loss 322.61435 | train_loss_rec 572.32013 | train_kld 9.45303 | train_penalty -259.15884
+INFO - main - train 1272880/1280000(epoch 31822/32000, 0.99), train_ppx 714.96234 | train_ppx_doc 788.69312 | train_loss 322.64059 | train_loss_rec 572.32910 | train_kld 9.47028 | train_penalty -259.15881
+INFO - main - train 1272920/1280000(epoch 31823/32000, 0.99), train_ppx 714.52985 | train_ppx_doc 788.48291 | train_loss 322.58694 | train_loss_rec 572.28070 | train_kld 9.46503 | train_penalty -259.15881
+INFO - main - train 1272960/1280000(epoch 31824/32000, 0.99), train_ppx 715.01453 | train_ppx_doc 787.73169 | train_loss 322.64706 | train_loss_rec 572.34863 | train_kld 9.45707 | train_penalty -259.15863
+INFO - main - train 1273000/1280000(epoch 31825/32000, 0.99), train_ppx 715.08026 | train_ppx_doc 787.06824 | train_loss 322.65536 | train_loss_rec 572.34625 | train_kld 9.46758 | train_penalty -259.15854
+INFO - main - train 1273040/1280000(epoch 31826/32000, 0.99), train_ppx 713.90558 | train_ppx_doc 787.23486 | train_loss 322.50974 | train_loss_rec 572.19598 | train_kld 9.47227 | train_penalty -259.15851
+INFO - main - train 1273080/1280000(epoch 31827/32000, 0.99), train_ppx 714.58472 | train_ppx_doc 787.24542 | train_loss 322.59409 | train_loss_rec 572.31372 | train_kld 9.43881 | train_penalty -259.15851
+INFO - main - train 1273120/1280000(epoch 31828/32000, 0.99), train_ppx 714.35950 | train_ppx_doc 785.15204 | train_loss 322.56619 | train_loss_rec 572.29779 | train_kld 9.42679 | train_penalty -259.15839
+INFO - main - train 1273160/1280000(epoch 31829/32000, 0.99), train_ppx 714.88251 | train_ppx_doc 788.02698 | train_loss 322.63110 | train_loss_rec 572.38330 | train_kld 9.40598 | train_penalty -259.15829
+INFO - main - saving checkpoint
+INFO - main - save checkpoint to data/exp/ntmr/1/model_1273200.pt
+INFO - main - train 1273200/1280000(epoch 31830/32000, 0.99), train_ppx 714.26849 | train_ppx_doc 786.08484 | train_loss 322.55505 | train_loss_rec 572.27814 | train_kld 9.43529 | train_penalty -259.15839
+INFO - main - evaluating model performance
+INFO - main - evaluate 1273200/1280000(epoch 31830/32000, 0.99), eval_ppx 779.59595 | eval_ppx_doc 799.96533 | eval_loss 300.09146 | eval_loss_rec 550.56604 | eval_kld 8.68238 | eval_penalty -259.15698
+INFO - main - train 1273240/1280000(epoch 31831/32000, 0.99), train_ppx 715.24292 | train_ppx_doc 787.99768 | train_loss 322.67593 | train_loss_rec 572.40259 | train_kld 9.43146 | train_penalty -259.15814
+INFO - main - train 1273280/1280000(epoch 31832/32000, 0.99), train_ppx 714.85529 | train_ppx_doc 789.13470 | train_loss 322.62808 | train_loss_rec 572.31366 | train_kld 9.47262 | train_penalty -259.15811
+INFO - main - train 1273320/1280000(epoch 31833/32000, 0.99), train_ppx 716.18011 | train_ppx_doc 789.09448 | train_loss 322.79190 | train_loss_rec 572.49023 | train_kld 9.45965 | train_penalty -259.15793
+INFO - main - train 1273360/1280000(epoch 31834/32000, 0.99), train_ppx 715.32111 | train_ppx_doc 788.05249 | train_loss 322.68591 | train_loss_rec 572.38916 | train_kld 9.45464 | train_penalty -259.15778
+INFO - main - train 1273400/1280000(epoch 31835/32000, 0.99), train_ppx 715.60492 | train_ppx_doc 789.66736 | train_loss 322.72110 | train_loss_rec 572.41205 | train_kld 9.46674 | train_penalty -259.15768
+INFO - main - train 1273440/1280000(epoch 31836/32000, 0.99), train_ppx 714.20148 | train_ppx_doc 787.19965 | train_loss 322.54739 | train_loss_rec 572.23761 | train_kld 9.46752 | train_penalty -259.15775
+INFO - main - train 1273480/1280000(epoch 31837/32000, 0.99), train_ppx 714.64020 | train_ppx_doc 786.03381 | train_loss 322.60168 | train_loss_rec 572.30133 | train_kld 9.45809 | train_penalty -259.15775
+INFO - main - train 1273520/1280000(epoch 31838/32000, 0.99), train_ppx 714.79053 | train_ppx_doc 786.64874 | train_loss 322.62039 | train_loss_rec 572.35278 | train_kld 9.42533 | train_penalty -259.15756
+INFO - main - train 1273560/1280000(epoch 31839/32000, 0.99), train_ppx 716.09167 | train_ppx_doc 788.92255 | train_loss 322.78159 | train_loss_rec 572.46375 | train_kld 9.47526 | train_penalty -259.15741
+INFO - main - saving checkpoint
+INFO - main - save checkpoint to data/exp/ntmr/1/model_1273600.pt
+INFO - main - train 1273600/1280000(epoch 31840/32000, 0.99), train_ppx 715.85474 | train_ppx_doc 787.53900 | train_loss 322.75232 | train_loss_rec 572.46387 | train_kld 9.44586 | train_penalty -259.15729
+INFO - main - evaluating model performance
+INFO - main - evaluate 1273600/1280000(epoch 31840/32000, 0.99), eval_ppx 775.44989 | eval_ppx_doc 797.87543 | eval_loss 299.64471 | eval_loss_rec 550.07257 | eval_kld 8.72808 | eval_penalty -259.15588
+INFO - main - train 1273640/1280000(epoch 31841/32000, 1.00), train_ppx 714.13440 | train_ppx_doc 787.33813 | train_loss 322.53955 | train_loss_rec 572.19666 | train_kld 9.50018 | train_penalty -259.15723
+INFO - main - train 1273680/1280000(epoch 31842/32000, 1.00), train_ppx 714.22021 | train_ppx_doc 787.70123 | train_loss 322.54999 | train_loss_rec 572.25336 | train_kld 9.45393 | train_penalty -259.15726
+INFO - main - train 1273720/1280000(epoch 31843/32000, 1.00), train_ppx 714.43817 | train_ppx_doc 787.56158 | train_loss 322.57718 | train_loss_rec 572.32660 | train_kld 9.40780 | train_penalty -259.15726
+INFO - main - train 1273760/1280000(epoch 31844/32000, 1.00), train_ppx 714.24677 | train_ppx_doc 787.52814 | train_loss 322.55353 | train_loss_rec 572.27930 | train_kld 9.43138 | train_penalty -259.15717
+INFO - main - train 1273800/1280000(epoch 31845/32000, 1.00), train_ppx 714.35541 | train_ppx_doc 787.05585 | train_loss 322.56714 | train_loss_rec 572.30597 | train_kld 9.41823 | train_penalty -259.15707
+INFO - main - train 1273840/1280000(epoch 31846/32000, 1.00), train_ppx 716.69739 | train_ppx_doc 787.25854 | train_loss 322.85687 | train_loss_rec 572.62079 | train_kld 9.39298 | train_penalty -259.15698
+INFO - main - train 1273880/1280000(epoch 31847/32000, 1.00), train_ppx 714.83038 | train_ppx_doc 788.58441 | train_loss 322.62604 | train_loss_rec 572.32660 | train_kld 9.45643 | train_penalty -259.15689
+INFO - main - train 1273920/1280000(epoch 31848/32000, 1.00), train_ppx 715.48175 | train_ppx_doc 786.86298 | train_loss 322.70688 | train_loss_rec 572.40259 | train_kld 9.46092 | train_penalty -259.15674
+INFO - main - train 1273960/1280000(epoch 31849/32000, 1.00), train_ppx 714.89581 | train_ppx_doc 787.00934 | train_loss 322.63446 | train_loss_rec 572.33557 | train_kld 9.45553 | train_penalty -259.15671
+INFO - main - saving checkpoint
+INFO - main - save checkpoint to data/exp/ntmr/1/model_1274000.pt
+INFO - main - train 1274000/1280000(epoch 31850/32000, 1.00), train_ppx 713.51550 | train_ppx_doc 786.81268 | train_loss 322.46338 | train_loss_rec 572.17303 | train_kld 9.44701 | train_penalty -259.15671
+INFO - main - evaluating model performance
+INFO - main - evaluate 1274000/1280000(epoch 31850/32000, 1.00), eval_ppx 781.08069 | eval_ppx_doc 802.88342 | eval_loss 300.25256 | eval_loss_rec 550.70697 | eval_kld 8.70121 | eval_penalty -259.15567
+INFO - main - train 1274040/1280000(epoch 31851/32000, 1.00), train_ppx 716.52136 | train_ppx_doc 790.06317 | train_loss 322.83557 | train_loss_rec 572.54108 | train_kld 9.45115 | train_penalty -259.15668
+INFO - main - train 1274080/1280000(epoch 31852/32000, 1.00), train_ppx 714.19733 | train_ppx_doc 788.46338 | train_loss 322.54807 | train_loss_rec 572.22089 | train_kld 9.48373 | train_penalty -259.15649
+INFO - main - train 1274120/1280000(epoch 31853/32000, 1.00), train_ppx 714.64771 | train_ppx_doc 786.10352 | train_loss 322.60385 | train_loss_rec 572.30206 | train_kld 9.45815 | train_penalty -259.15637
+INFO - main - train 1274160/1280000(epoch 31854/32000, 1.00), train_ppx 714.75885 | train_ppx_doc 786.96356 | train_loss 322.61804 | train_loss_rec 572.28735 | train_kld 9.48686 | train_penalty -259.15610
+INFO - main - train 1274200/1280000(epoch 31855/32000, 1.00), train_ppx 716.07837 | train_ppx_doc 787.38135 | train_loss 322.78131 | train_loss_rec 572.49707 | train_kld 9.44025 | train_penalty -259.15613
+INFO - main - train 1274240/1280000(epoch 31856/32000, 1.00), train_ppx 714.70361 | train_ppx_doc 788.55811 | train_loss 322.61133 | train_loss_rec 572.33069 | train_kld 9.43673 | train_penalty -259.15604
+INFO - main - train 1274280/1280000(epoch 31857/32000, 1.00), train_ppx 714.19360 | train_ppx_doc 787.36932 | train_loss 322.54813 | train_loss_rec 572.27826 | train_kld 9.42592 | train_penalty -259.15591
+INFO - main - train 1274320/1280000(epoch 31858/32000, 1.00), train_ppx 715.45789 | train_ppx_doc 786.17480 | train_loss 322.70490 | train_loss_rec 572.43378 | train_kld 9.42699 | train_penalty -259.15579
+INFO - main - train 1274360/1280000(epoch 31859/32000, 1.00), train_ppx 714.44232 | train_ppx_doc 786.06873 | train_loss 322.57907 | train_loss_rec 572.32574 | train_kld 9.40916 | train_penalty -259.15582
+INFO - main - saving checkpoint
+INFO - main - save checkpoint to data/exp/ntmr/1/model_1274400.pt
+INFO - main - train 1274400/1280000(epoch 31860/32000, 1.00), train_ppx 714.81842 | train_ppx_doc 788.14044 | train_loss 322.62555 | train_loss_rec 572.37036 | train_kld 9.41097 | train_penalty -259.15585
+INFO - main - evaluating model performance
+INFO - main - evaluate 1274400/1280000(epoch 31860/32000, 1.00), eval_ppx 776.38220 | eval_ppx_doc 804.36603 | eval_loss 299.74725 | eval_loss_rec 550.22388 | eval_kld 8.67765 | eval_penalty -259.15427
+INFO - main - train 1274440/1280000(epoch 31861/32000, 1.00), train_ppx 716.26825 | train_ppx_doc 789.55212 | train_loss 322.80502 | train_loss_rec 572.54333 | train_kld 9.41761 | train_penalty -259.15582
+INFO - main - train 1274480/1280000(epoch 31862/32000, 1.00), train_ppx 715.49164 | train_ppx_doc 787.52472 | train_loss 322.70911 | train_loss_rec 572.41425 | train_kld 9.45052 | train_penalty -259.15567
+INFO - main - train 1274520/1280000(epoch 31863/32000, 1.00), train_ppx 713.28394 | train_ppx_doc 787.32239 | train_loss 322.43564 | train_loss_rec 572.13965 | train_kld 9.45158 | train_penalty -259.15555
+INFO - main - train 1274560/1280000(epoch 31864/32000, 1.00), train_ppx 715.10858 | train_ppx_doc 788.61603 | train_loss 322.66187 | train_loss_rec 572.35748 | train_kld 9.45987 | train_penalty -259.15543
+INFO - main - train 1274600/1280000(epoch 31865/32000, 1.00), train_ppx 714.43036 | train_ppx_doc 788.10773 | train_loss 322.57785 | train_loss_rec 572.29254 | train_kld 9.44071 | train_penalty -259.15540
+INFO - main - train 1274640/1280000(epoch 31866/32000, 1.00), train_ppx 715.09601 | train_ppx_doc 788.23969 | train_loss 322.66043 | train_loss_rec 572.38879 | train_kld 9.42708 | train_penalty -259.15543
+INFO - main - train 1274680/1280000(epoch 31867/32000, 1.00), train_ppx 714.72815 | train_ppx_doc 786.95569 | train_loss 322.61490 | train_loss_rec 572.36188 | train_kld 9.40843 | train_penalty -259.15536
+INFO - main - train 1274720/1280000(epoch 31868/32000, 1.00), train_ppx 714.04517 | train_ppx_doc 787.08325 | train_loss 322.53055 | train_loss_rec 572.29883 | train_kld 9.38702 | train_penalty -259.15530
+INFO - main - train 1274760/1280000(epoch 31869/32000, 1.00), train_ppx 714.11597 | train_ppx_doc 788.29120 | train_loss 322.53918 | train_loss_rec 572.25867 | train_kld 9.43586 | train_penalty -259.15533
+INFO - main - saving checkpoint
+INFO - main - save checkpoint to data/exp/ntmr/1/model_1274800.pt
+INFO - main - train 1274800/1280000(epoch 31870/32000, 1.00), train_ppx 715.82330 | train_ppx_doc 789.68805 | train_loss 322.75049 | train_loss_rec 572.49451 | train_kld 9.41136 | train_penalty -259.15540
+INFO - main - evaluating model performance
+INFO - main - evaluate 1274800/1280000(epoch 31870/32000, 1.00), eval_ppx 776.14868 | eval_ppx_doc 798.80048 | eval_loss 299.72235 | eval_loss_rec 550.20624 | eval_kld 8.67004 | eval_penalty -259.15387
+INFO - main - train 1274840/1280000(epoch 31871/32000, 1.00), train_ppx 715.13110 | train_ppx_doc 788.60736 | train_loss 322.66492 | train_loss_rec 572.41144 | train_kld 9.40875 | train_penalty -259.15530
+INFO - main - train 1274880/1280000(epoch 31872/32000, 1.00), train_ppx 715.16284 | train_ppx_doc 787.59985 | train_loss 322.66901 | train_loss_rec 572.35785 | train_kld 9.46640 | train_penalty -259.15518
+INFO - main - train 1274920/1280000(epoch 31873/32000, 1.00), train_ppx 715.15906 | train_ppx_doc 788.09308 | train_loss 322.66867 | train_loss_rec 572.37354 | train_kld 9.45000 | train_penalty -259.15503
+INFO - main - train 1274960/1280000(epoch 31874/32000, 1.00), train_ppx 714.67804 | train_ppx_doc 789.65417 | train_loss 322.60916 | train_loss_rec 572.32086 | train_kld 9.44331 | train_penalty -259.15500
+INFO - main - train 1275000/1280000(epoch 31875/32000, 1.00), train_ppx 714.28180 | train_ppx_doc 787.24054 | train_loss 322.56006 | train_loss_rec 572.26251 | train_kld 9.45238 | train_penalty -259.15485
+INFO - main - train 1275040/1280000(epoch 31876/32000, 1.00), train_ppx 713.56757 | train_ppx_doc 787.56158 | train_loss 322.47174 | train_loss_rec 572.14355 | train_kld 9.48296 | train_penalty -259.15485
+INFO - main - train 1275080/1280000(epoch 31877/32000, 1.00), train_ppx 714.54822 | train_ppx_doc 787.99731 | train_loss 322.59317 | train_loss_rec 572.27631 | train_kld 9.47178 | train_penalty -259.15479
+INFO - main - train 1275120/1280000(epoch 31878/32000, 1.00), train_ppx 714.53937 | train_ppx_doc 787.23077 | train_loss 322.59216 | train_loss_rec 572.31268 | train_kld 9.43427 | train_penalty -259.15472
+INFO - main - train 1275160/1280000(epoch 31879/32000, 1.00), train_ppx 714.93677 | train_ppx_doc 787.46320 | train_loss 322.64157 | train_loss_rec 572.38348 | train_kld 9.41265 | train_penalty -259.15457
+INFO - main - saving checkpoint
+INFO - main - save checkpoint to data/exp/ntmr/1/model_1275200.pt
+INFO - main - train 1275200/1280000(epoch 31880/32000, 1.00), train_ppx 714.20044 | train_ppx_doc 786.79431 | train_loss 322.55048 | train_loss_rec 572.23621 | train_kld 9.46870 | train_penalty -259.15451
+INFO - main - evaluating model performance
+INFO - main - evaluate 1275200/1280000(epoch 31880/32000, 1.00), eval_ppx 777.31348 | eval_ppx_doc 797.89563 | eval_loss 299.84909 | eval_loss_rec 550.29089 | eval_kld 8.71145 | eval_penalty -259.15317
+INFO - main - train 1275240/1280000(epoch 31881/32000, 1.00), train_ppx 714.67120 | train_ppx_doc 787.34381 | train_loss 322.60873 | train_loss_rec 572.30646 | train_kld 9.45688 | train_penalty -259.15448
+INFO - main - train 1275280/1280000(epoch 31882/32000, 1.00), train_ppx 715.72333 | train_ppx_doc 787.44067 | train_loss 322.73914 | train_loss_rec 572.44952 | train_kld 9.44395 | train_penalty -259.15436
+INFO - main - train 1275320/1280000(epoch 31883/32000, 1.00), train_ppx 715.07141 | train_ppx_doc 788.16675 | train_loss 322.65854 | train_loss_rec 572.35223 | train_kld 9.46058 | train_penalty -259.15436
+INFO - main - train 1275360/1280000(epoch 31884/32000, 1.00), train_ppx 714.60919 | train_ppx_doc 787.07538 | train_loss 322.60104 | train_loss_rec 572.28381 | train_kld 9.47180 | train_penalty -259.15445
+INFO - main - train 1275400/1280000(epoch 31885/32000, 1.00), train_ppx 715.05438 | train_ppx_doc 788.05780 | train_loss 322.65628 | train_loss_rec 572.37341 | train_kld 9.43736 | train_penalty -259.15439
+INFO - main - train 1275440/1280000(epoch 31886/32000, 1.00), train_ppx 714.79120 | train_ppx_doc 787.86469 | train_loss 322.62372 | train_loss_rec 572.31677 | train_kld 9.46137 | train_penalty -259.15442
+INFO - main - train 1275480/1280000(epoch 31887/32000, 1.00), train_ppx 713.58832 | train_ppx_doc 787.13544 | train_loss 322.47473 | train_loss_rec 572.17560 | train_kld 9.45337 | train_penalty -259.15433
+INFO - main - train 1275520/1280000(epoch 31888/32000, 1.00), train_ppx 715.74585 | train_ppx_doc 787.43054 | train_loss 322.74200 | train_loss_rec 572.44238 | train_kld 9.45386 | train_penalty -259.15427
+INFO - main - train 1275560/1280000(epoch 31889/32000, 1.00), train_ppx 714.19360 | train_ppx_doc 787.72003 | train_loss 322.54993 | train_loss_rec 572.24951 | train_kld 9.45449 | train_penalty -259.15417
+INFO - main - saving checkpoint
+INFO - main - save checkpoint to data/exp/ntmr/1/model_1275600.pt
+INFO - main - train 1275600/1280000(epoch 31890/32000, 1.00), train_ppx 714.60278 | train_ppx_doc 788.01495 | train_loss 322.60065 | train_loss_rec 572.29163 | train_kld 9.46317 | train_penalty -259.15417
+INFO - main - evaluating model performance
+INFO - main - evaluate 1275600/1280000(epoch 31890/32000, 1.00), eval_ppx 777.28754 | eval_ppx_doc 801.48535 | eval_loss 299.84665 | eval_loss_rec 550.30890 | eval_kld 8.69049 | eval_penalty -259.15277
+INFO - main - train 1275640/1280000(epoch 31891/32000, 1.00), train_ppx 714.97455 | train_ppx_doc 787.71027 | train_loss 322.64673 | train_loss_rec 572.35767 | train_kld 9.44320 | train_penalty -259.15408
+INFO - main - train 1275680/1280000(epoch 31892/32000, 1.00), train_ppx 715.13550 | train_ppx_doc 788.81305 | train_loss 322.66690 | train_loss_rec 572.36267 | train_kld 9.45805 | train_penalty -259.15387
+INFO - main - train 1275720/1280000(epoch 31893/32000, 1.00), train_ppx 715.69910 | train_ppx_doc 788.87250 | train_loss 322.73682 | train_loss_rec 572.44678 | train_kld 9.44376 | train_penalty -259.15375
+INFO - main - train 1275760/1280000(epoch 31894/32000, 1.00), train_ppx 715.12909 | train_ppx_doc 788.22125 | train_loss 322.66635 | train_loss_rec 572.34540 | train_kld 9.47468 | train_penalty -259.15359
+INFO - main - train 1275800/1280000(epoch 31895/32000, 1.00), train_ppx 716.38159 | train_ppx_doc 787.08923 | train_loss 322.82135 | train_loss_rec 572.50470 | train_kld 9.47009 | train_penalty -259.15356
+INFO - main - train 1275840/1280000(epoch 31896/32000, 1.00), train_ppx 716.47626 | train_ppx_doc 787.60358 | train_loss 322.83322 | train_loss_rec 572.52246 | train_kld 9.46411 | train_penalty -259.15329
+INFO - main - train 1275880/1280000(epoch 31897/32000, 1.00), train_ppx 714.19360 | train_ppx_doc 786.82288 | train_loss 322.55090 | train_loss_rec 572.21606 | train_kld 9.48808 | train_penalty -259.15326
+INFO - main - train 1275920/1280000(epoch 31898/32000, 1.00), train_ppx 714.65729 | train_ppx_doc 786.54712 | train_loss 322.60822 | train_loss_rec 572.34357 | train_kld 9.41786 | train_penalty -259.15326
+INFO - main - train 1275960/1280000(epoch 31899/32000, 1.00), train_ppx 714.45721 | train_ppx_doc 788.51483 | train_loss 322.58353 | train_loss_rec 572.26532 | train_kld 9.47145 | train_penalty -259.15329
+INFO - main - saving checkpoint
+INFO - main - save checkpoint to data/exp/ntmr/1/model_1276000.pt
+INFO - main - train 1276000/1280000(epoch 31900/32000, 1.00), train_ppx 715.21600 | train_ppx_doc 788.57690 | train_loss 322.67755 | train_loss_rec 572.38562 | train_kld 9.44522 | train_penalty -259.15320
+INFO - main - evaluating model performance
+INFO - main - evaluate 1276000/1280000(epoch 31900/32000, 1.00), eval_ppx 780.21332 | eval_ppx_doc 798.42236 | eval_loss 300.16290 | eval_loss_rec 550.61865 | eval_kld 8.69631 | eval_penalty -259.15207
+INFO - main - saving topics to data/exp/ntmr/1/topic-31900
+INFO - main - topic coherence 0.348
+INFO - main - train 1276040/1280000(epoch 31901/32000, 1.00), train_ppx 715.94727 | train_ppx_doc 788.80707 | train_loss 322.76794 | train_loss_rec 572.47968 | train_kld 9.44160 | train_penalty -259.15317
+INFO - main - train 1276080/1280000(epoch 31902/32000, 1.00), train_ppx 714.65039 | train_ppx_doc 786.79395 | train_loss 322.60754 | train_loss_rec 572.29419 | train_kld 9.46657 | train_penalty -259.15320
+INFO - main - train 1276120/1280000(epoch 31903/32000, 1.00), train_ppx 715.27979 | train_ppx_doc 787.21686 | train_loss 322.68561 | train_loss_rec 572.39685 | train_kld 9.44171 | train_penalty -259.15289
+INFO - main - train 1276160/1280000(epoch 31904/32000, 1.00), train_ppx 714.30157 | train_ppx_doc 787.00446 | train_loss 322.56451 | train_loss_rec 572.23462 | train_kld 9.48280 | train_penalty -259.15292
+INFO - main - train 1276200/1280000(epoch 31905/32000, 1.00), train_ppx 715.20203 | train_ppx_doc 789.53217 | train_loss 322.67618 | train_loss_rec 572.40509 | train_kld 9.42405 | train_penalty -259.15292
+INFO - main - train 1276240/1280000(epoch 31906/32000, 1.00), train_ppx 715.27435 | train_ppx_doc 788.40808 | train_loss 322.68509 | train_loss_rec 572.35571 | train_kld 9.48207 | train_penalty -259.15280
+INFO - main - train 1276280/1280000(epoch 31907/32000, 1.00), train_ppx 714.61499 | train_ppx_doc 787.37231 | train_loss 322.60358 | train_loss_rec 572.27795 | train_kld 9.47845 | train_penalty -259.15277
+INFO - main - train 1276320/1280000(epoch 31908/32000, 1.00), train_ppx 715.12598 | train_ppx_doc 786.01477 | train_loss 322.66690 | train_loss_rec 572.35004 | train_kld 9.46957 | train_penalty -259.15268
+INFO - main - train 1276360/1280000(epoch 31909/32000, 1.00), train_ppx 714.40448 | train_ppx_doc 787.93640 | train_loss 322.57745 | train_loss_rec 572.27374 | train_kld 9.45634 | train_penalty -259.15268
+INFO - main - saving checkpoint
+INFO - main - save checkpoint to data/exp/ntmr/1/model_1276400.pt
+INFO - main - train 1276400/1280000(epoch 31910/32000, 1.00), train_ppx 714.50293 | train_ppx_doc 786.58575 | train_loss 322.58960 | train_loss_rec 572.29071 | train_kld 9.45160 | train_penalty -259.15271
+INFO - main - evaluating model performance
+INFO - main - evaluate 1276400/1280000(epoch 31910/32000, 1.00), eval_ppx 777.76807 | eval_ppx_doc 793.90045 | eval_loss 299.90018 | eval_loss_rec 550.34607 | eval_kld 8.70518 | eval_penalty -259.15112
+INFO - main - train 1276440/1280000(epoch 31911/32000, 1.00), train_ppx 716.56750 | train_ppx_doc 788.99481 | train_loss 322.84509 | train_loss_rec 572.55878 | train_kld 9.43916 | train_penalty -259.15265
+INFO - main - train 1276480/1280000(epoch 31912/32000, 1.00), train_ppx 713.99713 | train_ppx_doc 788.92627 | train_loss 322.52704 | train_loss_rec 572.22803 | train_kld 9.45169 | train_penalty -259.15259
+INFO - main - train 1276520/1280000(epoch 31913/32000, 1.00), train_ppx 714.42694 | train_ppx_doc 788.89392 | train_loss 322.58051 | train_loss_rec 572.26654 | train_kld 9.46649 | train_penalty -259.15250
+INFO - main - train 1276560/1280000(epoch 31914/32000, 1.00), train_ppx 715.44867 | train_ppx_doc 789.25665 | train_loss 322.70685 | train_loss_rec 572.41418 | train_kld 9.44530 | train_penalty -259.15259
+INFO - main - train 1276600/1280000(epoch 31915/32000, 1.00), train_ppx 715.78412 | train_ppx_doc 788.41412 | train_loss 322.74854 | train_loss_rec 572.44135 | train_kld 9.45967 | train_penalty -259.15234
+INFO - main - train 1276640/1280000(epoch 31916/32000, 1.00), train_ppx 714.92249 | train_ppx_doc 788.22766 | train_loss 322.64200 | train_loss_rec 572.33972 | train_kld 9.45472 | train_penalty -259.15244
+INFO - main - train 1276680/1280000(epoch 31917/32000, 1.00), train_ppx 714.09210 | train_ppx_doc 785.62732 | train_loss 322.53918 | train_loss_rec 572.23132 | train_kld 9.46015 | train_penalty -259.15234
+INFO - main - train 1276720/1280000(epoch 31918/32000, 1.00), train_ppx 715.28796 | train_ppx_doc 789.25775 | train_loss 322.68726 | train_loss_rec 572.40619 | train_kld 9.43344 | train_penalty -259.15231
+INFO - main - train 1276760/1280000(epoch 31919/32000, 1.00), train_ppx 715.44012 | train_ppx_doc 789.69904 | train_loss 322.70605 | train_loss_rec 572.40088 | train_kld 9.45761 | train_penalty -259.15247
+INFO - main - saving checkpoint
+INFO - main - save checkpoint to data/exp/ntmr/1/model_1276800.pt
+INFO - main - train 1276800/1280000(epoch 31920/32000, 1.00), train_ppx 714.85699 | train_ppx_doc 788.37872 | train_loss 322.63419 | train_loss_rec 572.32739 | train_kld 9.45910 | train_penalty -259.15222
+INFO - main - evaluating model performance
+INFO - main - evaluate 1276800/1280000(epoch 31920/32000, 1.00), eval_ppx 778.82428 | eval_ppx_doc 802.57031 | eval_loss 300.01431 | eval_loss_rec 550.46063 | eval_kld 8.70461 | eval_penalty -259.15097
+INFO - main - train 1276840/1280000(epoch 31921/32000, 1.00), train_ppx 715.88885 | train_ppx_doc 788.03412 | train_loss 322.76193 | train_loss_rec 572.44385 | train_kld 9.47018 | train_penalty -259.15201
+INFO - main - train 1276880/1280000(epoch 31922/32000, 1.00), train_ppx 715.16656 | train_ppx_doc 789.16931 | train_loss 322.67255 | train_loss_rec 572.34296 | train_kld 9.48166 | train_penalty -259.15198
+INFO - main - train 1276920/1280000(epoch 31923/32000, 1.00), train_ppx 713.35059 | train_ppx_doc 787.55139 | train_loss 322.44757 | train_loss_rec 572.15698 | train_kld 9.44254 | train_penalty -259.15198
+INFO - main - train 1276960/1280000(epoch 31924/32000, 1.00), train_ppx 714.30402 | train_ppx_doc 787.38544 | train_loss 322.56577 | train_loss_rec 572.30127 | train_kld 9.41656 | train_penalty -259.15201
+INFO - main - train 1277000/1280000(epoch 31925/32000, 1.00), train_ppx 715.12769 | train_ppx_doc 788.36670 | train_loss 322.66803 | train_loss_rec 572.38165 | train_kld 9.43812 | train_penalty -259.15189
+INFO - main - train 1277040/1280000(epoch 31926/32000, 1.00), train_ppx 714.41022 | train_ppx_doc 789.09900 | train_loss 322.57913 | train_loss_rec 572.25598 | train_kld 9.47493 | train_penalty -259.15182
+INFO - main - train 1277080/1280000(epoch 31927/32000, 1.00), train_ppx 715.45850 | train_ppx_doc 787.56158 | train_loss 322.70886 | train_loss_rec 572.41235 | train_kld 9.44843 | train_penalty -259.15195
+INFO - main - train 1277120/1280000(epoch 31928/32000, 1.00), train_ppx 716.74109 | train_ppx_doc 787.42786 | train_loss 322.86768 | train_loss_rec 572.54358 | train_kld 9.47581 | train_penalty -259.15167
+INFO - main - train 1277160/1280000(epoch 31929/32000, 1.00), train_ppx 715.62781 | train_ppx_doc 788.21973 | train_loss 322.72989 | train_loss_rec 572.41046 | train_kld 9.47099 | train_penalty -259.15155
+INFO - main - saving checkpoint
+INFO - main - save checkpoint to data/exp/ntmr/1/model_1277200.pt
+INFO - main - train 1277200/1280000(epoch 31930/32000, 1.00), train_ppx 714.94220 | train_ppx_doc 787.11475 | train_loss 322.64539 | train_loss_rec 572.33252 | train_kld 9.46440 | train_penalty -259.15152
+INFO - main - evaluating model performance
+INFO - main - evaluate 1277200/1280000(epoch 31930/32000, 1.00), eval_ppx 777.50067 | eval_ppx_doc 799.46466 | eval_loss 299.87189 | eval_loss_rec 550.31238 | eval_kld 8.71002 | eval_penalty -259.15051
+INFO - main - train 1277240/1280000(epoch 31931/32000, 1.00), train_ppx 715.10486 | train_ppx_doc 788.24078 | train_loss 322.66528 | train_loss_rec 572.34302 | train_kld 9.47382 | train_penalty -259.15152
+INFO - main - train 1277280/1280000(epoch 31932/32000, 1.00), train_ppx 714.95618 | train_ppx_doc 789.07220 | train_loss 322.64694 | train_loss_rec 572.32935 | train_kld 9.46912 | train_penalty -259.15152
+INFO - main - train 1277320/1280000(epoch 31933/32000, 1.00), train_ppx 714.47021 | train_ppx_doc 787.47705 | train_loss 322.58701 | train_loss_rec 572.29486 | train_kld 9.44355 | train_penalty -259.15140
+INFO - main - train 1277360/1280000(epoch 31934/32000, 1.00), train_ppx 714.45691 | train_ppx_doc 787.96387 | train_loss 322.58539 | train_loss_rec 572.26654 | train_kld 9.47012 | train_penalty -259.15128
+INFO - main - train 1277400/1280000(epoch 31935/32000, 1.00), train_ppx 714.13574 | train_ppx_doc 788.78070 | train_loss 322.54553 | train_loss_rec 572.24847 | train_kld 9.44830 | train_penalty -259.15134
+INFO - main - train 1277440/1280000(epoch 31936/32000, 1.00), train_ppx 715.48889 | train_ppx_doc 788.11682 | train_loss 322.71323 | train_loss_rec 572.40985 | train_kld 9.45451 | train_penalty -259.15109
+INFO - main - train 1277480/1280000(epoch 31937/32000, 1.00), train_ppx 714.67401 | train_ppx_doc 788.00708 | train_loss 322.61255 | train_loss_rec 572.31207 | train_kld 9.45153 | train_penalty -259.15100
+INFO - main - train 1277520/1280000(epoch 31938/32000, 1.00), train_ppx 714.68347 | train_ppx_doc 787.80273 | train_loss 322.61398 | train_loss_rec 572.28162 | train_kld 9.48316 | train_penalty -259.15088
+INFO - main - train 1277560/1280000(epoch 31939/32000, 1.00), train_ppx 714.67596 | train_ppx_doc 789.55481 | train_loss 322.61304 | train_loss_rec 572.28394 | train_kld 9.47990 | train_penalty -259.15079
+INFO - main - saving checkpoint
+INFO - main - save checkpoint to data/exp/ntmr/1/model_1277600.pt
+INFO - main - train 1277600/1280000(epoch 31940/32000, 1.00), train_ppx 715.78546 | train_ppx_doc 787.79785 | train_loss 322.75049 | train_loss_rec 572.45306 | train_kld 9.44809 | train_penalty -259.15063
+INFO - main - evaluating model performance
+INFO - main - evaluate 1277600/1280000(epoch 31940/32000, 1.00), eval_ppx 777.57300 | eval_ppx_doc 799.95160 | eval_loss 299.88129 | eval_loss_rec 550.33618 | eval_kld 8.69409 | eval_penalty -259.14896
+INFO - main - train 1277640/1280000(epoch 31941/32000, 1.00), train_ppx 714.49200 | train_ppx_doc 789.23517 | train_loss 322.59042 | train_loss_rec 572.25494 | train_kld 9.48599 | train_penalty -259.15063
+INFO - main - train 1277680/1280000(epoch 31942/32000, 1.00), train_ppx 714.65417 | train_ppx_doc 786.49347 | train_loss 322.61069 | train_loss_rec 572.32611 | train_kld 9.43509 | train_penalty -259.15048
+INFO - main - train 1277720/1280000(epoch 31943/32000, 1.00), train_ppx 714.13812 | train_ppx_doc 787.63586 | train_loss 322.54678 | train_loss_rec 572.24152 | train_kld 9.45563 | train_penalty -259.15030
+INFO - main - train 1277760/1280000(epoch 31944/32000, 1.00), train_ppx 714.48792 | train_ppx_doc 788.05554 | train_loss 322.59021 | train_loss_rec 572.29883 | train_kld 9.44163 | train_penalty -259.15021
+INFO - main - train 1277800/1280000(epoch 31945/32000, 1.00), train_ppx 714.79254 | train_ppx_doc 788.95001 | train_loss 322.62811 | train_loss_rec 572.35028 | train_kld 9.42804 | train_penalty -259.15021
+INFO - main - train 1277840/1280000(epoch 31946/32000, 1.00), train_ppx 715.17780 | train_ppx_doc 786.43909 | train_loss 322.67587 | train_loss_rec 572.40808 | train_kld 9.41781 | train_penalty -259.15018
+INFO - main - train 1277880/1280000(epoch 31947/32000, 1.00), train_ppx 716.17767 | train_ppx_doc 787.86353 | train_loss 322.79950 | train_loss_rec 572.51855 | train_kld 9.43102 | train_penalty -259.15015
+INFO - main - train 1277920/1280000(epoch 31948/32000, 1.00), train_ppx 715.80493 | train_ppx_doc 788.11682 | train_loss 322.75348 | train_loss_rec 572.48193 | train_kld 9.42167 | train_penalty -259.15009
+INFO - main - train 1277960/1280000(epoch 31949/32000, 1.00), train_ppx 714.34180 | train_ppx_doc 787.69037 | train_loss 322.57233 | train_loss_rec 572.26196 | train_kld 9.46044 | train_penalty -259.15002
+INFO - main - saving checkpoint
+INFO - main - save checkpoint to data/exp/ntmr/1/model_1278000.pt
+INFO - main - train 1278000/1280000(epoch 31950/32000, 1.00), train_ppx 714.78027 | train_ppx_doc 786.37653 | train_loss 322.62686 | train_loss_rec 572.33685 | train_kld 9.43994 | train_penalty -259.14990
+INFO - main - evaluating model performance
+INFO - main - evaluate 1278000/1280000(epoch 31950/32000, 1.00), eval_ppx 778.03326 | eval_ppx_doc 800.88593 | eval_loss 299.93146 | eval_loss_rec 550.35931 | eval_kld 8.72062 | eval_penalty -259.14844
+INFO - main - train 1278040/1280000(epoch 31951/32000, 1.00), train_ppx 714.36664 | train_ppx_doc 787.56458 | train_loss 322.57571 | train_loss_rec 572.24219 | train_kld 9.48323 | train_penalty -259.14975
+INFO - main - train 1278080/1280000(epoch 31952/32000, 1.00), train_ppx 715.66943 | train_ppx_doc 786.99054 | train_loss 322.73715 | train_loss_rec 572.42657 | train_kld 9.46032 | train_penalty -259.14972
+INFO - main - train 1278120/1280000(epoch 31953/32000, 1.00), train_ppx 714.43237 | train_ppx_doc 788.11749 | train_loss 322.58392 | train_loss_rec 572.28717 | train_kld 9.44632 | train_penalty -259.14972
+INFO - main - train 1278160/1280000(epoch 31954/32000, 1.00), train_ppx 715.45618 | train_ppx_doc 788.19421 | train_loss 322.71085 | train_loss_rec 572.39508 | train_kld 9.46544 | train_penalty -259.14957
+INFO - main - train 1278200/1280000(epoch 31955/32000, 1.00), train_ppx 714.87744 | train_ppx_doc 786.57971 | train_loss 322.63919 | train_loss_rec 572.33459 | train_kld 9.45415 | train_penalty -259.14948
+INFO - main - train 1278240/1280000(epoch 31956/32000, 1.00), train_ppx 714.53491 | train_ppx_doc 786.02557 | train_loss 322.59677 | train_loss_rec 572.27631 | train_kld 9.47020 | train_penalty -259.14948
+INFO - main - train 1278280/1280000(epoch 31957/32000, 1.00), train_ppx 714.40717 | train_ppx_doc 786.89825 | train_loss 322.58121 | train_loss_rec 572.27698 | train_kld 9.45382 | train_penalty -259.14944
+INFO - main - train 1278320/1280000(epoch 31958/32000, 1.00), train_ppx 714.83624 | train_ppx_doc 788.50397 | train_loss 322.63431 | train_loss_rec 572.30597 | train_kld 9.47761 | train_penalty -259.14932
+INFO - main - train 1278360/1280000(epoch 31959/32000, 1.00), train_ppx 715.54315 | train_ppx_doc 787.51239 | train_loss 322.72205 | train_loss_rec 572.41418 | train_kld 9.45699 | train_penalty -259.14920
+INFO - main - saving checkpoint
+INFO - main - save checkpoint to data/exp/ntmr/1/model_1278400.pt
+INFO - main - train 1278400/1280000(epoch 31960/32000, 1.00), train_ppx 714.13196 | train_ppx_doc 788.41412 | train_loss 322.54724 | train_loss_rec 572.23639 | train_kld 9.46003 | train_penalty -259.14914
+INFO - main - evaluating model performance
+INFO - main - evaluate 1278400/1280000(epoch 31960/32000, 1.00), eval_ppx 778.82611 | eval_ppx_doc 797.62781 | eval_loss 300.01706 | eval_loss_rec 550.48279 | eval_kld 8.68269 | eval_penalty -259.14850
+INFO - main - train 1278440/1280000(epoch 31961/32000, 1.00), train_ppx 715.70526 | train_ppx_doc 787.73169 | train_loss 322.74216 | train_loss_rec 572.47015 | train_kld 9.42124 | train_penalty -259.14917
+INFO - main - train 1278480/1280000(epoch 31962/32000, 1.00), train_ppx 715.82812 | train_ppx_doc 789.47614 | train_loss 322.75735 | train_loss_rec 572.44604 | train_kld 9.46034 | train_penalty -259.14902
+INFO - main - train 1278520/1280000(epoch 31963/32000, 1.00), train_ppx 714.30737 | train_ppx_doc 788.93945 | train_loss 322.56915 | train_loss_rec 572.26807 | train_kld 9.45005 | train_penalty -259.14899
+INFO - main - train 1278560/1280000(epoch 31964/32000, 1.00), train_ppx 714.87500 | train_ppx_doc 788.35321 | train_loss 322.63971 | train_loss_rec 572.33093 | train_kld 9.45770 | train_penalty -259.14886
+INFO - main - train 1278600/1280000(epoch 31965/32000, 1.00), train_ppx 714.11255 | train_ppx_doc 786.76099 | train_loss 322.54523 | train_loss_rec 572.21960 | train_kld 9.47446 | train_penalty -259.14877
+INFO - main - train 1278640/1280000(epoch 31966/32000, 1.00), train_ppx 715.57794 | train_ppx_doc 787.60101 | train_loss 322.72681 | train_loss_rec 572.39941 | train_kld 9.47616 | train_penalty -259.14874
+INFO - main - train 1278680/1280000(epoch 31967/32000, 1.00), train_ppx 714.41943 | train_ppx_doc 786.34204 | train_loss 322.58325 | train_loss_rec 572.24701 | train_kld 9.48504 | train_penalty -259.14886
+INFO - main - train 1278720/1280000(epoch 31968/32000, 1.00), train_ppx 715.15430 | train_ppx_doc 787.97058 | train_loss 322.67422 | train_loss_rec 572.35443 | train_kld 9.46862 | train_penalty -259.14886
+INFO - main - train 1278760/1280000(epoch 31969/32000, 1.00), train_ppx 715.36237 | train_ppx_doc 788.13220 | train_loss 322.70004 | train_loss_rec 572.40503 | train_kld 9.44390 | train_penalty -259.14880
+INFO - main - saving checkpoint
+INFO - main - save checkpoint to data/exp/ntmr/1/model_1278800.pt
+INFO - main - train 1278800/1280000(epoch 31970/32000, 1.00), train_ppx 713.72858 | train_ppx_doc 787.34717 | train_loss 322.49762 | train_loss_rec 572.18225 | train_kld 9.46425 | train_penalty -259.14886
+INFO - main - evaluating model performance
+INFO - main - evaluate 1278800/1280000(epoch 31970/32000, 1.00), eval_ppx 777.68054 | eval_ppx_doc 799.87451 | eval_loss 299.89398 | eval_loss_rec 550.32031 | eval_kld 8.72157 | eval_penalty -259.14789
+INFO - main - train 1278840/1280000(epoch 31971/32000, 1.00), train_ppx 714.59662 | train_ppx_doc 787.78314 | train_loss 322.60526 | train_loss_rec 572.27502 | train_kld 9.47892 | train_penalty -259.14877
+INFO - main - train 1278880/1280000(epoch 31972/32000, 1.00), train_ppx 714.51587 | train_ppx_doc 787.02020 | train_loss 322.59525 | train_loss_rec 572.28442 | train_kld 9.45960 | train_penalty -259.14874
+INFO - main - train 1278920/1280000(epoch 31973/32000, 1.00), train_ppx 715.14813 | train_ppx_doc 789.83044 | train_loss 322.67334 | train_loss_rec 572.36932 | train_kld 9.45299 | train_penalty -259.14896
+INFO - main - train 1278960/1280000(epoch 31974/32000, 1.00), train_ppx 714.61432 | train_ppx_doc 788.01910 | train_loss 322.60748 | train_loss_rec 572.32166 | train_kld 9.43479 | train_penalty -259.14883
+INFO - main - train 1279000/1280000(epoch 31975/32000, 1.00), train_ppx 713.80719 | train_ppx_doc 786.13580 | train_loss 322.50748 | train_loss_rec 572.19769 | train_kld 9.45851 | train_penalty -259.14868
+INFO - main - train 1279040/1280000(epoch 31976/32000, 1.00), train_ppx 715.28113 | train_ppx_doc 787.50336 | train_loss 322.69006 | train_loss_rec 572.38611 | train_kld 9.45255 | train_penalty -259.14859
+INFO - main - train 1279080/1280000(epoch 31977/32000, 1.00), train_ppx 714.78986 | train_ppx_doc 790.24976 | train_loss 322.62943 | train_loss_rec 572.33929 | train_kld 9.43865 | train_penalty -259.14856
+INFO - main - train 1279120/1280000(epoch 31978/32000, 1.00), train_ppx 715.18329 | train_ppx_doc 788.08521 | train_loss 322.67828 | train_loss_rec 572.40619 | train_kld 9.42053 | train_penalty -259.14838
+INFO - main - train 1279160/1280000(epoch 31979/32000, 1.00), train_ppx 715.25525 | train_ppx_doc 786.58875 | train_loss 322.68723 | train_loss_rec 572.39435 | train_kld 9.44121 | train_penalty -259.14835
+INFO - main - saving checkpoint
+INFO - main - save checkpoint to data/exp/ntmr/1/model_1279200.pt
+INFO - main - train 1279200/1280000(epoch 31980/32000, 1.00), train_ppx 714.76324 | train_ppx_doc 787.60101 | train_loss 322.62650 | train_loss_rec 572.31732 | train_kld 9.45737 | train_penalty -259.14813
+INFO - main - evaluating model performance
+INFO - main - evaluate 1279200/1280000(epoch 31980/32000, 1.00), eval_ppx 777.43176 | eval_ppx_doc 795.15149 | eval_loss 299.86816 | eval_loss_rec 550.30505 | eval_kld 8.70992 | eval_penalty -259.14682
+INFO - main - train 1279240/1280000(epoch 31981/32000, 1.00), train_ppx 714.21710 | train_ppx_doc 787.58789 | train_loss 322.55887 | train_loss_rec 572.27283 | train_kld 9.43419 | train_penalty -259.14816
+INFO - main - train 1279280/1280000(epoch 31982/32000, 1.00), train_ppx 715.29651 | train_ppx_doc 789.05383 | train_loss 322.69269 | train_loss_rec 572.39319 | train_kld 9.44768 | train_penalty -259.14804
+INFO - main - train 1279320/1280000(epoch 31983/32000, 1.00), train_ppx 715.14062 | train_ppx_doc 788.57050 | train_loss 322.67331 | train_loss_rec 572.32318 | train_kld 9.49835 | train_penalty -259.14807
+INFO - main - train 1279360/1280000(epoch 31984/32000, 1.00), train_ppx 714.81238 | train_ppx_doc 787.24426 | train_loss 322.63263 | train_loss_rec 572.28937 | train_kld 9.49144 | train_penalty -259.14807
+INFO - main - train 1279400/1280000(epoch 31985/32000, 1.00), train_ppx 714.99609 | train_ppx_doc 786.78723 | train_loss 322.65543 | train_loss_rec 572.36499 | train_kld 9.43842 | train_penalty -259.14807
+INFO - main - train 1279440/1280000(epoch 31986/32000, 1.00), train_ppx 714.91425 | train_ppx_doc 787.79065 | train_loss 322.64526 | train_loss_rec 572.32013 | train_kld 9.47312 | train_penalty -259.14810
+INFO - main - train 1279480/1280000(epoch 31987/32000, 1.00), train_ppx 715.25763 | train_ppx_doc 787.23865 | train_loss 322.68793 | train_loss_rec 572.36053 | train_kld 9.47545 | train_penalty -259.14801
+INFO - main - train 1279520/1280000(epoch 31988/32000, 1.00), train_ppx 714.91388 | train_ppx_doc 787.18353 | train_loss 322.64545 | train_loss_rec 572.34283 | train_kld 9.45044 | train_penalty -259.14786
+INFO - main - train 1279560/1280000(epoch 31989/32000, 1.00), train_ppx 714.23517 | train_ppx_doc 787.37836 | train_loss 322.56140 | train_loss_rec 572.25787 | train_kld 9.45128 | train_penalty -259.14771
+INFO - main - saving checkpoint
+INFO - main - save checkpoint to data/exp/ntmr/1/model_1279600.pt
+INFO - main - train 1279600/1280000(epoch 31990/32000, 1.00), train_ppx 714.68115 | train_ppx_doc 787.75946 | train_loss 322.61664 | train_loss_rec 572.31885 | train_kld 9.44568 | train_penalty -259.14789
+INFO - main - evaluating model performance
+INFO - main - evaluate 1279600/1280000(epoch 31990/32000, 1.00), eval_ppx 781.86353 | eval_ppx_doc 801.43109 | eval_loss 300.34543 | eval_loss_rec 550.80115 | eval_kld 8.69129 | eval_penalty -259.14697
+INFO - main - train 1279640/1280000(epoch 31991/32000, 1.00), train_ppx 714.80688 | train_ppx_doc 787.66974 | train_loss 322.63208 | train_loss_rec 572.33643 | train_kld 9.44352 | train_penalty -259.14795
+INFO - main - train 1279680/1280000(epoch 31992/32000, 1.00), train_ppx 715.59705 | train_ppx_doc 787.56458 | train_loss 322.73001 | train_loss_rec 572.45789 | train_kld 9.42003 | train_penalty -259.14780
+INFO - main - train 1279720/1280000(epoch 31993/32000, 1.00), train_ppx 715.45172 | train_ppx_doc 788.60132 | train_loss 322.71213 | train_loss_rec 572.41577 | train_kld 9.44414 | train_penalty -259.14780
+INFO - main - train 1279760/1280000(epoch 31994/32000, 1.00), train_ppx 714.18512 | train_ppx_doc 787.38354 | train_loss 322.55551 | train_loss_rec 572.22974 | train_kld 9.47324 | train_penalty -259.14758
+INFO - main - train 1279800/1280000(epoch 31995/32000, 1.00), train_ppx 714.98279 | train_ppx_doc 787.87219 | train_loss 322.65427 | train_loss_rec 572.33813 | train_kld 9.46362 | train_penalty -259.14758
+INFO - main - train 1279840/1280000(epoch 31996/32000, 1.00), train_ppx 714.61365 | train_ppx_doc 786.81384 | train_loss 322.60855 | train_loss_rec 572.30890 | train_kld 9.44718 | train_penalty -259.14755
+INFO - main - train 1279880/1280000(epoch 31997/32000, 1.00), train_ppx 714.49469 | train_ppx_doc 786.02856 | train_loss 322.59375 | train_loss_rec 572.31732 | train_kld 9.42401 | train_penalty -259.14758
+INFO - main - train 1279920/1280000(epoch 31998/32000, 1.00), train_ppx 714.77893 | train_ppx_doc 788.70776 | train_loss 322.62909 | train_loss_rec 572.37305 | train_kld 9.40339 | train_penalty -259.14740
+INFO - main - train 1279960/1280000(epoch 31999/32000, 1.00), train_ppx 714.45587 | train_ppx_doc 788.08221 | train_loss 322.58917 | train_loss_rec 572.27722 | train_kld 9.45944 | train_penalty -259.14740
+INFO - main - saving checkpoint
+INFO - main - save checkpoint to data/exp/ntmr/1/model_1280000.pt
+INFO - main - train 1280000/1280000(epoch 32000/32000, 1.00), train_ppx 715.71960 | train_ppx_doc 787.42377 | train_loss 322.74576 | train_loss_rec 572.48328 | train_kld 9.40996 | train_penalty -259.14731
+INFO - main - finished training
+INFO - main - save best evaluation statistics to data/exp/ntmr/1/best_eval.json
+INFO - main - evaluating model performance
+INFO - main - evaluate 1280000/1280000(epoch 32000/32000, 1.00), eval_ppx 781.53149 | eval_ppx_doc 804.87860 | eval_loss 300.31058 | eval_loss_rec 550.77740 | eval_kld 8.67934 | eval_penalty -259.14612
+INFO - main - saving topics to data/exp/ntmr/1/topic-32000
+INFO - main - topic coherence 0.349
+INFO - main - saving topics to data/exp/ntmr/1/topic-32000
+INFO - main - topic coherence 0.349
+INFO - main - load checkpoint from data/exp/ntmr/1/model_best.pt
+INFO - main - saving topics to data/exp/ntmr/1/topic-32000
+INFO - main - topic coherence 0.347
+INFO - main - test result of best evaluation {'ppx': 782.0596923828125, 'ppx_doc': 818.3028564453125, 'loss': 300.7720947265625, 'loss_rec': 551.384521484375, 'kld': 8.577116966247559, 'penalty': -259.1895446777344, 'max_topic_coherence': 0.349, 'last_topic_coherence': 0.347}
