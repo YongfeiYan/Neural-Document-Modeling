@@ -1,0 +1,40 @@
+callback: callback_npmi
+callback_npmi: {embedding_path: '', every: 100, metric: npmi, topk: 100}
+callback_wetc: {embedding_path: '', every: 100, metric: wetc, topk: 10}
+comment: ''
+dataset: {batch_size: 256, data_dir: data/20news-clean/, dev_ratio: 0.1, device: device}
+device: cpu
+hidden:
+  activate: Sigmoid
+  features: [0, 150, 100]
+  type: models.utils.get_mlp
+normal:
+  in_features: !!python/tuple [hidden, features, -1]
+  out_features: 50
+  type: models.utils.NormalParameter
+ntm:
+  h_to_z: {type: torch.nn.ReLU}
+  hidden: hidden
+  normal: normal
+  topics: topic
+  type: models.NTM.NTM
+topic:
+  k: 50
+  type: models.utils.Topics
+  vocab_size: !!python/tuple [hidden, features, 0]
+trainer:
+  early_stop: 10
+  eval_metric: {key: ppx_doc, type: mlutils.pt.training.eval_metric_cmp_key}
+  evaluate_interval: 10
+  num_checkpoints_keep: 1
+  num_epochs: 64000
+  statistics: {dotted_path: experiments.utils.PerplexStatistics, type: mlutils.pt.training.parse_class}
+  trainer_batch: trainer_batch
+  type: mlutils.pt.training.Trainer
+trainer_batch:
+  device: device
+  loss: mean
+  model: ntm
+  optimizer: {lr: 0.01, type: torch.optim.Adadelta}
+  test_sample: 100
+  type: experiments.utils.BatchOperation
